@@ -1,0 +1,17 @@
+* TODO table.as <0509>
+* DONE field.as <0509>
+* DOIN executor  <0509>
+* TODO dbExecutor base iface <0510>
+* DONE write code in app dir, set co as lib  <0510>
+* DONE insert, update, delete <0512>
+* DOIN sql file parser <0512>
+* TODO refine executor <0512>
+* TODO field role on value and name <0512>
+* TODO SUB SELECT <0512>
+* TODO refer to SQLAlchemy(WHOSE API SUCKS) for execution action result  <0512>
+  http://sqlalchemy.readthedocs.org/en/rel_1_0/core/tutorial.html#matched-row-counts
+
+* TODO model generator write constants file <0513>
+* TODO model generator cmd options <0513>
+* TODO time <2015-05-23 Sat>
+* TODO transaction <2015-05-23 Sat>
