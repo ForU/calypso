@@ -321,4 +321,4 @@ class ModelGenerator(object):
 
 if __name__ == '__main__':
     g=ModelGenerator(host='localhost', user='root')
-    g.dumpDBSchema('go', model_des_dir_path='/Users/zhang/work/COOL/calypso/app', app_name='app')
+    g.dumpDBSchema('go', model_des_dir_path='../app', app_name='app')
