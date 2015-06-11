@@ -47,7 +47,8 @@ class SqlExcecutor(object):
                              passwd=mysql_passwd,
                              db=mysql_db,
                          )
-        self.conn = None
+        self._auto_commit = True
+        self._conn = None
         self._connect_to_db()
 
     def _connect_to_db(self):
@@ -56,11 +57,13 @@ class SqlExcecutor(object):
                 (self._mysql.user, self._mysql.host, self._mysql.port)
             return
         try:
-            self.conn = MySQLdb.connect( host=self._mysql.host,
-                                         port=self._mysql.port,
-                                         user=self._mysql.user,
-                                         passwd=self._mysql.passwd,
-                                         db=self._mysql.db )
+            # TODO Thu Jun 11 17:28:38 2015 [load from connection pool other create a connection here]
+            self._conn = MySQLdb.connect( host=self._mysql.host,
+                                          port=self._mysql.port,
+                                          user=self._mysql.user,
+                                          passwd=self._mysql.passwd,
+                                          db=self._mysql.db
+                                      )
         except MySQLdb.OperationalError as e:
             raise COExcInternalError(e)
         except Exception as e:
@@ -69,23 +72,34 @@ class SqlExcecutor(object):
     def _execute_sql(self, sql, sql_action=None):
         """return None or action-specified value
         """
-        if not self.conn:
+        if not self._conn:
             raise COExcInternalError("not connect to db yet")
 
-        c = MySQLdb.cursors.DictCursor( self.conn )
+        c = MySQLdb.cursors.DictCursor( self._conn )
         try:
             print "executing SQL:\"%s\" @'%s'" % (sql, g_utils.now())
             c.execute( sql )
-            self.conn.commit()
-            print "[DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
+            if self._auto_commit:
+                self.commit()
+                print "[DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
             return c
-        except MySQLdb.IntegrityError as e:
-            raise COSqlExecuteError(*e.args)
-        except MySQLdb.ProgrammingError as e:
+        except MySQLdb.Error as e:
             raise COSqlExecuteError(*e.args)
         except Exception as e:
             raise COExcInternalError(*e.args)
 
+    def startTransaction(self):
+        self._auto_commit = False
+        self._execute_sql('start transaction;')
+
+    def commit(self):
+        self._conn.commit()
+
+    def rollback(self):
+        self._auto_commit = True
+        self._conn.rollback()
+
+    # has no need this function if connection is a pool
     def reInit(self, mysql_host=DEFAULT_MYSQL_HOST, mysql_port=DEFAULT_MYSQL_PORT, mysql_user='', mysql_passwd='', mysql_db=''):
         self._mysql = Magic( host=mysql_host,
                              port=mysql_port,
@@ -93,11 +107,11 @@ class SqlExcecutor(object):
                              passwd=mysql_passwd,
                              db=mysql_db
                          )
-        self.conn = MySQLdb.connect( host=self._mysql.host,
-                                     port=self._mysql.port,
-                                     user=self._mysql.user,
-                                     passwd=self._mysql.passwd,
-                                     db=self._mysql.db )
+        self._conn = MySQLdb.connect( host=self._mysql.host,
+                                      port=self._mysql.port,
+                                      user=self._mysql.user,
+                                      passwd=self._mysql.passwd,
+                                      db=self._mysql.db )
 
     def execute(self, sql, sql_action, model_class=None, model_class_fields=None):
         """
@@ -136,7 +150,7 @@ class SqlExcecutor(object):
 
         if sql_action == COConstants.SQL_ACTION_UPDATE:
             result = True if isinstance(result, MySQLdb.cursors.DictCursor) else False
-            return DeleteResult(res=result, why=why)
+            return UpdateResult(res=result, why=why)
 
         if sql_action == COConstants.SQL_ACTION_DELETE:
             result = True if isinstance(result, MySQLdb.cursors.DictCursor) else False
@@ -154,3 +168,31 @@ class SqlExcecutor(object):
 
 # global
 g_co_executor = SqlExcecutor()
+
+
+class Transaction(object):
+    def __init__(self, executor=g_co_executor ):
+        self._executor = executor
+
+    def __enter__(self):
+        self._executor.startTransaction()
+        print "starting transaction..."
+
+    def __exit__(self, exc_type, exc_value, exc_tb):
+        if not exc_tb:
+            self._executor.commit()
+            print "Transaction success"
+            return True
+        # failed, do rollback
+        print "transaction failed, rollback"
+        self._executor.rollback()
+        return False
+
+
+def do_transaction(func):
+    def _f_wrapper(*args, **kwargs):
+        r = None
+        with Transaction():
+            r = func(*args, **kwargs)
+        return r
+    return _f_wrapper
