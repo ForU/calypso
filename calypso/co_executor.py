@@ -11,7 +11,7 @@ import MySQLdb
 import MySQLdb.cursors
 
 from co_sql import ModelIface
-from co_error import COExcInternalError, COSqlExecuteError
+from co_error import COExcInternalError, COSqlExecuteError, CODuplicatedDBRecord
 from co_constants import COConstants
 from co_utils import g_utils, Magic
 
@@ -34,7 +34,7 @@ class InsertResult(Magic):
 
 class UpdateResult(Magic):
     def __init__(self, **kwargs):
-        super(InsertResult, self).__init__(**kwargs)
+        super(UpdateResult, self).__init__(**kwargs)
 
 
 class DeleteResult(Magic):
@@ -152,6 +152,15 @@ class SqlExcecutor(object):
             print "DEBUG: Executed result of SQL:\"%s\" is:'%s'" % (sql, result)
         except Exception as e:
             if not self._auto_commit:
+                # CRITICAL: if _auto_commit, a exception must be raise
+                # to support transaction.
+                # handle db duplicated case:
+                if len(e.args) >= 2:
+                    if isinstance(e.args[0], (int, long)):
+                        if e.args[0] == 1062:
+                            raise CODuplicatedDBRecord(e)
+                # CRITICAL: more here for explict error
+                # always raise a exception
                 raise e
 
             # else auto commit mode
