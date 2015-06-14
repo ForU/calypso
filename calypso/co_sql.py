@@ -106,6 +106,9 @@ class FieldTypeEnum(object):
     def __repr__(self):
         return "<FieldTypeEnum:%s>" % self.v
 
+    def __eq__(self, rv):
+        return self.v == rv.v
+
 
 class Field(object):
     def __init__(self, name=None, type=None, default=None, comment=None, value=None, restriction=None):

@@ -148,7 +148,7 @@ class ModelGenerator(object):
                 enum_constants_wt_stm += [ "%s_%s = %s.%s" % \
                                            (UPC(db_table.table_name), self._fe(cl.fname,i), class_name, self._fe(cl.fname, i)) \
                                            for i in enums ]
-                enum_constants_stm += ["%s = FieldTypeEnum('%s')" % (self._fe(cl.fname, i), i) for i in enums]
+                enum_constants_stm += ["%s = '%s'" % (self._fe(cl.fname, i), i) for i in enums]
 
             # fields declaration
             # TODO Wed May 13 13:50:53 2015 [ftype, fdefault, fkey, fnull, fextra]
@@ -165,7 +165,10 @@ class ModelGenerator(object):
                 restriction = 'self.%s' % all_cands_name
                 refined_f_default = 'self.%s' % self._fe(cl.fname, cl.fdefault)
             elif refined_f_type == 'str':
-                refined_f_default = "'%s'" % cl.fdefault
+                if cl.fdefault == 'CURRENT_TIMESTAMP':
+                    refined_f_default = "'NOW()'"
+                else:
+                    refined_f_default = "'%s'" % cl.fdefault
             else:
                 refined_f_default = cl.fdefault
 
@@ -222,7 +225,7 @@ class ModelGenerator(object):
                                               ( UPC(db_table.table_name), UPC(cl.fname), class_name, UPC(cl.fname))
                                           )
 
-                enum_constants_stm += ["%s = FieldTypeEnum('%s')" % (self._fe(cl.fname, i), i) for i in enums]
+                enum_constants_stm += ["%s = '%s'" % (self._fe(cl.fname, i), i) for i in enums]
 
         # components
         components = [ class_stm ]
@@ -321,4 +324,6 @@ class ModelGenerator(object):
 
 if __name__ == '__main__':
     g=ModelGenerator(host='localhost', user='root')
-    g.dumpDBSchema('go', model_des_dir_path='../app', app_name='app')
+    g.dumpDBSchema('ilovect_users', model_des_dir_path='/Users/zhang/ilovect/users', app_name='users')
+    g.dumpDBSchema('ilovect_collections', model_des_dir_path='/Users/zhang/ilovect/collections', app_name='collections')
+    g.dumpDBSchema('ilovect_address', model_des_dir_path='/Users/zhang/ilovect/address', app_name='address')

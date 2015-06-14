@@ -24,9 +24,9 @@ class Orders(Table):
 class PersonModel(ModelIface):
     TABLE_NAME = 'person'
     # DB_NAME = 'go'
-    SEX_FEMALE = FieldTypeEnum('FEMALE')
-    SEX_MALE = FieldTypeEnum('MALE')
-    SEX_UNKNOWN = FieldTypeEnum('UNKNOWN')
+    SEX_FEMALE = 'FEMALE'
+    SEX_MALE = 'MALE'
+    SEX_UNKNOWN = 'UNKNOWN'
     ALL_SEX_CANDIDATES = (
         SEX_FEMALE
         ,SEX_MALE
@@ -39,9 +39,9 @@ class PersonModel(ModelIface):
         self.age = Field(name='age', type=int, value=age, default=0, restriction=None)
 
 class Person(Table):
-    SEX_FEMALE = FieldTypeEnum('FEMALE')
-    SEX_MALE = FieldTypeEnum('MALE')
-    SEX_UNKNOWN = FieldTypeEnum('UNKNOWN')
+    SEX_FEMALE = 'FEMALE'
+    SEX_MALE = 'MALE'
+    SEX_UNKNOWN = 'UNKNOWN'
     ALL_SEX_CANDIDATES = (
         SEX_FEMALE
         ,SEX_MALE

@@ -17,8 +17,19 @@ from co_utils import g_utils, Magic
 
 
 class InsertResult(Magic):
-    def __init__(self, **kwargs):
+    def __init__(self, res=None, why=''):
+        kwargs = {'res':res, 'why':why}
         super(InsertResult, self).__init__(**kwargs)
+        self._is_duplicated = False
+        # set attribute value
+        self._set_attribute_value(res)
+
+    def _set_attribute_value(self, last_id):
+        if last_id == -1062:
+            self._is_duplicated = True
+
+    def isDuplicated(self):
+        return self._is_duplicated
 
 
 class UpdateResult(Magic):
@@ -69,7 +80,7 @@ class SqlExcecutor(object):
         except Exception as e:
             raise COExcInternalError(e)
 
-    def _execute_sql(self, sql, sql_action=None):
+    def _execute_sql(self, sql):
         """return None or action-specified value
         """
         if not self._conn:
@@ -84,15 +95,16 @@ class SqlExcecutor(object):
                 print "[DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
             return c
         except MySQLdb.Error as e:
-            raise COSqlExecuteError(*e.args)
+            raise COSqlExecuteError(*(list(e.args) + [sql]))
         except Exception as e:
-            raise COExcInternalError(*e.args)
+            raise COExcInternalError(*(list(e.args) + [sql]))
 
     def startTransaction(self):
         self._auto_commit = False
         self._execute_sql('start transaction;')
 
     def commit(self):
+        # print "do commit here"
         self._conn.commit()
 
     def rollback(self):
@@ -107,11 +119,13 @@ class SqlExcecutor(object):
                              passwd=mysql_passwd,
                              db=mysql_db
                          )
+        print "connecting %s ..." % self._mysql
         self._conn = MySQLdb.connect( host=self._mysql.host,
                                       port=self._mysql.port,
                                       user=self._mysql.user,
                                       passwd=self._mysql.passwd,
                                       db=self._mysql.db )
+        print "db connected."
 
     def execute(self, sql, sql_action, model_class=None, model_class_fields=None):
         """
@@ -134,9 +148,13 @@ class SqlExcecutor(object):
 
         # refine result, avoid exception for better code programing experiences
         try:
-            result, why = self._execute_sql(sql, sql_action), 'OK'
+            result, why = self._execute_sql(sql), 'OK'
             print "DEBUG: Executed result of SQL:\"%s\" is:'%s'" % (sql, result)
         except Exception as e:
+            if not self._auto_commit:
+                raise e
+
+            # else auto commit mode
             result, why = None, str(e)
             # check if necessary to convert mysql error code
             if len(e.args) >= 2:
@@ -154,7 +172,7 @@ class SqlExcecutor(object):
 
         if sql_action == COConstants.SQL_ACTION_DELETE:
             result = True if isinstance(result, MySQLdb.cursors.DictCursor) else False
-            return DeleteResult(res=del_res, why=why)
+            return DeleteResult(res=result, why=why)
 
         if sql_action == COConstants.SQL_ACTION_SELECT:
             if isinstance(result, MySQLdb.cursors.DictCursor):
@@ -181,7 +199,7 @@ class Transaction(object):
     def __exit__(self, exc_type, exc_value, exc_tb):
         if not exc_tb:
             self._executor.commit()
-            print "Transaction success"
+            print "commit and transaction success"
             return True
         # failed, do rollback
         print "transaction failed, rollback"

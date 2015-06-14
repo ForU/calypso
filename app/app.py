@@ -7,6 +7,7 @@ import random
 
 from app_model.app_db_model import *
 from app_model.calypso.co_sql import *
+from app_model.calypso.co_executor import *
 from app_model.calypso.co_constants import COConstants
 
 from app_config_manager import ConfigureManager
@@ -110,7 +111,6 @@ def test_insert_with_none_field(enable=True):
     try:
         r = p.insert( datas )
         print "$>", r
-        import ipdb; ipdb.set_trace()
 
         # normal process logic
         if r.res > 0:
@@ -136,11 +136,30 @@ def test_insert(enable=True):
     try:
         r = p.insert( datas )
         print "$>", r
-        import ipdb; ipdb.set_trace()
 
         # normal process logic
         if r.res > 0:
-            print "insert success, the newly added id:" % r.res
+            print "insert success, the newly added id:'%s'" % r.res
+        elif r.res == COConstants.RECORD_DUPLICATED:
+            print "duplicated occurs, caz:'%s'" % r.why
+        elif r.res == COConstants.INVALID_SQL:
+            print "invalid sql, caz:'%s'" % r.why
+        else:
+            print r
+
+    except Exception as e:
+        print "%s, caz:'%s'" % (e.__class__, e)
+
+@sep
+def test_insert_by_model(enable=True):
+    m = PersonModel(name='haha', sex=Person.SEX_FEMALE)
+    try:
+        r = p.insert( m )
+        print "$>", r
+
+        # normal process logic
+        if r.res > 0:
+            print "insert success, the newly added id:'%s'" % r.res
         elif r.res == COConstants.RECORD_DUPLICATED:
             print "duplicated occurs, caz:'%s'" % r.why
         elif r.res == COConstants.INVALID_SQL:
@@ -192,9 +211,28 @@ def test_delete_with_cond_is_none_allowed(enable=True):
         print "%s, caz:'%s'" % (e.__class__, e)
 
 
+@sep
+@do_transaction
+def test_transaction(enable=True):
+    def _inner_one():
+        datas = [
+            {'name':'haha', 'sex':None},
+            {'name':'jaci', 'sex':'FEMALE', 'age':12}
+        ]
+        r = p.insert( datas )
+        print "$>", r
+    # real starts here
+    _inner_one()
+    _inner_one()
+
+
+
+################################################################
 if __name__ == '__main__':
     test_insert(0)
-    test_insert_with_none_field()
+    test_insert_with_none_field(0)
+    test_insert_by_model()
+
     test_update(0)
 
     # AS
@@ -208,6 +246,9 @@ if __name__ == '__main__':
     test_join_tables(0)
     test_table_join_table(0)
     test_table_join_table_with_table_as(0)
+
+    # transaction
+    # test_transaction(0)
 
     # delete
     test_delete(0)
