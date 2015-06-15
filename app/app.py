@@ -63,6 +63,18 @@ def test_select(enable=True):
         print i.dumpAsStr()
 
 @sep
+def test_cond_table_field_mixed_with_model_field(enable=True):
+    p=Person()
+    pm=PersonModel(id=1, name='haha')
+
+    cond = (p.name == pm.name) & (p.id == pm.id)
+
+    res=p.select().where( cond ).one()
+    print "$>", res
+    if res.res:
+        print res.res.dumpAsDBData()
+
+@sep
 def test_join_with_leak_field_as(enable=True):
     # has one
     j=p.join(o).on(p.id == o.person_id)
@@ -100,7 +112,7 @@ def test_join_without_leak_field_as(enable=True):
     print "$>", res
     for i in res.res or []:
         print i.dumpAsStr()
-
+        import ipdb; ipdb.set_trace()
 
 @sep
 def test_join_no_result(enable=True):
@@ -280,19 +292,22 @@ def test_transaction(enable=True):
 if __name__ == '__main__':
 
     test_insert(0)
-    test_select(0)
 
     # test_insert_with_none_field()
     # test_insert_by_model()
 
+    test_select()
+
+    test_cond_table_field_mixed_with_model_field()
+
     # test_update()
 
     test_join_with_leak_field_as(0)
-    test_join_without_leak_field_as(0)
+    test_join_without_leak_field_as()
     test_join_no_result(0)
 
-    test_only_one(1, only_one=False)
-    test_only_one(1, only_one=True)
+    test_only_one(0, only_one=False)
+    test_only_one(0, only_one=True)
 
     # test_table_as()
 
