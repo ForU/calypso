@@ -111,7 +111,7 @@ class FieldTypeEnum(object):
 
 
 class Field(object):
-    def __init__(self, name=None, type=None, default=None, comment=None, value=None, restriction=None):
+    def __init__(self, name=None, type=None, default=None, comment=None, value=None, restriction=None, definition=None):
         self.name = name
         self.type = type
         self.default = default
@@ -122,10 +122,11 @@ class Field(object):
         self.restriction = restriction
         # about restriction
         # 1. enum, range, time, and so on.
+        if definition: self.setByDefinition( definition )
 
     def _f_built_in(self, operator_str, other):
         if not isinstance(other, (self.type, Field)):
-            print "Error: right value is not type:'%s' or %s" % (self.type, 'Field')
+            print "[ERROR] right value is not type:'%s' or %s" % (self.type, 'Field')
             return
         return Operator(operator_str, self, other)
 
@@ -163,11 +164,12 @@ class Field(object):
         return { 'name':self.name, 'type':self.type, \
                  'default':self.default, 'comment':self.comment}
 
-    def setBydefinition(self, definition):
+    def setByDefinition(self, definition):
         self.name=definition['name']
         self.type=definition['type']
         self.default=definition.get('default')
         self.comment=definition.get('comment')
+        return self
 
     def AS(self, alias):
         self.f_as = alias
@@ -185,7 +187,7 @@ class Field(object):
 
 
 class Select(object):
-    def __init__(self, table=None, leak_fields=None):
+    def __init__(self, table=None, leak_fields=None, extra_field_definitions={}):
         self._table = table
         self._leak_fields = None
         self._where = None
@@ -195,6 +197,7 @@ class Select(object):
         self._group_by_order = None
         self._limit_row_count = None
         self._limit_offset = None
+        self._extra_field_definitions = extra_field_definitions
 
         if leak_fields:
             if isinstance(leak_fields, (list, tuple)):
@@ -246,17 +249,14 @@ class Select(object):
         return (' '.join(sql_components))
 
     def execute(self):
+        efds = self._extra_field_definitions or {} # for join, maybe empty: {}
         if self._leak_fields:
-            self._table._jn_dynamic_fields.update (
-                { i.f_as:i.definition() for i in self._leak_fields if i.f_as }
-            )
-
-        # do real execute stuff
+            efds.update( { i.f_as:i.definition() for i in self._leak_fields if i.f_as } ) # leak field as
         return self._table._t_executor.execute (
             self.sql(),
-            sql_action=COConstants.SQL_ACTION_SELECT,
-            model_class=self._table._t_model_class,
-            model_class_fields=self._table._jn_dynamic_fields )
+            sql_action = COConstants.SQL_ACTION_SELECT,
+            model_class = self._table._t_model_class,
+            extra_model_fields = efds )
 
 
 class ModelIface(object):
@@ -284,6 +284,11 @@ class ModelIface(object):
             return False, None
         return isinstance(f, Field), f
 
+    def registerExtraFields(self, d_extra_field_definitions):
+        for fnam, fdefi in d_extra_field_definitions.items():
+            print "[DEBUG] registering field:%15s for '%s'" % (fnam, self)
+            self.__dict__[fnam] = Field(definition=fdefi)
+
     def setDBData(self, db_data={}):
         """set db_data as model attributes
         @db_data type: dict
@@ -291,7 +296,7 @@ class ModelIface(object):
         for k,v in db_data.items():
             is_fld, f = self._is_field_registed(k)
             if not is_fld:
-                print "Warning: Field:'%s' not registed in Model:'%s'" % (k, self)
+                print "[WARNING] Field:'%s' not registed in Model:'%s', ignore it" % (k, self)
                 continue
             try:
                 f.value = f.type(v)
@@ -312,7 +317,7 @@ class ModelIface(object):
             try:
                 fv.value = fv.type(v)
             except Exception as e:
-                print "Error: @v:'%s' is not type:'%s' compatible" % (v, fv.type)
+                print "[ERROR] @v:'%s' is not type:'%s' compatible" % (v, fv.type)
 
     def dumpAsStr(self,):
         return str({ k:v.value for k,v in self.__dict__.items() if isinstance(v, Field) })
@@ -429,7 +434,11 @@ class TableIface(object):
         raise NotImplementedError('%s.delete() not implememted' % self._class)
 
     def select(self, *leak_fields, **kwargs):
-        return Select(table=self, leak_fields=leak_fields)
+        if isinstance(self, Join):
+            efds = self._jn_dynamic_fields
+        else:
+            efds = {}
+        return Select(table=self, leak_fields=leak_fields, extra_field_definitions=efds)
 
     def join(self, table_r, mode=COConstants.JOIN_MODE_INNER):
         return Join(self, table_r, mode=mode)
@@ -530,7 +539,7 @@ class Table(TableIface):
             if isinstance(k, Field):
                 k = k.name
             if not self._is_field_registed(k)[0]:
-                print "Warning: no such field:'%s' in table:'%s'" % (k, self._t_name)
+                print "[WARNING] no such field:'%s' in table:'%s'" % (k, self._t_name)
                 continue
             us_item = "%s='%s'" % (k, v) # always string
             update_set_items.append(us_item)
@@ -595,7 +604,7 @@ class Join(TableIface):
     }
 
     def __init__(self, table_left, table_right, mode=INNER, on=None, using=None):
-        self._jn_dynamic_fields = None
+        self._jn_dynamic_fields = {}
         self._jn_tbl_l = table_left
         self._jn_tbl_r = table_right
         self._jn_mode = mode

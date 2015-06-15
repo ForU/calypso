@@ -55,14 +55,43 @@ def test_table_join_table_with_table_as(enable=True):
     print j.sql()
 
 @sep
-def test_field_as(enable=True):
+def test_select(enable=True):
+    p=Person()
+    res=p.select(p.id.AS('pid')).where(p.id == 1).execute()
+    print "$>", res
+    for i in res.res or []:
+        print i.dumpAsStr()
+
+@sep
+def test_join_with_leak_field_as(enable=True):
+    # has one
     j=p.join(o).on(p.id == o.person_id)
     cond=In(p.id, (1,2,3)) & Not(Like(p.name, '%100%'))
     res = j.select(p.id.AS('pid'), o.id.AS('order_id')).where(cond).execute()
     print "$>", res
-    for i in res.res:
+    for i in res.res or []:
         print i.dumpAsStr()
 
+@sep
+def test_join_without_leak_field_as(enable=True):
+    # has one
+    j=p.join(o).on(p.id == o.person_id)
+    cond=In(p.id, (1,2,3)) & Not(Like(p.name, '%100%'))
+    res = j.select().where(cond).execute()
+    print "$>", res
+    for i in res.res or []:
+        print i.dumpAsStr()
+
+
+@sep
+def test_join_no_result(enable=True):
+    # none
+    j=p.join(o).on(p.id == o.person_id)
+    cond=In(p.id, (3000000,400000)) & Not(Like(p.name, '%100%'))
+    res = j.select(p.id.AS('pid'), o.id.AS('order_id')).where(cond).execute()
+    print "$>", res
+    for i in res.res or []:
+        print i.dumpAsStr()
 
 @sep
 def test_table_as(enable=True):
@@ -72,7 +101,7 @@ def test_table_as(enable=True):
     cond=In(p_as.id, (1,2,3)) & Not(Like(p_as.name, '%100%'))
     res = j.select(p_as.id.AS('why_so_serious'), o_as.person_id).where(cond).execute()
     print "$>", res
-    for i in res.res:
+    for i in res.res or []:
         print i.dumpAsStr()
 
 @sep
@@ -81,7 +110,7 @@ def test_select_all(enable=True):
         j=p.join(o).on(p.id == o.person_id)
         res = j.select().execute()
         print "$>", res
-        for i in res.res:
+        for i in res.res or []:
             print i.dumpAsStr()
     except Exception as e:
         print "%s, caz:'%s'" % (e.__class__, e)
@@ -93,7 +122,7 @@ def test_empty_where_condition(enable=True):
         j=p.join(o).on(p.id == o.person_id)
         res = j.select().where(cond).execute()
         print "$>", res
-        for i in res.res:
+        for i in res.res or []:
             print i.dumpAsStr()
     except Exception as e:
         print "%s, caz:'%s'" % (e.__class__, e)
@@ -149,6 +178,7 @@ def test_insert(enable=True):
 
     except Exception as e:
         print "%s, caz:'%s'" % (e.__class__, e)
+
 
 @sep
 def test_insert_by_model(enable=True):
@@ -229,28 +259,33 @@ def test_transaction(enable=True):
 
 ################################################################
 if __name__ == '__main__':
+
     test_insert(0)
-    test_insert_with_none_field(0)
-    test_insert_by_model()
+    test_select()
 
-    test_update(0)
+    # test_insert_with_none_field()
+    # test_insert_by_model()
 
-    # AS
-    test_field_as(0)
-    test_table_as(0)
+    # test_update()
 
-    test_select_all(0)
-    test_empty_where_condition(0)
+    test_join_with_leak_field_as(0)
+    test_join_without_leak_field_as()
+    test_join_no_result()
 
-    # join
-    test_join_tables(0)
-    test_table_join_table(0)
-    test_table_join_table_with_table_as(0)
+    # test_table_as()
+
+    # test_select_all()
+    # test_empty_where_condition()
+
+    # # join
+    # test_join_tables()
+    # test_table_join_table()
+    # test_table_join_table_with_table_as()
 
     # transaction
-    # test_transaction(0)
+    # test_transaction()
 
-    # delete
-    test_delete(0)
-    test_delete_with_cond_is_none(0)
-    test_delete_with_cond_is_none_allowed(0) # fuck, data are gone
+    # # delete
+    # test_delete()
+    # test_delete_with_cond_is_none()
+    # test_delete_with_cond_is_none_allowed() # fuck, data are gone
