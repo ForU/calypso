@@ -31,7 +31,7 @@ def sep(f):
     def _fargs(enable=True, *args, **kwargs):
         if not enable:
             return
-        print "_"*100 + '\n# ' + f.__name__.replace('_', ' ')
+        print "_"*100 + '\n# ' + f.__name__.replace('_', ' ') + ' ' + str(args) + ' ' + str(kwargs)
         rc = f(enable, *args, **kwargs)
         print
         return rc
@@ -57,7 +57,7 @@ def test_table_join_table_with_table_as(enable=True):
 @sep
 def test_select(enable=True):
     p=Person()
-    res=p.select(p.id.AS('pid')).where(p.id == 1).execute()
+    res=p.select(p.id.AS('pid')).where(p.id == 1).whole()
     print "$>", res
     for i in res.res or []:
         print i.dumpAsStr()
@@ -67,17 +67,36 @@ def test_join_with_leak_field_as(enable=True):
     # has one
     j=p.join(o).on(p.id == o.person_id)
     cond=In(p.id, (1,2,3)) & Not(Like(p.name, '%100%'))
-    res = j.select(p.id.AS('pid'), o.id.AS('order_id')).where(cond).execute()
+    res = j.select(p.id.AS('pid'), o.id.AS('order_id')).where(cond).whole()
     print "$>", res
     for i in res.res or []:
         print i.dumpAsStr()
+
+@sep
+def test_only_one(enable=True, only_one=True):
+    # has one
+    j=p.join(o).on(p.id == o.person_id)
+    cond = (p.id == 1)
+    if only_one:
+        res = j.select().where(cond).one()
+    else:
+        res = j.select().where(cond).whole()
+    print "$>", res
+
+    if only_one:
+        print res.res
+        if res.res:
+            print res.res.dumpAsStr()
+    else:
+        for i in res.res or []:
+            print i.dumpAsStr()
 
 @sep
 def test_join_without_leak_field_as(enable=True):
     # has one
     j=p.join(o).on(p.id == o.person_id)
     cond=In(p.id, (1,2,3)) & Not(Like(p.name, '%100%'))
-    res = j.select().where(cond).execute()
+    res = j.select().where(cond).whole()
     print "$>", res
     for i in res.res or []:
         print i.dumpAsStr()
@@ -88,7 +107,7 @@ def test_join_no_result(enable=True):
     # none
     j=p.join(o).on(p.id == o.person_id)
     cond=In(p.id, (3000000,400000)) & Not(Like(p.name, '%100%'))
-    res = j.select(p.id.AS('pid'), o.id.AS('order_id')).where(cond).execute()
+    res = j.select(p.id.AS('pid'), o.id.AS('order_id')).where(cond).whole()
     print "$>", res
     for i in res.res or []:
         print i.dumpAsStr()
@@ -99,7 +118,7 @@ def test_table_as(enable=True):
     o_as = o.AS('angel')
     j = Join(p_as, o_as).on(p_as.id == o_as.person_id)
     cond=In(p_as.id, (1,2,3)) & Not(Like(p_as.name, '%100%'))
-    res = j.select(p_as.id.AS('why_so_serious'), o_as.person_id).where(cond).execute()
+    res = j.select(p_as.id.AS('why_so_serious'), o_as.person_id).where(cond).whole()
     print "$>", res
     for i in res.res or []:
         print i.dumpAsStr()
@@ -108,7 +127,7 @@ def test_table_as(enable=True):
 def test_select_all(enable=True):
     try:
         j=p.join(o).on(p.id == o.person_id)
-        res = j.select().execute()
+        res = j.select().whole()
         print "$>", res
         for i in res.res or []:
             print i.dumpAsStr()
@@ -120,7 +139,7 @@ def test_empty_where_condition(enable=True):
     cond=None
     try:
         j=p.join(o).on(p.id == o.person_id)
-        res = j.select().where(cond).execute()
+        res = j.select().where(cond).whole()
         print "$>", res
         for i in res.res or []:
             print i.dumpAsStr()
@@ -261,7 +280,7 @@ def test_transaction(enable=True):
 if __name__ == '__main__':
 
     test_insert(0)
-    test_select()
+    test_select(0)
 
     # test_insert_with_none_field()
     # test_insert_by_model()
@@ -269,8 +288,11 @@ if __name__ == '__main__':
     # test_update()
 
     test_join_with_leak_field_as(0)
-    test_join_without_leak_field_as()
-    test_join_no_result()
+    test_join_without_leak_field_as(0)
+    test_join_no_result(0)
+
+    test_only_one(1, only_one=False)
+    test_only_one(1, only_one=True)
 
     # test_table_as()
 

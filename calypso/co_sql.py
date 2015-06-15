@@ -205,7 +205,7 @@ class Select(object):
             else:
                 self._leak_fields = [leak_fields]
 
-    def where(self, cond):
+    def where(self, cond=None):
         if cond:
             self._where = cond
         return self
@@ -248,7 +248,13 @@ class Select(object):
         sql_components = [i for i in sql_components if i]
         return (' '.join(sql_components))
 
-    def execute(self):
+    def one(self):
+        return self._execute(only_one=True)
+
+    def whole(self):
+        return self._execute(only_one=False)
+
+    def _execute(self, only_one=False):
         efds = self._extra_field_definitions or {} # for join, maybe empty: {}
         if self._leak_fields:
             efds.update( { i.f_as:i.definition() for i in self._leak_fields if i.f_as } ) # leak field as
@@ -256,7 +262,8 @@ class Select(object):
             self.sql(),
             sql_action = COConstants.SQL_ACTION_SELECT,
             model_class = self._table._t_model_class,
-            extra_model_fields = efds )
+            extra_model_fields = efds,
+            only_one = only_one )
 
 
 class ModelIface(object):

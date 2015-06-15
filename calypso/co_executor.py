@@ -127,7 +127,7 @@ class SqlExcecutor(object):
                                       db=self._mysql.db )
         print "[INFO] db connected."
 
-    def execute(self, sql, sql_action, model_class=None, extra_model_fields=None):
+    def execute(self, sql, sql_action, model_class=None, extra_model_fields=None, only_one=False):
         """
         1. get db datas by running sql
         2. new model and assign datas to models
@@ -184,18 +184,38 @@ class SqlExcecutor(object):
             return DeleteResult(res=result, why=why)
 
         if sql_action == COConstants.SQL_ACTION_SELECT:
-            # CRITICAL:
-            # 'None' is return if no records found, # else a list
+            """
+            NOTICE:
+            return 'None' if no records found, else a list, regardless of '@only_one'.
+            """
             if isinstance(result, MySQLdb.cursors.DictCursor):
-                if model_class:
-                    m = model_class()
-                    if extra_model_fields:
-                        m.registerExtraFields(extra_model_fields)
-                    result = [ m.setDBData(i) for i in result.fetchall() ] or None
+                # get raw results first
+                if only_one:
+                    v = result.fetchone()
+                    raw_results = [v] if v else []
                 else:
-                    result = result.fetchall() or None
-            return SelectResult(res=result, why=why)
+                    raw_results = result.fetchall() # list
 
+                # refine it
+                if model_class:
+                    refined_results = []
+                    for i in raw_results:
+                        m = model_class()
+                        if extra_model_fields:
+                            m.registerExtraFields(extra_model_fields)
+                        m.setDBData( i )
+                        refined_results.append(m)
+                else:
+                    refined_results = raw_results
+
+                # OK, do return stuff
+                if refined_results == []:
+                    result = None
+                elif only_one:
+                    result = refined_results[0]
+                else:
+                    result = refined_results
+            return SelectResult(res=result, why=why)
         print "[ERROR] UNSUPPORTED sql action: '%s', should never happened" % sql_action
 
 # global
