@@ -64,7 +64,7 @@ class SqlExcecutor(object):
 
     def _connect_to_db(self):
         if self._mysql.host == None:
-            print "[WARNING] failed to connect to database:%s@%s:%s" % \
+            print "[CO_WARNING] failed to connect to database:%s@%s:%s" % \
                 (self._mysql.user, self._mysql.host, self._mysql.port)
             return
         try:
@@ -88,11 +88,11 @@ class SqlExcecutor(object):
 
         c = MySQLdb.cursors.DictCursor( self._conn )
         try:
-            print "[INFO] executing SQL:\"%s\" @'%s'" % (sql, g_utils.now())
+            print "[CO_INFO] executing SQL:\"%s\" @'%s'" % (sql, g_utils.now())
             c.execute( sql )
             if self._auto_commit:
                 self.commit()
-                print "[DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
+                print "[CO_DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
             return c
         except MySQLdb.Error as e:
             raise COSqlExecuteError(*(list(e.args) + [sql]))
@@ -104,7 +104,7 @@ class SqlExcecutor(object):
         self._execute_sql('start transaction;')
 
     def commit(self):
-        # print "[INFO] do commit here"
+        # print "[CO_INFO] do commit here"
         self._conn.commit()
 
     def rollback(self):
@@ -119,13 +119,13 @@ class SqlExcecutor(object):
                              passwd=mysql_passwd,
                              db=mysql_db
                          )
-        print "[INFO] connecting %s ..." % self._mysql
+        print "[CO_INFO] connecting %s ..." % self._mysql
         self._conn = MySQLdb.connect( host=self._mysql.host,
                                       port=self._mysql.port,
                                       user=self._mysql.user,
                                       passwd=self._mysql.passwd,
                                       db=self._mysql.db )
-        print "[INFO] db connected."
+        print "[CO_INFO] db connected."
 
     def execute(self, sql, sql_action, model_class=None, extra_model_fields=None, only_one=False):
         """
@@ -149,7 +149,7 @@ class SqlExcecutor(object):
         # refine result, avoid exception for better code programing experiences
         try:
             result, why = self._execute_sql(sql), 'OK'
-            print "[DEBUG] Executed result of SQL:\"%s\" is:'%s'" % (sql, result)
+            print "[CO_DEBUG] Executed result of SQL:\"%s\" is:'%s'" % (sql, result)
         except Exception as e:
             if not self._auto_commit:
                 # CRITICAL: if _auto_commit, a exception must be raise
@@ -216,7 +216,7 @@ class SqlExcecutor(object):
                 else:
                     result = refined_results
             return SelectResult(res=result, why=why)
-        print "[ERROR] UNSUPPORTED sql action: '%s', should never happened" % sql_action
+        print "[CO_ERROR] UNSUPPORTED sql action: '%s', should never happened" % sql_action
 
 # global
 g_co_executor = SqlExcecutor()
@@ -228,15 +228,15 @@ class Transaction(object):
 
     def __enter__(self):
         self._executor.startTransaction()
-        print "[INFO] starting transaction..."
+        print "[CO_INFO] starting transaction..."
 
     def __exit__(self, exc_type, exc_value, exc_tb):
         if not exc_tb:
             self._executor.commit()
-            print "[INFO] commit and transaction success"
+            print "[CO_INFO] commit and transaction success"
             return True
         # failed, do rollback
-        print "[ERROR] transaction failed, rollback, caz: '%s', '%s'" % (exc_type, exc_value)
+        print "[CO_ERROR] transaction failed, rollback, caz: '%s', '%s'" % (exc_type, exc_value)
         self._executor.rollback()
         return False
 

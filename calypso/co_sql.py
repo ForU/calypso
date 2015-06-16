@@ -95,8 +95,15 @@ class In(ConditionItemBase):
         super(In, self).__init__(type=CONDITION_ITEM_TYPE_CONJ, field=field)
         self.values = values
 
+        # check validation of incomming stuff
+        if not isinstance(values, (list, tuple)):
+            raise COExcInternalError("invalid args:@values:'%s', type:'%s'" % \
+                                     (values, type(values)))
+
     def sql(self):
-        return "%s IN %s" % (self.field.sql(), self.values)
+        """make tuple-compatible. eg: '(1,)'
+        """
+        return "%s IN (%s)" % (self.field.sql(), ','.join([str(i) for i in self.values]))
 
 
 class Like(ConditionItemBase):
@@ -141,7 +148,7 @@ class Field(object):
         if self.type == FieldTypeEnum:
             cand_types.append( str )
         if not isinstance( other, tuple(cand_types) ):
-            print "[ERROR] right value is not type:'%s' or %s" % (self.type, 'Field')
+            print "[CO_ERROR] right value is not type:'%s' or %s" % (self.type, 'Field')
             return
         return Operator(operator_str, self, other)
 
@@ -307,9 +314,14 @@ class ModelIface(object):
             return False, None
         return isinstance(f, Field), f
 
+    def addExtraAttributes(self, d_extra_attributes):
+        print "[CO_DEBUG] already_keys:%s, new commers:%s" % \
+            (self.__dict__.keys(), d_extra_attributes.keys())
+        self.__dict__.update(d_extra_attributes)
+
     def registerExtraFields(self, d_extra_field_definitions):
         for fnam, fdefi in d_extra_field_definitions.items():
-            print "[DEBUG] registering field:%15s for '%s'" % (fnam, self)
+            print "[CO_DEBUG] registering field:%15s for '%s'" % (fnam, self)
             self.__dict__[fnam] = Field(definition=fdefi)
 
     def setDBData(self, db_data={}):
@@ -319,7 +331,7 @@ class ModelIface(object):
         for k,v in db_data.items():
             is_fld, f = self._is_field_registed(k)
             if not is_fld:
-                print "[WARNING] Field:'%s' not registed in Model:'%s', ignore it" % (k, self)
+                print "[CO_WARNING] Field:'%s' not registed in Model:'%s', ignore it" % (k, self)
                 continue
             try:
                 f.value = f.type(v)
@@ -582,7 +594,7 @@ class Table(TableIface):
             if isinstance(k, Field):
                 k = k.name
             if not self._is_field_registed(k)[0]:
-                print "[WARNING] no such field:'%s' in table:'%s'" % (k, self._t_name)
+                print "[CO_WARNING] no such field:'%s' in table:'%s'" % (k, self._t_name)
                 continue
             us_item = "%s='%s'" % (k, v) # always string
             update_set_items.append(us_item)
