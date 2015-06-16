@@ -298,13 +298,6 @@ class ModelIface(object):
     def __str__(self, ):
         return str(self.__class__).split(' ')[1][1:-2]+'@'+self.TABLE_NAME
 
-    def _new_field_by_definition(self, definition):
-        return Field( name=definition['name'], # must
-                      type=definition['type'], # must
-                      default=definition.get('default'), # optional
-                      comment=definition.get('comment')  # optional
-                  )
-
     def _is_field_registed(self, field_name):
         """
         """
@@ -387,7 +380,7 @@ class _DynamicModel(ModelIface):
         """dynamically make items of dynamic_fields as instance attributes
         """
         for k,defin in dynamic_fields.items():
-            self.__dict__[k] = self._new_field_by_definition(defin)
+            self.__dict__[k] = Field(definition=defin)
         super(_DynamicModel, self).__init__(db_name=db_name, table_name=table_name)
 
 
