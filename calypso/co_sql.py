@@ -43,6 +43,19 @@ class ConditionItemBase(object):
         return Or(self, other)
 
 
+class Condition(ConditionItemBase):
+    """a init condition
+    """
+    def __init__(self):
+        super(ConditionItemBase, self).__init__()
+
+    def __and__(self, cond):
+        return cond
+
+    def __or__(self, cond):
+        return cond
+
+
 class Operator(ConditionItemBase):
     def __init__(self, operator=None, field=None, value=None):
         super(Operator, self).__init__(field=field, value=value)
