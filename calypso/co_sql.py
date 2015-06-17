@@ -49,6 +49,9 @@ class Condition(ConditionItemBase):
     def __init__(self):
         super(ConditionItemBase, self).__init__()
 
+    def sql(self,):
+        return None
+
     def __and__(self, cond):
         return cond
 
