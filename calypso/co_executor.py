@@ -25,7 +25,7 @@ class InsertResult(Magic):
         self._set_attribute_value(res)
 
     def _set_attribute_value(self, last_id):
-        if last_id == -1062:
+        if last_id == 1062:
             self._is_duplicated = True
 
     def isDuplicated(self):
@@ -104,7 +104,7 @@ class SqlExcecutor(object):
         self._execute_sql('start transaction;')
 
     def commit(self):
-        # print "[CO_INFO] do commit here"
+        print "[CO_DEBUG] do commit here"
         self._conn.commit()
 
     def rollback(self):
@@ -151,24 +151,13 @@ class SqlExcecutor(object):
             result, why = self._execute_sql(sql), 'OK'
             print "[CO_DEBUG] Executed result of SQL:\"%s\" is:'%s'" % (sql, result)
         except Exception as e:
-            if not self._auto_commit:
-                # CRITICAL: if _auto_commit, a exception must be raise
-                # to support transaction.
-                # handle db duplicated case:
-                if len(e.args) >= 2:
-                    if isinstance(e.args[0], (int, long)):
-                        if e.args[0] == 1062:
-                            raise CODuplicatedDBRecord(e)
-                # CRITICAL: more here for explict error
-                # always raise a exception
-                raise e
-
-            # else auto commit mode
-            result, why = None, str(e)
-            # check if necessary to convert mysql error code
+            # handle db duplicated case specifically:
             if len(e.args) >= 2:
                 if isinstance(e.args[0], (int, long)):
-                    result = -e.args[0]
+                    if e.args[0] == 1062:
+                        raise CODuplicatedDBRecord(e)
+            # always raise a exception
+            raise e
 
         if sql_action == COConstants.SQL_ACTION_INSERT:
             if isinstance(result, MySQLdb.cursors.DictCursor):

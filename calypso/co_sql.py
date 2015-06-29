@@ -539,7 +539,7 @@ class Table(TableIface):
     def getField(self, field_name):
         return self.__dict__.get(field_name, Field(name='__null__'))
 
-    def insert(self, datas):
+    def insert(self, datas, enable_ignore_mode=False):
         """
         @datas: can be following type:
         1. Coresponding Model
@@ -589,7 +589,8 @@ class Table(TableIface):
             column_datas.append( v )
 
         # compose SQL
-        sql_components = [ "INSERT INTO %s" % self.sql()
+        sql_components = [ "INSERT%s" % (" IGNORE" if enable_ignore_mode else ""),
+                           "INTO %s" % self.sql()
                            , "(%s)" % ','.join(target_columns)
                            , "VALUES"
                            , ','.join(column_datas)

@@ -291,23 +291,24 @@ def test_transaction(enable=True):
 ################################################################
 if __name__ == '__main__':
 
-    test_insert(0)
+    #test_insert()
 
-    # test_insert_with_none_field()
-    # test_insert_by_model()
+    test_insert_with_none_field()
+    test_insert_with_none_field()
+    #test_insert_by_model()
 
-    test_select()
+    #test_select()
 
-    test_cond_table_field_mixed_with_model_field()
+    #test_cond_table_field_mixed_with_model_field()
 
     # test_update()
 
-    test_join_with_leak_field_as(0)
-    test_join_without_leak_field_as()
-    test_join_no_result(0)
+    #test_join_with_leak_field_as(0)
+    #test_join_without_leak_field_as()
+    #test_join_no_result(0)
 
-    test_only_one(0, only_one=False)
-    test_only_one(0, only_one=True)
+    #test_only_one(0, only_one=False)
+    #test_only_one(0, only_one=True)
 
     # test_table_as()
 
@@ -320,7 +321,7 @@ if __name__ == '__main__':
     # test_table_join_table_with_table_as()
 
     # transaction
-    # test_transaction()
+    test_transaction()
 
     # # delete
     # test_delete()
