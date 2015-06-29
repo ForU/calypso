@@ -259,7 +259,7 @@ def test_delete_with_cond_is_none(enable=True):
         r = p.delete(None)
         print "$>", r
     except Exception as e:
-        print "%s, caz:'%s'" % (e.__class__, e)
+        print "$> %s, caz:'%s'" % (e.__class__, e)
 
 @sep
 def test_delete_with_cond_is_none_allowed(enable=True):
@@ -269,7 +269,7 @@ def test_delete_with_cond_is_none_allowed(enable=True):
         r = p.delete(cond=None, allow_none_cond=True)
         print "$>", r
     except Exception as e:
-        print "%s, caz:'%s'" % (e.__class__, e)
+        print "$> %s, caz:'%s'" % (e.__class__, e)
 
 
 @sep
@@ -287,21 +287,30 @@ def test_transaction(enable=True):
     _inner_one()
 
 
+@sep
+def test_function_count(enable=True):
+    p = Person()
+    # with as
+    res = p.select(COUNT(p.id).AS('total'), MAX(p.id).AS('max')).one()
+    print '$>', res.res.dumpAsDict()
+    res = p.select(COUNT(p.id), MAX(p.id)).one()
+    print '$>', res.res.dumpAsDict()
+
 
 ################################################################
 if __name__ == '__main__':
 
     #test_insert()
 
-    test_insert_with_none_field()
-    test_insert_with_none_field()
+    #test_insert_with_none_field()
+    #test_insert_with_none_field()
     #test_insert_by_model()
 
     #test_select()
 
     #test_cond_table_field_mixed_with_model_field()
 
-    # test_update()
+    #test_update()
 
     #test_join_with_leak_field_as(0)
     #test_join_without_leak_field_as()
@@ -310,20 +319,21 @@ if __name__ == '__main__':
     #test_only_one(0, only_one=False)
     #test_only_one(0, only_one=True)
 
-    # test_table_as()
+    #test_table_as()
 
-    # test_select_all()
-    # test_empty_where_condition()
+    #test_select_all()
+    #test_empty_where_condition()
 
-    # # join
-    # test_join_tables()
-    # test_table_join_table()
-    # test_table_join_table_with_table_as()
+    #test_join_tables()
+    #test_table_join_table()
+    #test_table_join_table_with_table_as()
 
-    # transaction
-    test_transaction()
+    #transaction
+    #test_transaction()
 
-    # # delete
-    # test_delete()
-    # test_delete_with_cond_is_none()
-    # test_delete_with_cond_is_none_allowed() # fuck, data are gone
+
+    #test_delete()
+    #test_delete_with_cond_is_none()
+    #test_delete_with_cond_is_none_allowed() #fuck, data are gone
+
+    test_function_count()

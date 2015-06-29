@@ -213,15 +213,66 @@ class Field(object):
         self.f_as = alias
         return self
 
-    def sql(self, enable_as=False):
+    def _gen_sql_prefix(self):
         tbl_prefix = self.table.sql(as_prefered=True) + '.' if self.table else ''
-        f_name = self.name
-        if enable_as and self.f_as:
-            f_name += " AS %s" % self.f_as
-        return tbl_prefix + f_name
+        return tbl_prefix + self.name
 
-# TODO Thu May  7 23:51:22 2015 [Function from Field]
-# TODO Thu May  7 23:51:40 2015 [model]
+    def _gen_sql_as(self, enable_as=False):
+        if enable_as and self.f_as:
+            return " AS %s" % self.f_as
+        return ''
+
+    def sql(self, enable_as=False):
+        return self._gen_sql_prefix() + self._gen_sql_as(enable_as=enable_as)
+
+
+STAR_FIELD = Field(name='*', type=str, default='*', comment='star')
+
+
+FieldTypeFunction = str         # default type for function-type field
+
+
+class Function(Field):
+    """
+    override #function:_gen_sql_prefix(...) to implement your function if necessary,
+    if that can not fit your needs, try to override #function:sql directly.
+
+    NOTICE:
+    current function only support one-argument. if more arguments need to
+    be supported, write your own version. GOOD LUCK :)
+    """
+    def __init__(self, name, field, type=FieldTypeFunction):
+        self.field = field
+        super(Function, self).__init__(name=name, type=type)
+        self._gen_f_as_backup()
+
+    def _gen_f_as_backup(self):
+        try:
+            self.f_as = str(self.__class__)[:-2].split('.')[-1]
+        except Exception as e:
+            print "[CO_INFO] failed to generate f as backup for function:'%s', do nothing, let app-level known this error" % self.__class__
+
+    def _gen_sql_prefix(self):
+        field_prefix = self.field._gen_sql_prefix()
+        return "%s(%s)" % (self.name, field_prefix)
+
+
+# CRITICAL: for function class name, we use UPPERCASE to make the name
+# would not conficts with db fields FOR MOST CASES.
+# COUNT, MAX, ...
+
+class COUNT(Function):
+    def __init__(self, field=STAR_FIELD, type=long):
+        """ if field is None: use STAR_FIELD instead
+        """
+        super(COUNT, self).__init__(name='COUNT', field=field, type=type)
+
+
+class MAX(Function):
+    def __init__(self, field):
+        super(MAX, self).__init__(name='MAX', field=field)
+
+# ... other functions here
 
 
 class Select(object):
@@ -263,7 +314,7 @@ class Select(object):
         self._limit_offset = offset
         return self
 
-    def sql(                             self):
+    def sql(self):
         # Make sure the order of sql component items are consistent
         # with `SELECT` sql syntax.
         lk_flds = '*'               # default
