@@ -3,7 +3,7 @@
 # Sun May 10 01:29:21 2015
 # ht <515563130@qq.com, weixin:jacoolee>
 
-import random
+import random, ipdb
 
 from app_model.app_db_model import *
 from app_model.calypso.co_sql import *
@@ -294,6 +294,8 @@ def test_function_count(enable=True):
     res = p.select(COUNT(p.id).AS('total'), MAX(p.id).AS('max')).one()
     print '$>', res.res.dumpAsDict()
     res = p.select(COUNT(p.id), MAX(p.id)).one()
+    print '$>', res.res.dumpAsDict()
+    res = p.select(None).one()
     print '$>', res.res.dumpAsDict()
 
 

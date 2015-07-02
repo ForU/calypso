@@ -112,14 +112,18 @@ class In(ConditionItemBase):
         self.values = values
 
         # check validation of incomming stuff
-        if not isinstance(values, (list, tuple)):
+        if not (isinstance(values, (list, tuple)) and len(values) > 0):
             raise COExcInternalError("invalid args:@values:'%s', type:'%s'" % \
                                      (values, type(values)))
 
     def sql(self):
         """make tuple-compatible. eg: '(1,)'
         """
-        return "%s IN (%s)" % (self.field.sql(), ','.join([str(i) for i in self.values]))
+        items = [str(i) for i in self.values]
+        if len(items) > 1:
+            return "%s IN (%s)" % (self.field.sql(), ','.join(items))
+        if len(items) == 1:
+            return "%s = %s" % (self.field.sql(), items[0])
 
 
 class Like(ConditionItemBase):
@@ -362,8 +366,11 @@ class ModelIface(object):
         if db_name: self.DB_NAME = db_name
         if table_name: self.TABLE_NAME = table_name
 
-    def __str__(self, ):
+    def __repr__(self, ):
         return str(self.__class__).split(' ')[1][1:-2]+'@'+self.TABLE_NAME
+
+    def __str__(self, ):
+        return self.dumpAsStr()
 
     def _is_field_registed(self, field_name):
         """
@@ -549,6 +556,8 @@ class TableIface(object):
         raise NotImplementedError('%s.delete() not implememted' % self._class)
 
     def select(self, *leak_fields, **kwargs):
+        # first of all exclude all None in leak_fields
+        leak_fields = [i for i in leak_fields if i]
         if isinstance(self, Join):
             efds = self._jn_dynamic_fields
         else:
