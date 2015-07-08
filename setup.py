@@ -22,4 +22,4 @@ setup (
 
 useless_files = "build dist calypso.egg-info"
 print "removing non-sense files: %s [%s]" % ( useless_files, 'OK' if 0 == os.system( 'rm -rf %s' % useless_files ) else 'FAILED' )
-print "done"
+print "calypso successfully installed, well done"

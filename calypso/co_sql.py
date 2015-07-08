@@ -324,12 +324,14 @@ class Select(object):
         lk_flds = '*'               # default
         if self._leak_fields:
             lk_flds = ','.join([i.sql(enable_as=True) for i in self._leak_fields])
+
+        where_value = (self._where.sql() or '') if self._where else ''
         sql_components = [
             'SELECT'
             , lk_flds
             , 'FROM'
             ,               self._table.sql()
-            , 'WHERE '    + self._where.sql() if self._where else ''
+            , 'WHERE '    + where_value if where_value else ''
             , 'ORDER BY ' + self._order_by.sql() if self._order_by else ''
             ,               self._order_by_order if self._order_by_order else ''
             , 'GROUP BY ' + self._group_by.sql() if self._group_by else ''
