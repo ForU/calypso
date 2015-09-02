@@ -321,7 +321,8 @@ class ModelGenerator(object):
 if __name__ == '__main__':
     g=ModelGenerator(host='localhost', user='root')
 
-    # LOCAL HERE
-    g.dumpDBSchema('honeycomb', model_des_dir_path='/tmp/model', app_name='honeycomb')
-    g.dumpDBSchema('pollens', model_des_dir_path='/tmp/model', app_name='pollens')
-    g.dumpDBSchema('world', model_des_dir_path='/tmp/model', app_name='world')
+    # # LOCAL HERE
+    # g.dumpDBSchema('honeycomb', model_des_dir_path='/tmp/model', app_name='honeycomb')
+    # g.dumpDBSchema('pollens', model_des_dir_path='/tmp/model', app_name='pollens')
+    # g.dumpDBSchema('world', model_des_dir_path='/tmp/model', app_name='world')
+    g.dumpDBSchema('warehouse', model_des_dir_path='/tmp/model', app_name='warehouse')

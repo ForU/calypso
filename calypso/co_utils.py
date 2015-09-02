@@ -113,4 +113,5 @@ class Utils(object):
         obj = hashlib.md5(self.toString(raw))
         return obj.hexdigest() if return_type == 'string' else obj
 
+# TODO Wed Sep  2 15:13:35 2015 [Utils.classmethod style to avoid multi-threads problem of calypso]
 g_utils = Utils()

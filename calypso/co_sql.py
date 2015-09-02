@@ -39,6 +39,9 @@ class ConditionItemBase(object):
     def __and__(self, other):
         return And(self, other)
 
+    def isEmpty(self):
+        return False
+
     def __or__(self, other):
         return Or(self, other)
 
@@ -51,6 +54,9 @@ class Condition(ConditionItemBase):
 
     def sql(self,):
         return None
+
+    def isEmpty(self):
+        return True
 
     def __and__(self, cond):
         return cond
