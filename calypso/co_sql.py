@@ -565,7 +565,18 @@ class TableIface(object):
 
     def select(self, *leak_fields, **kwargs):
         # first of all exclude all None in leak_fields
-        leak_fields = [i for i in leak_fields if i]
+        leak_fields = [getattr(self, i) if isinstance(i,str) else i for i in leak_fields if i]
+
+        # leak_fields = []
+        # for i in leak_fields:
+        #     print "handle %s" % i
+        #     if not i:
+        #         continue
+        #     if isinstance(i, str):
+        #         i = self.getattr(_Pack_Field_Key(i))
+        #         print 'is string, refine to field',type(i)
+        #     leak_fields.append(i)
+
         if isinstance(self, Join):
             efds = self._jn_dynamic_fields
         else:
