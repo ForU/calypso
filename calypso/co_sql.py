@@ -224,6 +224,8 @@ class Field(object):
         return self
 
     def _gen_sql_prefix(self):
+        """@enable_as: just for derived interface.
+        """
         tbl_prefix = self.table.sql(as_prefered=True) + '.' if self.table else ''
         return tbl_prefix + self.name
 
@@ -233,13 +235,25 @@ class Field(object):
         return ''
 
     def sql(self, enable_as=False):
-        return self._gen_sql_prefix() + self._gen_sql_as(enable_as=enable_as)
+        prefix = self._gen_sql_prefix()
+        sql_as = self._gen_sql_as(enable_as=enable_as)
+        return prefix + sql_as
 
 
 STAR_FIELD = Field(name='*', type=str, default='*', comment='star')
 
 
 FieldTypeFunction = str         # default type for function-type field
+
+
+class DISTINCT(Field):
+    def __init__(self, *fields):
+        super(DISTINCT, self).__init__(name='DISTINCT', type=str, default='DISTINCT', comment='')
+        self._fields = fields
+
+    def _gen_sql_prefix(self):
+        self.name = self.name + ' ' + ','.join([i.sql(enable_as=False) for i in self._fields])
+        return super(DISTINCT, self)._gen_sql_prefix()
 
 
 class Function(Field):
@@ -263,7 +277,7 @@ class Function(Field):
             print "[CO_INFO] failed to generate f as backup for function:'%s', do nothing, let app-level known this error" % self.__class__
 
     def _gen_sql_prefix(self):
-        field_prefix = self.field._gen_sql_prefix()
+        field_prefix = self.field.sql()
         return "%s(%s)" % (self.name, field_prefix)
 
 

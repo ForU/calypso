@@ -298,6 +298,12 @@ def test_function_count(enable=True):
     res = p.select(None).one()
     print '$>', res.res.dumpAsDict()
 
+@sep
+def test_function_count_distinct(enable=True):
+    p = Person()
+    # with as
+    print '$>', p.select(COUNT(DISTINCT(p.id,p.name.AS('nam'))).AS('total')).one().res.total
+
 
 ################################################################
 if __name__ == '__main__':
@@ -338,4 +344,5 @@ if __name__ == '__main__':
     #test_delete_with_cond_is_none()
     #test_delete_with_cond_is_none_allowed() #fuck, data are gone
 
-    test_function_count()
+    # test_function_count()
+    test_function_count_distinct()
