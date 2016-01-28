@@ -14,7 +14,7 @@ A simple database(mysql,redis,...) access layer lib.
 
 
 # About Design
-refer to [proto.md!](./proto.md) for more information about the design and usage.
+refer to [proto.md](./proto.md) for more information about the design and usage.
 
-# About Usage
-refer to [app.py!](../app/app.py) for more information about the design and usage.
+# About Usage/Demos
+refer to [app.py](../app/app.py) for more information about the design and usage.
