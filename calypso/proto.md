@@ -35,11 +35,11 @@ join_table:
   | table_reference NATURAL [{LEFT|RIGHT} [OUTER]] JOIN table_factor
 ```
 
-name          | sample | description
----           |  ---:  | ---
-Table/Table   |        | [class]
-Join          | *refer to join for more* | [class]
-CompoundTable | `CompoundTable(table_l, table_r, ...) [*args]` | [class]
+| name          | sample | description |
+| ---           |  ---:  | --- |
+| Table/Table   |        | [class] | 
+| Join          | *refer to join for more* | [class] |
+| CompoundTable | `CompoundTable(table_l, table_r, ...) [*args]` | [class] |
 
 ### Table _single_
 
@@ -102,13 +102,13 @@ Join( t1, t2, mode=X ).using( column_list )
 ```
 
 **mode** | **keyword** | **condition** | **allow join self** | **description**
---- | ---: | ---: | :---: | :---:
-`INNER` | `INNER JOIN` | join_condition | `N` |
-`CROSS` | `CROSS JOIN` | join_condition | `N` |
-`STRAIGHT` | `STRAIGHT_JOIN` | condition_expr | `N` | conditional_expr is optional
-`LEFT` (outer) | `LEFT [OUTER] JOIN` | join_condition | `Y` |
-`RIGHT` (outer) | `RIGHT [OUTER] JOIN` | join_condition | `Y` |
-`NATURAL` | | | | ignore this mode
+| --- | ---: | ---: | :---: | :---: |
+|`INNER` | `INNER JOIN` | join_condition | `N` |
+|`CROSS` | `CROSS JOIN` | join_condition | `N` |
+|`STRAIGHT` | `STRAIGHT_JOIN` | condition_expr | `N` | conditional_expr is optional
+|`LEFT` (outer) | `LEFT [OUTER] JOIN` | join_condition | `Y` |
+|`RIGHT` (outer) | `RIGHT [OUTER] JOIN` | join_condition | `Y` |
+|`NATURAL` | | | | ignore this mode|
 
 Notice, on different mode, the condition may differs (`ON` or `USING`)
 
@@ -125,7 +125,7 @@ JOIN (category_property_association AS cpa ) ON (cpa.property_id = p.id)
 JOIN (property_visual_level AS pvl ) ON (pvl.property_id = p.id)
 
 WHERE
-(cpa.category_id = 3 AND pvl.visual_level = 'user’;
+(cpa.category_id = 3 AND pvl.visual_level = 'user’);
 ```
 
 ### Leak Fields
@@ -338,16 +338,17 @@ mlti_tbl.select( leak_fields=[X] )...
 ```
 
 ### Condition [class]
-**keyword**  | **sample** | **type** | **description**
-:---         | ---: | ---
-`AND`        | `Field_b & Field_b` | `CONJ` | binary conj
-`OR`         | <code>Field_a &#124; Field_b</code> | `CONJ` | binary conj
-`NOT`        | `Not( Field )` | `CONJ` | unary conj
-`LIKE`       | `Like( Field, stuff )` | `ATOM` | opposite: `Not( Like( t.f, stuff ) )`
-`IN`         | `In( Field, value_list )` | `ATOM`| opposite: `Not( In( ... ) )`
-`>`          | `>` | `ATOM` |
-`<`          | `<` | `ATOM` |
-`!=` or `<>` | `!=` | `ATOM`|
+
+| **keyword**  | **sample** | **type** | **description** |
+| :----------- | ----: | -----: | -----:|
+| `AND`        | `Field_b & Field_b` | `CONJ` | binary conj |
+| `OR`         | <code>Field_a &#124; Field_b</code> | `CONJ` | binary conj |
+| `NOT`        | `Not( Field )` | `CONJ` | unary conj |
+| `LIKE`       | `Like( Field, stuff )` | `ATOM` | opposite: `Not( Like( t.f, stuff ) )` |
+| `IN`         | `In( Field, value_list )` | `ATOM`| opposite: `Not( In( ... ) )` |
+| `>`          | `>` | `ATOM` | |
+| `<`          | `<` | `ATOM` | |
+| `!=` or `<>` | `!=` | `ATOM`| |
 
 ### Protocol
 ```
