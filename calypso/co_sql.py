@@ -517,6 +517,7 @@ class TableIface(object):
         self._t_db_name = db_name if db_name else self._t_model_class.DB_NAME
         self._t_name = table_name if table_name else self._t_model_class.TABLE_NAME
         self._t_as = None
+        self.ALL = STAR_FIELD
 
         self._register_model_fields()
 
