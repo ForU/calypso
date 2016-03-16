@@ -133,13 +133,22 @@ class In(ConditionItemBase):
 
 
 class Like(ConditionItemBase):
-    def __init__(self, field, like_expr):
+    LEFT = 0
+    RIGHT = 1
+    BOTH = 2
+    def __init__(self, field, like_expr, fuzzy=Like.BOTH):
         super(Like, self).__init__(type=CONDITION_ITEM_TYPE_CONJ, field=field)
         self.like_expr = like_expr
+        self.fuzzy = fuzzy
 
     def sql(self):
-        return "%s LIKE \"%s\"" % (self.field.sql(), self.like_expr)
-
+        if self.fuzzy == Like.LEFT:
+            return '%s LIKE "%%%s"' (self.field.sql(), self.like_expr)
+        if self.fuzzy == Like.RIGHT:
+            return '%s LIKE "%s%%"' (self.field.sql(), self.like_expr)
+        if self.fuzzy == Like.BOTH:
+            return '%s LIKE "%%%s%%"' (self.field.sql(), self.like_expr)
+        raise COExcInvalidSql('unsupported fuzzy type:'+self.fuzzy)
 
 class FieldTypeEnum(object):
     def __init__(self, str_enum_value=None):
