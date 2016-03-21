@@ -60,7 +60,7 @@ class SqlExcecutor(object):
                          )
         self._auto_commit = True
         self._conn = None
-        self._connect_to_db()
+        # self._connect_to_db()
 
     def _connect_to_db(self):
         if self._mysql.host == None:
