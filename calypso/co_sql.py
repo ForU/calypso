@@ -132,23 +132,24 @@ class In(ConditionItemBase):
             return "%s = %s" % (self.field.sql(), items[0])
 
 
-LIKE_LEFT = 0
-LIKE_RIGHT = 1
-LIKE_BOTH = 2
+LIKE_NONE = 0
+LIKE_LEFT = 1
+LIKE_RIGHT = 2
+LIKE_BOTH = 3
 class Like(ConditionItemBase):
-    def __init__(self, field, like_expr, fuzzy=LIKE_BOTH):
+    def __init__(self, field, like_expr, fuzzy=LIKE_NONE):
         super(Like, self).__init__(type=CONDITION_ITEM_TYPE_CONJ, field=field)
         self.like_expr = like_expr
         self.fuzzy = fuzzy
 
     def sql(self):
         if self.fuzzy == LIKE_LEFT:
-            return '%s LIKE "%%%s"' (self.field.sql(), self.like_expr)
+            return '%s LIKE "%%%s"' % (self.field.sql(), self.like_expr)
         if self.fuzzy == LIKE_RIGHT:
-            return '%s LIKE "%s%%"' (self.field.sql(), self.like_expr)
+            return '%s LIKE "%s%%"' % (self.field.sql(), self.like_expr)
         if self.fuzzy == LIKE_BOTH:
-            return '%s LIKE "%%%s%%"' (self.field.sql(), self.like_expr)
-        return '%s LIKE "%%%s%%"' (self.field.sql(), self.like_expr)
+            return '%s LIKE "%%%s%%"' % (self.field.sql(), self.like_expr)
+        return '%s LIKE "%%%s%%"' % (self.field.sql(), self.like_expr)
 
 class FieldTypeEnum(object):
     def __init__(self, str_enum_value=None):
