@@ -149,7 +149,7 @@ class Like(ConditionItemBase):
             return '%s LIKE "%s%%"' % (self.field.sql(), self.like_expr)
         if self.fuzzy == LIKE_BOTH:
             return '%s LIKE "%%%s%%"' % (self.field.sql(), self.like_expr)
-        return '%s LIKE "%%%s%%"' % (self.field.sql(), self.like_expr)
+        return '%s LIKE "%s"' % (self.field.sql(), self.like_expr)
 
 class FieldTypeEnum(object):
     def __init__(self, str_enum_value=None):
