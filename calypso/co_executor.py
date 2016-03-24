@@ -16,6 +16,7 @@ from co_constants import COConstants
 from co_utils import g_utils, Magic
 
 
+EXEC_SQL_MAX_RETRY_TIME = 10
 class InsertResult(Magic):
     def __init__(self, res=None, why=''):
         kwargs = {'res':res, 'why':why}
@@ -80,24 +81,34 @@ class SqlExcecutor(object):
         except Exception as e:
             raise COExcInternalError(e)
 
-    def _execute_sql(self, sql):
-        """return None or action-specified value
-        """
+    def _execute_sql(self, sql, max_try=EXEC_SQL_MAX_RETRY_TIME):
         if not self._conn:
-            raise COExcInternalError("not connect to db yet")
+            raise COExcInternalError("not connect to db yet, please reInit the g_co_executor please in your application initialization process")
+        print "retrying to execute sql:[%s] @time:%s" % (sql, max_try)
+        if max_try == 0:
+            raise COExcInternalError("still failed to execute sql after retry:%s times" % (EXEC_SQL_MAX_RETRY_TIME))
 
-        c = MySQLdb.cursors.DictCursor( self._conn )
         try:
-            print "[CO_INFO] executing SQL:\"%s\" @'%s'" % (sql, g_utils.now())
-            c.execute( sql )
-            if self._auto_commit:
-                self.commit()
-                print "[CO_DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
-            return c
+            return self._bb_execute_sql(sql)
         except MySQLdb.Error as e:
-            raise COSqlExecuteError(*(list(e.args) + [sql]))
+            if isinstance(e.args[0], (int, long)) and e.args[0] == 2006:
+                self._connect_to_db()
+                self._bb_execute_sql(sql, max_try-1)
+            else:
+                raise COSqlExecuteError(*(list(e.args) + [sql]))
         except Exception as e:
             raise COExcInternalError(*(list(e.args) + [sql]))
+
+    def _bb_execute_sql(self, sql):
+        """return None or action-specified value, no exception caught.
+        """
+        c = MySQLdb.cursors.DictCursor( self._conn )
+        print "[CO_INFO] executing SQL:\"%s\" @'%s'" % (sql, g_utils.now())
+        c.execute( sql )
+        if self._auto_commit:
+            self.commit()
+            print "[CO_DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
+        return c
 
     def startTransaction(self):
         self._auto_commit = False
