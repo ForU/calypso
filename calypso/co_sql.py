@@ -181,14 +181,18 @@ class Field(object):
         # 1. enum, range, time, and so on.
         if definition: self.setByDefinition( definition )
 
-    def _f_built_in(self, operator_str, other):
+    def _f_built_in(self, operator_str, other, as_operator=True):
         cand_types = [self.type, Field]
         if self.type == FieldTypeEnum:
             cand_types.append( str )
         if not isinstance( other, tuple(cand_types) ):
             print "[CO_ERROR] right value is not type:'%s' or %s" % (self.type, 'Field')
             return
-        return Operator(operator_str, self, other)
+        if as_operator:
+            return Operator(operator_str, self, other)
+        else:
+            _name_sql = ' '.join([self.sql(), operator_str, other.sql()])
+            return Field(name=_name_sql, type=other.type)
 
     def __str__(self, ):
         return str(self.value or '')
@@ -204,6 +208,28 @@ class Field(object):
     def __le__(self, other): return self._f_built_in('<=', other)
 
     def __lt__(self, other): return self._f_built_in('<', other)
+
+    def __sub__(self, other): return self._f_built_in('-', other, as_operator=False)
+
+    def __add__(self, other): return self._f_built_in('+', other, as_operator=False)
+
+    def reset(self, other, keep_old_name=True):
+        """reset current field with new definition of other.
+        @other: other field
+        NOTICE: if you wanna change the return name, use field.AS please.
+        """
+        if keep_old_name:
+            self.AS(self.name)
+
+        self.name = other.sql()
+        self.type = other.type
+        self.default = other.default
+        self.comment = other.comment
+        self.value = other.value
+        self.restriction = other.restriction
+        self.definition = other.definition
+
+        return self
 
     def toInsertStyleStr(self, raw_value):
         """CRITICAL: every type of the field should support '__str__'
@@ -277,7 +303,7 @@ class Function(Field):
     current function only support one-argument. if more arguments need to
     be supported, write your own version. GOOD LUCK :)
     """
-    def __init__(self, name, field, type=FieldTypeFunction):
+    def __init__(self, name, field=None, type=FieldTypeFunction):
         self.field = field
         super(Function, self).__init__(name=name, type=type)
         self._gen_f_as_backup()
@@ -289,7 +315,7 @@ class Function(Field):
             print "[CO_INFO] failed to generate f as backup for function:'%s', do nothing, let app-level known this error" % self.__class__
 
     def _gen_sql_prefix(self):
-        field_prefix = self.field.sql()
+        field_prefix = self.field.sql() if self.field else ''
         return "%s(%s)" % (self.name, field_prefix)
 
 
@@ -299,14 +325,27 @@ class Function(Field):
 
 class COUNT(Function):
     def __init__(self, field=STAR_FIELD, type=long):
-        """ if field is None: use STAR_FIELD instead
-        """
         super(COUNT, self).__init__(name='COUNT', field=field, type=type)
 
 
 class MAX(Function):
     def __init__(self, field):
         super(MAX, self).__init__(name='MAX', field=field)
+
+
+class TO_SECONDS(Function):
+    def __init__(self, field):
+        super(TO_SECONDS, self).__init__(name='TO_SECONDS', field=field)
+
+class UNIX_TIMESTAMP(Function):
+    def __init__(self, field):
+        super(UNIX_TIMESTAMP, self).__init__(name='UNIX_TIMESTAMP', field=field)
+
+
+class NOW(Function):
+    def __init__(self):
+        super(NOW, self).__init__(name='NOW')
+
 
 # ... other functions here
 
@@ -422,7 +461,7 @@ class ModelIface(object):
 
     def registerExtraFields(self, d_extra_field_definitions):
         for fnam, fdefi in d_extra_field_definitions.items():
-            print "[CO_DEBUG] registering field:%15s for '%s'" % (fnam, self)
+            print "[CO_DEBUG] registering field:%s, fdefi:%s for '%s'" % (fnam, fdefi, self)
             self.__dict__[fnam] = Field(definition=fdefi)
 
     def setDBData(self, db_data={}):
@@ -435,7 +474,8 @@ class ModelIface(object):
                 print "[CO_WARNING] Field:'%s' not registed in Model:'%s', ignore it" % (k, self)
                 continue
             try:
-                f.value = f.type(v)
+                # CRITICAL: set value when value is not None, default is None (set None explictly here)
+                f.value = f.type(v) if v is not None else None
             except Exception as e:
                 raise COExcInvalidSql(e)
         # CRITICAL: always return self
@@ -461,6 +501,21 @@ class ModelIface(object):
             v = v.value
             return  v.v if isinstance(v, FieldTypeEnum) else v
         return v
+
+    def fields(self):
+        """get all fields of current model object
+        """
+        return [v for k,v in self.__dict__.items() if isinstance(v, Field)]
+
+    def field(self, field_name):
+        """get field, return Field named @field_name
+        """
+        f_key = _Pack_Field_Key(field_name)
+        v = self.__dict__.get(f_key, None)
+        if v is None:
+            raise AttributeError("no such key:'%s'" % field_name)
+        # CRITICAL: handle Field and FieldTypeEnum
+        return v if isinstance(v, Field) else None
 
     def dumpAsStr(self,):
         return str({ _Unpack_Field_Key(k):str(v.value) \
@@ -593,16 +648,6 @@ class TableIface(object):
     def select(self, *leak_fields, **kwargs):
         # first of all exclude all None in leak_fields
         leak_fields = [getattr(self, i) if isinstance(i,str) else i for i in leak_fields if i]
-
-        # leak_fields = []
-        # for i in leak_fields:
-        #     print "handle %s" % i
-        #     if not i:
-        #         continue
-        #     if isinstance(i, str):
-        #         i = self.getattr(_Pack_Field_Key(i))
-        #         print 'is string, refine to field',type(i)
-        #     leak_fields.append(i)
 
         if isinstance(self, Join):
             efds = self._jn_dynamic_fields
