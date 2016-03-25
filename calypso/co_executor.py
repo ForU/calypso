@@ -15,7 +15,6 @@ from co_error import COExcInternalError, COSqlExecuteError, CODuplicatedDBRecord
 from co_constants import COConstants
 from co_utils import g_utils, Magic
 
-
 EXEC_SQL_MAX_RETRY_TIME = 10
 class InsertResult(Magic):
     def __init__(self, res=None, why=''):

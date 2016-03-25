@@ -7,6 +7,7 @@ CONDITION_ITEM_TYPE_CONJ = 'conj'
 CONDITION_ITEM_TYPE_ATOM = 'atom'
 
 import copy
+import MySQLdb
 
 from co_utils import Magic
 from co_error import COExcInvalidSql
@@ -22,6 +23,8 @@ def _Pack_Field_Key(raw_field_name):
 def _Unpack_Field_Key(packed_field_name):
     return packed_field_name[FIELD_KEY_PREFIX_LEN:]
 
+def escape(raw_string):
+    return MySQLdb.escape_string(raw_string)
 
 class ConditionItemBase(object):
     def __init__(self, type=CONDITION_ITEM_TYPE_ATOM, field=None, value=None):
@@ -74,6 +77,8 @@ class Operator(ConditionItemBase):
         # caz Field the root class, so subclass still ok
         if isinstance(self.value, Field):
             right_value = self.value.sql()
+        elif isinstance(self.value, Select):
+            right_value = "(%s)" % str(self.value.sql())
         elif isinstance(self.value, FieldTypeEnum):
             right_value = "'%s'" % str(self.value)
         elif isinstance(self.value, str):
@@ -182,7 +187,7 @@ class Field(object):
         if definition: self.setByDefinition( definition )
 
     def _f_built_in(self, operator_str, other, as_operator=True):
-        cand_types = [self.type, Field]
+        cand_types = [self.type, Field, Function, Select]
         if self.type == FieldTypeEnum:
             cand_types.append( str )
         if not isinstance( other, tuple(cand_types) ):
@@ -403,12 +408,12 @@ class Select(object):
             , 'FROM'
             ,               self._table.sql()
             , 'WHERE '    + where_value if where_value else ''
-            , 'ORDER BY ' + self._order_by.sql() if self._order_by else ''
-            ,               self._order_by_order if self._order_by_order else ''
-            , 'GROUP BY ' + self._group_by.sql() if self._group_by else ''
-            ,               self._group_by_order if self._group_by_order else ''
-            , 'LIMIT '    + str( self._limit_row_count) if self._limit_row_count else ''
-            , 'OFFSET '   + str( self._limit_offset) if self._limit_offset else ''
+            , 'ORDER BY ' + escape(self._order_by.sql()) if self._order_by else ''
+            ,               escape(self._order_by_order) if self._order_by_order else ''
+            , 'GROUP BY ' + escape(self._group_by.sql()) if self._group_by else ''
+            ,               escape(self._group_by_order) if self._group_by_order else ''
+            , 'LIMIT '    + escape(str( self._limit_row_count)) if self._limit_row_count else ''
+            , 'OFFSET '   + escape(str( self._limit_offset)) if self._limit_offset else ''
         ]
         # exclude empty items for pretty SQL.
         sql_components = [i for i in sql_components if i]
@@ -682,7 +687,8 @@ class Table(TableIface):
     def _is_field_registed(self, field_name):
         """
         """
-        f = self.__dict__.get(field_name)
+        f_key = _Pack_Field_Key(field_name)
+        f = self.__dict__.get(f_key)
         if not f:
             return False, None
         return isinstance(f, Field), f
@@ -734,7 +740,7 @@ class Table(TableIface):
                 if col_v is None:
                     col_v = 'NULL' if fld.default is None else fld.default
 
-                refined_d.append( fld.toInsertStyleStr(col_v) )
+                refined_d.append( fld.toInsertStyleStr(escape(col_v)) )
 
             v = '(' + ','.join ( refined_d ) + ')'
             column_datas.append( v )
@@ -757,7 +763,7 @@ class Table(TableIface):
             if not self._is_field_registed(k)[0]:
                 print "[CO_WARNING] no such field:'%s' in table:'%s'" % (k, self._t_name)
                 continue
-            us_item = "%s='%s'" % (k, v) # always string
+            us_item = "%s='%s'" % (k, escape(v)) # always string
             update_set_items.append(us_item)
 
         sql_components = [ 'UPDATE'
@@ -766,7 +772,7 @@ class Table(TableIface):
                            , self._t_name
                            , 'SET'
                            , ','.join( update_set_items )
-                           , 'WHERE %s' % cond.sql() if cond else ''
+                           , 'WHERE %s' % escape(cond.sql()) if cond else ''
                        ]
         # exclude empty items for pretty SQL.
         sql_components = [i for i in sql_components if i]
@@ -779,11 +785,11 @@ class Table(TableIface):
         if not cond and not allow_none_cond:
             raise COExcInvalidSql("cond:'%s' is not allowed" % cond)
         sql_components = [ 'DELETE'
-                           , 'LOW_PRIORITY' if low_priority else ''
+                           , 'LOW_PRIORITY' if escape(low_priority) else ''
                            , 'IGNORE' if ignore else ''
                            , 'FROM'
                            , self._t_name
-                           , 'WHERE %s' % cond.sql() if cond else ''
+                           , 'WHERE %s' % escape(cond.sql()) if cond else ''
                        ]
         # exclude empty items for pretty SQL.
         sql_components = [i for i in sql_components if i]
