@@ -92,7 +92,7 @@ class SqlExcecutor(object):
         except MySQLdb.Error as e:
             if isinstance(e.args[0], (int, long)) and e.args[0] == 2006:
                 self._connect_to_db()
-                self._bb_execute_sql(sql, max_try-1)
+                self._execute_sql(sql, max_try-1)
             else:
                 raise COSqlExecuteError(*(list(e.args) + [sql]))
         except Exception as e:

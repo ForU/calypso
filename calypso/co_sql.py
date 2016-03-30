@@ -538,7 +538,7 @@ class ModelIface(object):
         #           database definition, so it's OK
         #
         # a little different from 'AsStr' is that, a DEFAULT VALUE is backup for more crucial situation.
-        return { _Unpack_Field_Key(k):str(v.value if v.value else v.default) # v.value or v.default
+        return { _Unpack_Field_Key(k):str(escape(v.value) if v.value else v.default) # v.value or v.default
                  for k,v in self.__dict__.items()
                  if isinstance(v, Field) and (v.value or v.isEnum()) }
 
@@ -740,7 +740,7 @@ class Table(TableIface):
                 if col_v is None:
                     col_v = 'NULL' if fld.default is None else fld.default
 
-                refined_d.append( fld.toInsertStyleStr(escape(col_v)) )
+                refined_d.append( fld.toInsertStyleStr(col_v) )
 
             v = '(' + ','.join ( refined_d ) + ')'
             column_datas.append( v )
@@ -772,7 +772,7 @@ class Table(TableIface):
                            , self._t_name
                            , 'SET'
                            , ','.join( update_set_items )
-                           , 'WHERE %s' % escape(cond.sql()) if cond else ''
+                           , 'WHERE %s' % cond.sql() if cond else ''
                        ]
         # exclude empty items for pretty SQL.
         sql_components = [i for i in sql_components if i]
@@ -785,11 +785,11 @@ class Table(TableIface):
         if not cond and not allow_none_cond:
             raise COExcInvalidSql("cond:'%s' is not allowed" % cond)
         sql_components = [ 'DELETE'
-                           , 'LOW_PRIORITY' if escape(low_priority) else ''
+                           , 'LOW_PRIORITY' if low_priority else ''
                            , 'IGNORE' if ignore else ''
                            , 'FROM'
                            , self._t_name
-                           , 'WHERE %s' % escape(cond.sql()) if cond else ''
+                           , 'WHERE %s' % cond.sql() if cond else ''
                        ]
         # exclude empty items for pretty SQL.
         sql_components = [i for i in sql_components if i]
