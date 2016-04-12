@@ -147,8 +147,7 @@ class SqlExcecutor(object):
         @Return: (result, why)
         @Exception: COExcInternalError
         """
-
-        if not isinstance(sql, str):
+        if not isinstance(sql, (str, unicode)):
             raise COExcInternalError("sql need to be string")
         if sql_action not in COConstants.VALID_SQL_ACTIONS:
             raise COExcInternalError("invalid sql_action:'%s', candidates:'%s'" % \

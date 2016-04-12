@@ -188,10 +188,10 @@ class Field(object):
 
     def _f_built_in(self, operator_str, other, as_operator=True):
         cand_types = [self.type, Field, Function, Select]
-        if self.type == FieldTypeEnum:
+        if self.type in [int, long, FieldTypeEnum]:
             cand_types.append( str )
         if not isinstance( other, tuple(cand_types) ):
-            print "[CO_ERROR] right value is not type:'%s' or %s" % (self.type, 'Field')
+            print "[CO_WARNING] right value is not type:'%s' or %s" % (self.type, 'Field')
             return
         if as_operator:
             return Operator(operator_str, self, other)
@@ -239,14 +239,25 @@ class Field(object):
     def toInsertStyleStr(self, raw_value):
         """CRITICAL: every type of the field should support '__str__'
         """
-        DEFAULT_FMT = "'%s'"
-        TYPE_FMT_MAP = {
-            int: '%s'
-            , str: "'%s'"
-            , FieldTypeEnum: "'%s'"
-        }
-        fmt = TYPE_FMT_MAP.get(self.type, DEFAULT_FMT)
-        return fmt % str(raw_value) # maybe handle unicode
+        if isinstance(raw_value, (int, long)):
+            return "%s" % raw_value
+        if isinstance(raw_value, (str, FieldTypeEnum)):
+            return "'%s'" % raw_value
+        if isinstance(raw_value, (Field, Function)):
+            return "%s" % raw_value.sql()
+
+        # default.
+        return "'%s'" % raw_value
+
+        # DEFAULT_FMT = "'%s'"
+        # TYPE_FMT_MAP = {
+        #     int: '%s'
+        #     , str: "'%s'"
+        #     , FieldTypeEnum: "'%s'"
+        #     , Field: "%s"
+        # }
+        # fmt = TYPE_FMT_MAP.get(self.type, DEFAULT_FMT)
+        # return fmt % str(raw_value) # maybe handle unicode
 
     def isEnum(self):
         return self.type == FieldTypeEnum
@@ -714,7 +725,9 @@ class Table(TableIface):
                 db_style_data = i.dumpAsDBData()
             else:               # dict
                 db_style_data = {
-                    (k.sql() if isinstance(k, Field) else k):v for k,v in i.items()
+                    # refine k,v
+                    (k.sql() if isinstance(k, Field) else k):(v if isinstance(v, (Field,Function)) else v)
+                    for k,v in i.items()
                 }
             refined_datas.append( db_style_data )
 
@@ -763,7 +776,14 @@ class Table(TableIface):
             if not self._is_field_registed(k)[0]:
                 print "[CO_WARNING] no such field:'%s' in table:'%s'" % (k, self._t_name)
                 continue
-            us_item = "%s='%s'" % (k, escape(v)) # always string
+
+            # refine v
+            if type(v) == str:
+                v = "'%s'" % escape(v)
+            elif isinstance(v, (Field, Function)):
+                v = v.sql()
+
+            us_item = "%s=%s" % (k, v) # TODO str cause unicode error.
             update_set_items.append(us_item)
 
         sql_components = [ 'UPDATE'
