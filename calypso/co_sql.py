@@ -80,9 +80,9 @@ class Operator(ConditionItemBase):
         elif isinstance(self.value, Select):
             right_value = "(%s)" % str(self.value.sql())
         elif isinstance(self.value, FieldTypeEnum):
-            right_value = "'%s'" % str(self.value)
+            right_value = '"%s"' % str(self.value)
         elif isinstance(self.value, str):
-            right_value = "'%s'" % str(self.value)
+            right_value = '"%s"' % str(self.value)
         else:
             right_value = str(self.value)
         return "(%s %s %s)" % (self.field.sql(), self.operator, right_value)
@@ -242,18 +242,18 @@ class Field(object):
         if isinstance(raw_value, (int, long)):
             return "%s" % raw_value
         if isinstance(raw_value, (str, FieldTypeEnum)):
-            return "'%s'" % raw_value
+            return '"%s"' % escape(raw_value)
         if isinstance(raw_value, (Field, Function)):
             return "%s" % raw_value.sql()
 
         # default.
-        return "'%s'" % raw_value
+        return '"%s"' % raw_value
 
-        # DEFAULT_FMT = "'%s'"
+        # DEFAULT_FMT = '"%s"'
         # TYPE_FMT_MAP = {
         #     int: '%s'
-        #     , str: "'%s'"
-        #     , FieldTypeEnum: "'%s'"
+        #     , str: '"%s"'
+        #     , FieldTypeEnum: '"%s"'
         #     , Field: "%s"
         # }
         # fmt = TYPE_FMT_MAP.get(self.type, DEFAULT_FMT)
@@ -779,7 +779,7 @@ class Table(TableIface):
 
             # refine v
             if type(v) == str:
-                v = "'%s'" % escape(v)
+                v = '"%s"' % escape(v)
             elif isinstance(v, (Field, Function)):
                 v = v.sql()
 
