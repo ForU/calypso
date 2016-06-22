@@ -173,7 +173,7 @@ class FieldTypeEnum(object):
 
 
 class Field(object):
-    def __init__(self, name=None, type=None, default=None, comment=None, value=None, restriction=None, definition=None):
+    def __init__(self, name=None, type=None, default=None, comment=None, value=None, restriction=None, definition=None, accepted_right_value_types=None):
         self.name = name
         self.type = type
         self.default = default
@@ -182,17 +182,25 @@ class Field(object):
         self.table = None
         self.f_as = None
         self.restriction = restriction
+        self.accepted_right_value_types = accepted_right_value_types
         # about restriction
         # 1. enum, range, time, and so on.
         if definition: self.setByDefinition( definition )
 
     def _f_built_in(self, operator_str, other, as_operator=True):
         cand_types = [self.type, Field, Function, Select]
+
+        # refine cand_types.
+        if self.accepted_right_value_types:
+            cand_types.extend(self.accepted_right_value_types)
+
         if self.type in [int, long, FieldTypeEnum]:
             cand_types.append( str )
+
         if not isinstance( other, tuple(cand_types) ):
-            print "[CO_WARNING] right value is not type:'%s' or %s" % (self.type, 'Field')
+            print "[CO_WARNING] right value is not type:'%s' or %s, candidate types:%s" % (self.type, 'Field', cand_types)
             return
+
         if as_operator:
             return Operator(operator_str, self, other)
         else:
@@ -319,9 +327,14 @@ class Function(Field):
     current function only support one-argument. if more arguments need to
     be supported, write your own version. GOOD LUCK :)
     """
-    def __init__(self, name, field=None, type=FieldTypeFunction):
+    def __init__(self, name,
+                 field=None,
+                 type=FieldTypeFunction,
+                 accepted_right_value_types=None ):
         self.field = field
-        super(Function, self).__init__(name=name, type=type)
+        super(Function, self).__init__(name = name,
+                                       type = type,
+                                       accepted_right_value_types = accepted_right_value_types)
         self._gen_f_as_backup()
 
     def _gen_f_as_backup(self):
@@ -355,7 +368,7 @@ class TO_SECONDS(Function):
 
 class UNIX_TIMESTAMP(Function):
     def __init__(self, field):
-        super(UNIX_TIMESTAMP, self).__init__(name='UNIX_TIMESTAMP', field=field)
+        super(UNIX_TIMESTAMP, self).__init__(name='UNIX_TIMESTAMP', field=field, accepted_right_value_types=[int, long, str])
 
 
 class NOW(Function):
