@@ -196,6 +196,7 @@ class Field(object):
 
         if self.type in [int, long, FieldTypeEnum]:
             cand_types.append( str )
+            cand_types.append( long )
 
         if not isinstance( other, tuple(cand_types) ):
             print "[CO_WARNING] right value is not type:'%s' or %s, candidate types:%s" % (self.type, 'Field', cand_types)
