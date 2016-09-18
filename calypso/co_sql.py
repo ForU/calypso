@@ -10,7 +10,7 @@ import copy
 import MySQLdb
 
 from co_utils import Magic
-from co_error import COExcInvalidSql
+from co_error import COExcInvalidSql, COExcInternalError
 from co_constants import COConstants
 
 
@@ -123,14 +123,19 @@ class In(ConditionItemBase):
         self.values = values
 
         # check validation of incomming stuff
-        if not (isinstance(values, (list, tuple)) and len(values) > 0):
+        if not isinstance(values, ConditionItemBase) and not isinstance(values, str) and (not (isinstance(values, (list, tuple)) and len(values) > 0)):
             raise COExcInternalError("invalid args:@values:'%s', type:'%s'" % \
                                      (values, type(values)))
 
     def sql(self):
-        """make tuple-compatible. eg: '(1,)'
-        """
-        items = [str(i) for i in self.values]
+        if isinstance(self.values, ConditionItemBase):
+            return "%s IN (%s)" % (self.field.sql(), self.values.sql())
+
+        if isinstance(self.values,str):
+            return "%s IN (%s)" % (self.field.sql(), self.values)
+
+        # else (list,tuple)
+        items = ['"%s"'%(i) for i in self.values]
         if len(items) > 1:
             return "%s IN (%s)" % (self.field.sql(), ','.join(items))
         if len(items) == 1:
@@ -362,6 +367,9 @@ class MAX(Function):
     def __init__(self, field):
         super(MAX, self).__init__(name='MAX', field=field)
 
+class SUM(Function):
+    def __init__(self, field):
+        super(SUM, self).__init__(name='SUM', field=field, type=float)
 
 class TO_SECONDS(Function):
     def __init__(self, field):
@@ -380,7 +388,7 @@ class NOW(Function):
 # ... other functions here
 
 
-class Select(object):
+class Select(ConditionItemBase):
     def __init__(self, table=None, leak_fields=None, extra_field_definitions={}):
         self._table = table
         self._leak_fields = None

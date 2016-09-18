@@ -28,6 +28,9 @@ def CAP(astr):
     items = [i.capitalize() for i in items]
     return ''.join(items)
 
+def CAP0(astr):
+    return astr[0].upper() + astr[1:]
+
 def UPC(astr):
     return astr.upper()
 
@@ -262,6 +265,7 @@ class ModelGenerator(object):
         all_valid_enum_constants = []
         enum_constants_stm = []
         enum_constants_wt_stm = [] # with table name
+        isEnumValueValidFunctions = []
 
         # traverse columns to handle enum stuff
         for cl in db_table.columns:
@@ -278,6 +282,12 @@ class ModelGenerator(object):
 
                 enum_constants_stm += ["%s = '%s'" % (self._fe(cl.fname, i), i) for i in enums]
 
+                isEnumValueValidFunctions.append( [
+                    '@classmethod',
+                    ''.join([ 'def is', CAP0(cl.fname), 'Valid(cls, ', cl.fname, '):' ]),
+                    ''.join([ 'return ', cl.fname, ' in (%s)'%(', '.join(['cls.'+self._fe(cl.fname, i) for i in enums])) ])
+                ] )
+
         # compose getByUniqKey(...) if necessary
         gbuk_func_name = 'def getByUniqKey(self, uk, *leak_fields, **kwargs):'
         gbuk_func_imp_l1 = 'return self.select(*leak_fields, **kwargs).where(uk.cond()).one()'
@@ -290,6 +300,9 @@ class ModelGenerator(object):
         components += [ IND(1)+table_uk_map ]
         components += [ IND(1)+init_stm , IND(2)+super_stm ]
         components += [ IND(1)+gbuk_func_name, IND(2)+gbuk_func_imp_l1]
+
+        for f in isEnumValueValidFunctions:
+            components += [ IND(1)+f[0], IND(1)+f[1], IND(2)+f[2] ]
 
         return components, enum_constants_wt_stm, tbl_class_name
 
@@ -384,8 +397,9 @@ if __name__ == '__main__':
     g=ModelGenerator(host='localhost', user='root')
 
     # # LOCAL HERE
-    g.dumpDBSchema('honeycomb', model_des_dir_path='/tmp/model', app_name='honeycomb')
-    g.dumpDBSchema('pollens', model_des_dir_path='/tmp/model', app_name='pollens')
+    #g.dumpDBSchema('honeycomb', model_des_dir_path='/tmp/model', app_name='honeycomb')
+    #g.dumpDBSchema('pollens', model_des_dir_path='/tmp/model', app_name='pollens')
     # g.dumpDBSchema('world', model_des_dir_path='/tmp/model', app_name='world')
     # g.dumpDBSchema('warehouse', model_des_dir_path='/tmp/model', app_name='warehouse')
+    g.dumpDBSchema('lavelyhouse', model_des_dir_path='/Users/jacoolee/lavely.house/server/server/api/services/db', app_name='lavelyhouse')
 
