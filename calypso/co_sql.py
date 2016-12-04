@@ -313,6 +313,41 @@ STAR_FIELD = Field(name='*', type=str, default='*', comment='star')
 
 FieldTypeFunction = str         # default type for function-type field
 
+class ORDER_BY_FIELD(object):
+    def __init__(self, field, fieldValueCondidates, doWrapFieldValueCondidatesWithParenthsis=False):
+        self._f = field
+        self._fvc = fieldValueCondidates
+        self._doWrapFieldValueCondidatesWithParenthsis = doWrapFieldValueCondidatesWithParenthsis
+
+    def sql(self):
+        if self._doWrapFieldValueCondidatesWithParenthsis:
+            return 'FIELD(' + self._f.sql() + ', (' + self._fvc + '))'
+        else:
+            return 'FIELD(' + self._f.sql() + ', ' + self._fvc + ')'
+
+
+class GROUP_CONCAT(Field):
+    def __init__(self, expr, orderBy=None, asc=True, separator=', '):
+        super(GROUP_CONCAT, self).__init__(name='GROUP_CONCAT', type=str, default='', comment='')
+        self._expr = expr
+        self._order_by = orderBy
+        self._asc = asc
+        self._separator = separator
+
+    def _gen_sql_prefix(self):
+        """
+        GROUP_CONCAT([DISTINCT] expr [,expr ...]
+             [ORDER BY {unsigned_integer | col_name | expr}
+                 [ASC | DESC] [,col_name ...]]
+             [SEPARATOR str_val])
+        """
+        return ''.join([self.name, '('
+                        , self._expr.sql()
+                        , ' ORDER BY ' + self._order_by.sql() if self._order_by else '' # ORDER
+                        , ' ASC' if self._asc else ' DESC'
+                        , ' SEPARATOR \'', self._separator,'\')' # SEPARATOR
+                    ])
+
 
 class DISTINCT(Field):
     def __init__(self, *fields):
@@ -422,7 +457,7 @@ class Select(ConditionItemBase):
         self._group_by_order = 'ASC' if asc else 'DESC'
         return self
 
-    def limit(self, row_count, offset=0):
+    def limit(self, row_count=None, offset=0):
         self._limit_row_count = row_count
         self._limit_offset = offset
         return self
@@ -441,7 +476,7 @@ class Select(ConditionItemBase):
             , 'FROM'
             ,               self._table.sql()
             , 'WHERE '    + where_value if where_value else ''
-            , 'ORDER BY ' + escape(self._order_by.sql()) if self._order_by else ''
+            , 'ORDER BY ' + self._order_by.sql() if self._order_by else ''
             ,               escape(self._order_by_order) if self._order_by_order else ''
             , 'GROUP BY ' + escape(self._group_by.sql()) if self._group_by else ''
             ,               escape(self._group_by_order) if self._group_by_order else ''
