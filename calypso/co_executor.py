@@ -106,7 +106,7 @@ class SqlExcecutor(object):
         c.execute( sql )
         if self._auto_commit:
             self.commit()
-            print "[CO_DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
+            # print "[CO_DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
         return c
 
     def startTransaction(self):

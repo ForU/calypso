@@ -784,7 +784,7 @@ class Table(TableIface):
                 db_style_data = {
                     # refine k,v
                     (k.sql() if isinstance(k, Field) else k):(v if isinstance(v, (Field,Function)) else v)
-                    for k,v in i.items()
+                    for k,v in i.items() if v is not None
                 }
             refined_datas.append( db_style_data )
 
@@ -828,6 +828,9 @@ class Table(TableIface):
     def update(self, dict_data, cond=None, low_priority=False, ignore=False):
         update_set_items = []
         for k,v in dict_data.items():
+            if k is None:
+                continue
+
             if isinstance(k, Field):
                 k = k.name
             if not self._is_field_registed(k)[0]:

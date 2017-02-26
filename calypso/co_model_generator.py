@@ -401,5 +401,6 @@ if __name__ == '__main__':
     #g.dumpDBSchema('pollens', model_des_dir_path='/tmp/model', app_name='pollens')
     # g.dumpDBSchema('world', model_des_dir_path='/tmp/model', app_name='world')
     # g.dumpDBSchema('warehouse', model_des_dir_path='/tmp/model', app_name='warehouse')
-    g.dumpDBSchema('lavelyhouse', model_des_dir_path='/Users/jacoolee/lavely.house/server/server/api/services/db', app_name='lavelyhouse')
+    #g.dumpDBSchema('lavelyhouse', model_des_dir_path='/Users/jacoolee/lavely.house/server/server/api/services/db', app_name='lavelyhouse')
 
+    g.dumpDBSchema('vivir', model_des_dir_path='/Users/jacoolee/vivir/vivir.app.server/server/api/services/db', app_name='vivir')
