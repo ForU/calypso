@@ -528,13 +528,12 @@ class ModelIface(object):
         return isinstance(f, Field), f
 
     def addExtraAttributes(self, d_extra_attributes):
-        print "[CO_DEBUG] already_keys:%s, new commers:%s" % \
-            (self.__dict__.keys(), d_extra_attributes.keys())
+        #print "[CO_DEBUG] already_keys:%s, new commers:%s" %  (self.__dict__.keys(), d_extra_attributes.keys())
         self.__dict__.update(d_extra_attributes)
 
     def registerExtraFields(self, d_extra_field_definitions):
         for fnam, fdefi in d_extra_field_definitions.items():
-            print "[CO_DEBUG] registering field:%s, fdefi:%s for '%s'" % (fnam, fdefi, self)
+            #print "[CO_DEBUG] registering field:%s, fdefi:%s for '%s'" % (fnam, fdefi, self)
             self.__dict__[fnam] = Field(definition=fdefi)
 
     def setDBData(self, db_data={}):

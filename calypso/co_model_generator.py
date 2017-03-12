@@ -91,14 +91,21 @@ class ModelGenerator(object):
         table_defi_items = self.getTableDefinition(db_name, table_name)
         uniq_key_map = {}
         for i in table_defi_items:
+            i = i.strip()
             if i[:6].lower() != 'unique':
                 continue
             uk = i.split(' ')
-            name = eval(uk[-2])
-            components = eval(uk[-1])
+
+            # get name_idx
+            name_idx = 2 if 'key' == uk[1].lower() else 1
+            name = eval(uk[name_idx])
+            raw_resting = ''.join(uk[name_idx+1:])
+            components = eval(raw_resting[:-1] if raw_resting.endswith(',') else raw_resting)
+
             # refine components if necessary to make sure it's a tuple or list
             if type(components) not in (list, tuple):
                 components = [components]
+
             uniq_key_map[name] = Magic( ** { 'table':table_name, 'name': name, 'components': components } )
         return uniq_key_map
 
