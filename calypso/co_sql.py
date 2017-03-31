@@ -12,7 +12,7 @@ import MySQLdb
 from co_utils import Magic
 from co_error import COExcInvalidSql, COExcInternalError
 from co_constants import COConstants
-
+from co_logger import l
 
 FIELD_KEY_PREFIX = '__f_'
 FIELD_KEY_PREFIX_LEN = len(FIELD_KEY_PREFIX)
@@ -204,7 +204,7 @@ class Field(object):
             cand_types.append( long )
 
         if not isinstance( other, tuple(cand_types) ):
-            print "[CO_WARNING] right value is not type:'%s' or %s, candidate types:%s" % (self.type, 'Field', cand_types)
+            l.warn("operator_str:'%s', right value:'%s' is not type:'%s' or %s, candidate types:%s, as_operator:'%s'" % (operator_str, other, self.type, 'Field', cand_types, as_operator))
             return
 
         if as_operator:
@@ -382,7 +382,7 @@ class Function(Field):
         try:
             self.f_as = str(self.__class__)[:-2].split('.')[-1]
         except Exception as e:
-            print "[CO_INFO] failed to generate f as backup for function:'%s', do nothing, let app-level known this error" % self.__class__
+            l.error("failed to generate f as backup for function:'%s', do nothing, let app-level known this error" % self.__class__)
 
     def _gen_sql_prefix(self):
         field_prefix = self.field.sql() if self.field else ''
@@ -528,12 +528,12 @@ class ModelIface(object):
         return isinstance(f, Field), f
 
     def addExtraAttributes(self, d_extra_attributes):
-        #print "[CO_DEBUG] already_keys:%s, new commers:%s" %  (self.__dict__.keys(), d_extra_attributes.keys())
+        #l.debug("already_keys:%s, new commers:%s" %  (self.__dict__.keys(), d_extra_attributes.keys()))
         self.__dict__.update(d_extra_attributes)
 
     def registerExtraFields(self, d_extra_field_definitions):
         for fnam, fdefi in d_extra_field_definitions.items():
-            #print "[CO_DEBUG] registering field:%s, fdefi:%s for '%s'" % (fnam, fdefi, self)
+            #l.debug("registering field:%s, fdefi:%s for '%s'" % (fnam, fdefi, self))
             self.__dict__[fnam] = Field(definition=fdefi)
 
     def setDBData(self, db_data={}):
@@ -543,7 +543,7 @@ class ModelIface(object):
         for k,v in db_data.items():
             is_fld, f = self._is_field_registed(k)
             if not is_fld:
-                print "[CO_WARNING] Field:'%s' not registed in Model:'%s', ignore it" % (k, self)
+                l.warn("Field:'%s' not registed in Model:'%s', ignore it" % (k, self))
                 continue
             try:
                 # CRITICAL: set value when value is not None, default is None (set None explictly here)
@@ -833,7 +833,7 @@ class Table(TableIface):
             if isinstance(k, Field):
                 k = k.name
             if not self._is_field_registed(k)[0]:
-                print "[CO_WARNING] no such field:'%s' in table:'%s'" % (k, self._t_name)
+                l.warn("no such field:'%s' in table:'%s'" % (k, self._t_name))
                 continue
 
             # refine v

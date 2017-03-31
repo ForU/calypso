@@ -4,9 +4,11 @@
 # ht <515563130@qq.com, weixin:jacoolee>
 
 
+from co_logger import l
+
 class CoBaseException(Exception):
     def __init__(self, *args, **kwargs):
-        print '[CO_EXC] exception:%s why:%s %s' % (self.__class__, args, kwargs)
+        l.error('exception:%s why:%s %s' % (self.__class__, args, kwargs))
         super(Exception, self).__init__(*args, **kwargs)
 
 

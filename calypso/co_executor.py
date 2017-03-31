@@ -15,6 +15,8 @@ from co_error import COExcInternalError, COSqlExecuteError, CODuplicatedDBRecord
 from co_constants import COConstants
 from co_utils import g_utils, Magic
 
+from co_logger import l
+
 EXEC_SQL_MAX_RETRY_TIME = 10
 class InsertResult(Magic):
     def __init__(self, res=None, why=''):
@@ -64,8 +66,8 @@ class SqlExcecutor(object):
 
     def _connect_to_db(self):
         if self._mysql.host == None:
-            print "[CO_WARNING] failed to connect to database:%s@%s:%s" % \
-                (self._mysql.user, self._mysql.host, self._mysql.port)
+            l.warn("failed to connect to database:%s@%s:%s" % \
+                   (self._mysql.user, self._mysql.host, self._mysql.port))
             return
         try:
             # TODO Thu Jun 11 17:28:38 2015 [load from connection pool other create a connection here]
@@ -83,7 +85,7 @@ class SqlExcecutor(object):
     def _execute_sql(self, sql, max_try=EXEC_SQL_MAX_RETRY_TIME):
         if not self._conn:
             raise COExcInternalError("not connect to db yet, please reInit the g_co_executor please in your application initialization process")
-        print "retrying to execute sql:[%s] @time:%s" % (sql, max_try)
+        # l.debug("retrying to execute sql:[%s] @time:%s" % (sql, max_try))
         if max_try == 0:
             raise COExcInternalError("still failed to execute sql after retry:%s times" % (EXEC_SQL_MAX_RETRY_TIME))
 
@@ -102,11 +104,11 @@ class SqlExcecutor(object):
         """return None or action-specified value, no exception caught.
         """
         c = MySQLdb.cursors.DictCursor( self._conn )
-        print "[CO_INFO] executing SQL:\"%s\" @'%s'" % (sql, g_utils.now())
+        l.info("executing SQL:\"%s\" @'%s'" % (sql, g_utils.now()))
         c.execute( sql )
         if self._auto_commit:
             self.commit()
-            # print "[CO_DIAGNOSE] executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__)
+            #l.dia("executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__))
         return c
 
     def startTransaction(self):
@@ -114,7 +116,7 @@ class SqlExcecutor(object):
         self._execute_sql('start transaction;')
 
     def commit(self):
-        print "[CO_DEBUG] do commit here"
+        #l.debug("do commit here")
         self._conn.commit()
 
     def rollback(self):
@@ -129,13 +131,13 @@ class SqlExcecutor(object):
                              passwd=mysql_passwd,
                              db=mysql_db
                          )
-        print "[CO_INFO] connecting %s ..." % self._mysql
+        l.info("connecting %s ..." % self._mysql)
         self._conn = MySQLdb.connect( host=self._mysql.host,
                                       port=self._mysql.port,
                                       user=self._mysql.user,
                                       passwd=self._mysql.passwd,
                                       db=self._mysql.db )
-        print "[CO_INFO] db connected."
+        l.info("db connected.")
 
     def execute(self, sql, sql_action, model_class=None, extra_model_fields=None, only_one=False):
         """
@@ -158,7 +160,7 @@ class SqlExcecutor(object):
         # refine result, avoid exception for better code programing experiences
         try:
             result, why = self._execute_sql(sql), 'OK'
-            print "[CO_DEBUG] Executed result of SQL:\"%s\" is:'%s'" % (sql, result)
+            #l.debug("Executed result of SQL:\"%s\" is:'%s'" % (sql, result))
         except Exception as e:
             # handle db duplicated case specifically:
             if len(e.args) >= 2:
@@ -214,7 +216,7 @@ class SqlExcecutor(object):
                 else:
                     result = refined_results
             return SelectResult(res=result, why=why)
-        print "[CO_ERROR] UNSUPPORTED sql action: '%s', should never happened" % sql_action
+        l.error("UNSUPPORTED sql action: '%s', should never happened" % sql_action)
 
 # global
 g_co_executor = SqlExcecutor()
@@ -226,15 +228,15 @@ class Transaction(object):
 
     def __enter__(self):
         self._executor.startTransaction()
-        print "[CO_INFO] starting transaction..."
+        l.info("starting transaction...")
 
     def __exit__(self, exc_type, exc_value, exc_tb):
         if not exc_tb:
             self._executor.commit()
-            print "[CO_INFO] commit and transaction success"
+            l.info("commit and transaction success")
             return True
         # failed, do rollback
-        print "[CO_ERROR] transaction failed, rollback, caz: '%s', '%s'" % (exc_type, exc_value)
+        l.error("transaction failed, rollback, caz: '%s', '%s'" % (exc_type, exc_value))
         self._executor.rollback()
         return False
 
