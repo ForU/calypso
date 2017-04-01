@@ -259,19 +259,11 @@ class Field(object):
             return '"%s"' % escape(raw_value)
         if isinstance(raw_value, (Field, Function)):
             return "%s" % raw_value.sql()
+        if isinstance(raw_value, unicode):
+            return '"%s"' % raw_value.encode('utf8')
 
         # default.
         return '"%s"' % raw_value
-
-        # DEFAULT_FMT = '"%s"'
-        # TYPE_FMT_MAP = {
-        #     int: '%s'
-        #     , str: '"%s"'
-        #     , FieldTypeEnum: '"%s"'
-        #     , Field: "%s"
-        # }
-        # fmt = TYPE_FMT_MAP.get(self.type, DEFAULT_FMT)
-        # return fmt % str(raw_value) # maybe handle unicode
 
     def isEnum(self):
         return self.type == FieldTypeEnum
@@ -842,7 +834,10 @@ class Table(TableIface):
             elif isinstance(v, (Field, Function)):
                 v = v.sql()
 
-            us_item = "%s=%s" % (k, v) # TODO str cause unicode error.
+            if isinstance(v, unicode):
+                v = '"%s"' % v.encode('utf8')
+
+            us_item = "%s=%s" % (k, v)
             update_set_items.append(us_item)
 
         sql_components = [ 'UPDATE'
