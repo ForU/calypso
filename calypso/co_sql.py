@@ -210,11 +210,21 @@ class Field(object):
         if as_operator:
             return Operator(operator_str, self, other)
         else:
+            other = self._right2Field(other)
             _name_sql = ' '.join([self.sql(), operator_str, other.sql()])
             return Field(name=_name_sql, type=other.type)
 
     def __str__(self, ):
         return str(self.value or '')
+
+    def _right2Field(self, right):
+        if isinstance(right, Field):
+            return right
+
+        if type(right) in (int,long,str,unicode):
+            return RAW(right)
+
+        return right
 
     def __eq__(self, other): return self._f_built_in('=', other)
 
@@ -304,6 +314,13 @@ STAR_FIELD = Field(name='*', type=str, default='*', comment='star')
 
 
 FieldTypeFunction = str         # default type for function-type field
+
+class RAW(Field):
+    def __init__(self, value):
+        super(RAW, self).__init__( value=value )
+
+    def sql(self):
+        return self.toInsertStyleStr(self.value)
 
 class ORDER_BY_FIELD(object):
     def __init__(self, field, fieldValueCondidates, doWrapFieldValueCondidatesWithParenthsis=False):
