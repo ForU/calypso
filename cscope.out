@@ -1,0 +1,15626 @@
+cscope 15 $HOME/proj/calypso -q 0000000908 0000074241
+	@app/app.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #SuÀ
+May
+ 10 01:29:21 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+impÜt
+ 
+	g¿ndom
+, 
+db
+
+
+8 
+äom
+ 
+	g­p_mod–
+.
+­p_db_mod–
+ 
+impÜt
+ *
+
+9 
+äom
+ 
+	g­p_mod–
+.
+	gÿlypso
+.
+co_sql
+ 
+impÜt
+ *
+
+10 
+äom
+ 
+	g­p_mod–
+.
+	gÿlypso
+.
+co_executÜ
+ 
+impÜt
+ *
+
+11 
+äom
+ 
+	g­p_mod–
+.
+	gÿlypso
+.
+co_cÚ¡ªts
+ 
+impÜt
+ 
+COCÚ¡ªts
+
+
+13 
+äom
+ 
+­p_cÚfig_mªag”
+ 
+impÜt
+ 
+	gCÚfigu»Mªag”
+
+
+16 #»-
+com¶‘e
+ 
+g_co_executÜ
+ 
+w™h
+ 
+cÚfigu»
+ 
+mªag”
+
+
+17 
+	gcm
+ = 
+CÚfigu»Mªag”
+('./config/app_db_config.py')
+
+18 
+g_co_executÜ
+.
+	$»In™
+Ğ
+mysql_ho¡
+=
+cm
+.
+CNF
+.
+ho¡
+,
+
+19 
+mysql_pÜt
+=
+cm
+.
+CNF
+.
+pÜt
+,
+
+20 
+mysql_u£r
+=
+cm
+.
+CNF
+.
+u£r
+,
+
+21 
+mysql_·sswd
+=
+cm
+.
+CNF
+.
+·sswd
+,
+
+22 
+mysql_db
+=
+cm
+.
+CNF
+.
+db
+
+
+27 
+p
+=
+	$P”sÚ
+()
+
+28 
+o
+=
+	$Ord”s
+()
+
+30 
+def
+ 
+	$£p
+(
+f
+):
+
+31 
+def
+ 
+	$_çrgs
+(
+’abË
+=
+True
+, *
+¬gs
+, **
+kw¬gs
+):
+
+32 
+nÙ
+ 
+’abË
+:
+
+34 
+´št
+ "_"*100 + '\n# ' + 
+f
+.
+__Çme__
+.
+	`»¶aû
+('_', ' 'è+ ' ' + 
+	`¡r
+(
+¬gs
+è+ ' ' + 
+	$¡r
+(
+kw¬gs
+)
+
+35 
+rc
+ = 
+	$f
+(
+’abË
+, *
+¬gs
+, **
+kw¬gs
+)
+
+36 
+´št
+
+
+37  
+rc
+
+
+38  
+_çrgs
+
+
+40 @
+£p
+
+
+41 
+def
+ 
+	$‹¡_još_bËs
+(
+’abË
+=
+True
+):
+
+42 
+j
+=
+	`Još
+(
+p
+, 
+o
+).
+	$Ú
+(
+p
+.
+id
+ =ğ
+o
+.
+³rsÚ_id
+)
+
+43 
+´št
+ 
+j
+.
+	`sql
+()
+
+45 @
+£p
+
+
+46 
+def
+ 
+	$‹¡_bË_još_bË
+(
+’abË
+=
+True
+):
+
+47 
+j
+=
+p
+.
+	`još
+(
+o
+).
+	`Ú
+(
+	`Like
+Õ.
+Çme
+, o.
+£rŸl
+.name + '%'))
+
+48 
+´št
+ 
+j
+.
+	`sql
+()
+
+50 @
+£p
+
+
+51 
+def
+ 
+	$‹¡_bË_još_bË_w™h_bË_as
+(
+’abË
+=
+True
+):
+
+52 
+P
+ = 
+p
+.
+	`AS
+('P')
+
+53 
+O
+ = 
+o
+.
+	`AS
+('O')
+
+54 
+j
+=
+P
+.
+	`još
+(
+O
+).
+	$Ú
+(
+P
+.
+id
+ =ğ
+O
+.
+³rsÚ_id
+)
+
+55 
+´št
+ 
+j
+.
+	`sql
+()
+
+57 @
+£p
+
+
+58 
+def
+ 
+	$‹¡_£Ëù
+(
+’abË
+=
+True
+):
+
+59 
+p
+=
+	$P”sÚ
+()
+
+60 
+»s
+=
+p
+.
+	`£Ëù
+Õ.
+id
+.
+	`AS
+('pid')).
+	`wh”e
+Õ.id =ğ1).
+	$whŞe
+()
+
+61 
+´št
+ "$>", 
+»s
+
+
+62 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+63 
+´št
+ 
+i
+.
+	`dumpAsSŒ
+()
+
+65 @
+£p
+
+
+66 
+def
+ 
+	$‹¡_cÚd_bË_f›ld_mixed_w™h_mod–_f›ld
+(
+’abË
+=
+True
+):
+
+67 
+p
+=
+	$P”sÚ
+()
+
+68 
+pm
+=
+	`P”sÚMod–
+(
+id
+=1, 
+Çme
+='haha')
+
+70 
+cÚd
+ = (
+p
+.
+Çme
+ =ğ
+pm
+.Çmeè& (p.
+id
+ ==…m.id)
+
+72 
+»s
+=
+p
+.
+	`£Ëù
+().
+	`wh”e
+Ğ
+cÚd
+ ).
+	$Úe
+()
+
+73 
+´št
+ "$>", 
+»s
+
+
+74 
+»s
+.res:
+
+75 
+´št
+ 
+»s
+.»s.
+	`dumpAsDBD©a
+()
+
+77 @
+£p
+
+
+78 
+def
+ 
+	$‹¡_još_w™h_Ëak_f›ld_as
+(
+’abË
+=
+True
+):
+
+79 #ha 
+Úe
+
+
+80 
+j
+=
+p
+.
+	`još
+(
+o
+).
+	$Ú
+(
+p
+.
+id
+ =ğ
+o
+.
+³rsÚ_id
+)
+
+81 
+cÚd
+=
+	`In
+(
+p
+.
+id
+, (1,2,3)è& 
+	`NÙ
+(
+	`Like
+Õ.
+Çme
+, '%100%'))
+
+82 
+»s
+ = 
+j
+.
+	`£Ëù
+(
+p
+.
+id
+.
+	`AS
+('pid'), 
+o
+.id.AS('Üd”_id')).
+	`wh”e
+(
+cÚd
+).
+	$whŞe
+()
+
+83 
+´št
+ "$>", 
+»s
+
+
+84 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+85 
+´št
+ 
+i
+.
+	`dumpAsSŒ
+()
+
+87 @
+£p
+
+
+88 
+def
+ 
+	$‹¡_Úly_Úe
+(
+’abË
+=
+True
+, 
+Úly_Úe
+=True):
+
+89 #ha 
+Úe
+
+
+90 
+j
+=
+p
+.
+	`još
+(
+o
+).
+	$Ú
+(
+p
+.
+id
+ =ğ
+o
+.
+³rsÚ_id
+)
+
+91 
+cÚd
+ = (
+p
+.
+id
+ == 1)
+
+92 
+Úly_Úe
+:
+
+93 
+»s
+ = 
+j
+.
+	`£Ëù
+().
+	`wh”e
+(
+cÚd
+).
+	$Úe
+()
+
+95 
+»s
+ = 
+j
+.
+	`£Ëù
+().
+	`wh”e
+(
+cÚd
+).
+	$whŞe
+()
+
+96 
+´št
+ "$>", 
+»s
+
+
+98 
+Úly_Úe
+:
+
+99 
+´št
+ 
+»s
+.res
+
+100 
+»s
+.res:
+
+101 
+´št
+ 
+»s
+.»s.
+	$dumpAsSŒ
+()
+
+103 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+104 
+´št
+ 
+i
+.
+	`dumpAsSŒ
+()
+
+106 @
+£p
+
+
+107 
+def
+ 
+	$‹¡_još_w™hout_Ëak_f›ld_as
+(
+’abË
+=
+True
+):
+
+108 #ha 
+Úe
+
+
+109 
+j
+=
+p
+.
+	`još
+(
+o
+).
+	$Ú
+(
+p
+.
+id
+ =ğ
+o
+.
+³rsÚ_id
+)
+
+110 
+cÚd
+=
+	`In
+(
+p
+.
+id
+, (1,2,3)è& 
+	`NÙ
+(
+	`Like
+Õ.
+Çme
+, '%100%'))
+
+111 
+»s
+ = 
+j
+.
+	`£Ëù
+().
+	`wh”e
+(
+cÚd
+).
+	$whŞe
+()
+
+112 
+´št
+ "$>", 
+»s
+
+
+113 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+114 
+´št
+ 
+i
+.
+	$dumpAsSŒ
+()
+
+115 
+impÜt
+ 
+db
+; ipdb.
+	`£t_Œaû
+()
+
+117 @
+£p
+
+
+118 
+def
+ 
+	$‹¡_još_no_»suÉ
+(
+’abË
+=
+True
+):
+
+120 
+j
+=
+p
+.
+	`još
+(
+o
+).
+	$Ú
+(
+p
+.
+id
+ =ğ
+o
+.
+³rsÚ_id
+)
+
+121 
+cÚd
+=
+	`In
+(
+p
+.
+id
+, (3000000,400000)è& 
+	`NÙ
+(
+	`Like
+Õ.
+Çme
+, '%100%'))
+
+122 
+»s
+ = 
+j
+.
+	`£Ëù
+(
+p
+.
+id
+.
+	`AS
+('pid'), 
+o
+.id.AS('Üd”_id')).
+	`wh”e
+(
+cÚd
+).
+	$whŞe
+()
+
+123 
+´št
+ "$>", 
+»s
+
+
+124 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+125 
+´št
+ 
+i
+.
+	`dumpAsSŒ
+()
+
+127 @
+£p
+
+
+128 
+def
+ 
+	$‹¡_bË_as
+(
+’abË
+=
+True
+):
+
+129 
+p_as
+ = 
+p
+.
+	`AS
+('devil')
+
+130 
+o_as
+ = 
+o
+.
+	`AS
+('angel')
+
+131 
+j
+ = 
+	`Još
+(
+p_as
+, 
+o_as
+).
+	$Ú
+(
+p_as
+.
+id
+ =ğ
+o_as
+.
+³rsÚ_id
+)
+
+132 
+cÚd
+=
+	`In
+(
+p_as
+.
+id
+, (1,2,3)è& 
+	`NÙ
+(
+	`Like
+Õ_as.
+Çme
+, '%100%'))
+
+133 
+»s
+ = 
+j
+.
+	`£Ëù
+(
+p_as
+.
+id
+.
+	`AS
+('why_so_£rious'), 
+o_as
+.
+³rsÚ_id
+).
+	`wh”e
+(
+cÚd
+).
+	$whŞe
+()
+
+134 
+´št
+ "$>", 
+»s
+
+
+135 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+136 
+´št
+ 
+i
+.
+	`dumpAsSŒ
+()
+
+138 @
+£p
+
+
+139 
+def
+ 
+	$‹¡_£Ëù_®l
+(
+’abË
+=
+True
+):
+
+140 
+Œy
+:
+
+141 
+j
+=
+p
+.
+	`još
+(
+o
+).
+	$Ú
+(
+p
+.
+id
+ =ğ
+o
+.
+³rsÚ_id
+)
+
+142 
+»s
+ = 
+j
+.
+	`£Ëù
+().
+	$whŞe
+()
+
+143 
+´št
+ "$>", 
+»s
+
+
+144 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+145 
+´št
+ 
+i
+.
+	$dumpAsSŒ
+()
+
+146 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+147 
+´št
+ "%s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+149 @
+£p
+
+
+150 
+def
+ 
+	$‹¡_em±y_wh”e_cÚd™iÚ
+(
+’abË
+=
+True
+):
+
+151 
+cÚd
+=
+NÚe
+
+
+152 
+Œy
+:
+
+153 
+j
+=
+p
+.
+	`još
+(
+o
+).
+	$Ú
+(
+p
+.
+id
+ =ğ
+o
+.
+³rsÚ_id
+)
+
+154 
+»s
+ = 
+j
+.
+	`£Ëù
+().
+	`wh”e
+(
+cÚd
+).
+	$whŞe
+()
+
+155 
+´št
+ "$>", 
+»s
+
+
+156 
+i
+ 
+š
+ 
+»s
+.» 
+Ü
+ []:
+
+157 
+´št
+ 
+i
+.
+	$dumpAsSŒ
+()
+
+158 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+159 
+´št
+ "%s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+163 @
+£p
+
+
+164 
+def
+ 
+	$‹¡_š£¹_w™h_nÚe_f›ld
+(
+’abË
+=
+True
+):
+
+165 
+d©as
+ = [
+
+166 {'Çme':'haha', '£x':
+NÚe
+},
+
+169 
+´št
+ 
+d©as
+
+
+171 
+Œy
+:
+
+172 
+r
+ = 
+p
+.
+	$š£¹
+Ğ
+d©as
+ )
+
+173 
+´št
+ "$>", 
+r
+
+
+175 #nÜm® 
+´oûss
+ 
+logic
+
+
+176 
+r
+.
+»s
+ > 0:
+
+177 
+´št
+ "š£¹ sucûss,hÃwly‡dded id:" % 
+r
+.
+»s
+
+
+178 
+–if
+ 
+r
+.
+»s
+ =ğ
+COCÚ¡ªts
+.
+RECORD_DUPLICATED
+:
+
+179 
+´št
+ "du¶iÿ‹d occurs, caz:'%s'" % 
+r
+.
+why
+
+
+180 
+–if
+ 
+r
+.
+»s
+ =ğ
+COCÚ¡ªts
+.
+INVALID_SQL
+:
+
+181 
+´št
+ "šv®id sql, caz:'%s'" % 
+r
+.
+why
+
+
+183 
+´št
+ 
+r
+
+
+185 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+186 
+´št
+ "%s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+189 @
+£p
+
+
+190 
+def
+ 
+	$‹¡_š£¹
+(
+’abË
+=
+True
+):
+
+191 
+d©as
+ = [
+
+192 {'Çme':'haha'
+	}
+},
+
+195 
+´št
+ 
+d©as
+
+
+196 
+Œy
+:
+
+197 
+r
+ = 
+p
+.
+	$š£¹
+Ğ
+d©as
+ )
+
+198 
+´št
+ "$>", 
+r
+
+
+200 #nÜm® 
+´oûss
+ 
+logic
+
+
+201 
+r
+.
+»s
+ > 0:
+
+202 
+´št
+ "š£¹ sucûss,hÃwly‡dded id:'%s'" % 
+r
+.
+»s
+
+
+203 
+–if
+ 
+r
+.
+»s
+ =ğ
+COCÚ¡ªts
+.
+RECORD_DUPLICATED
+:
+
+204 
+´št
+ "du¶iÿ‹d occurs, caz:'%s'" % 
+r
+.
+why
+
+
+205 
+–if
+ 
+r
+.
+»s
+ =ğ
+COCÚ¡ªts
+.
+INVALID_SQL
+:
+
+206 
+´št
+ "šv®id sql, caz:'%s'" % 
+r
+.
+why
+
+
+208 
+´št
+ 
+r
+
+
+210 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+211 
+´št
+ "%s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+214 @
+£p
+
+
+215 
+def
+ 
+	$‹¡_š£¹_by_mod–
+(
+’abË
+=
+True
+):
+
+216 
+m
+ = 
+	`P”sÚMod–
+(
+Çme
+='haha', 
+£x
+=
+P”sÚ
+.
+SEX_FEMALE
+)
+
+217 
+Œy
+:
+
+218 
+r
+ = 
+p
+.
+	$š£¹
+Ğ
+m
+ )
+
+219 
+´št
+ "$>", 
+r
+
+
+221 #nÜm® 
+´oûss
+ 
+logic
+
+
+222 
+r
+.
+»s
+ > 0:
+
+223 
+´št
+ "š£¹ sucûss,hÃwly‡dded id:'%s'" % 
+r
+.
+»s
+
+
+224 
+–if
+ 
+r
+.
+»s
+ =ğ
+COCÚ¡ªts
+.
+RECORD_DUPLICATED
+:
+
+225 
+´št
+ "du¶iÿ‹d occurs, caz:'%s'" % 
+r
+.
+why
+
+
+226 
+–if
+ 
+r
+.
+»s
+ =ğ
+COCÚ¡ªts
+.
+INVALID_SQL
+:
+
+227 
+´št
+ "šv®id sql, caz:'%s'" % 
+r
+.
+why
+
+
+229 
+´št
+ 
+r
+
+
+231 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+232 
+´št
+ "%s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+234 @
+£p
+
+
+235 
+def
+ 
+	$‹¡_upd©e
+(
+’abË
+=
+True
+):
+
+236 
+d©a
+ = { 'age':
+¿ndom
+.
+	`¿ndšt
+(1,100),
+
+237 '£x': 'MALE' 
+¿ndom
+.
+	`¿ndšt
+(0,1) 'FEMALE'
+
+238 
+	}
+}
+
+239 
+cÚd
+ = 
+In
+(
+p
+.
+id
+, (1,2,3))
+
+240 
+	gŒy
+:
+
+241 
+r
+ = 
+p
+.
+	$upd©e
+(
+d©a
+, 
+cÚd
+=cond)
+
+242 
+´št
+ "$>", 
+r
+
+
+243 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+244 
+´št
+ "%s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+246 @
+£p
+
+
+247 
+def
+ 
+	$‹¡_d–‘e
+(
+’abË
+=
+True
+):
+
+248 
+cÚd
+ = (
+p
+.
+id
+ > 10)
+
+249 
+Œy
+:
+
+250 
+r
+ = 
+p
+.
+	$d–‘e
+(
+cÚd
+)
+
+251 
+´št
+ "$>", 
+r
+
+
+252 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+253 
+´št
+ "%s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+255 @
+£p
+
+
+256 
+def
+ 
+	$‹¡_d–‘e_w™h_cÚd_is_nÚe
+(
+’abË
+=
+True
+):
+
+257  
+NÚe
+
+
+258 
+Œy
+:
+
+259 
+r
+ = 
+p
+.
+	$d–‘e
+(
+NÚe
+)
+
+260 
+´št
+ "$>", 
+r
+
+
+261 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+262 
+´št
+ "$> %s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+264 @
+£p
+
+
+265 
+def
+ 
+	$‹¡_d–‘e_w™h_cÚd_is_nÚe_®lowed
+(
+’abË
+=
+True
+):
+
+266 #nØ
+Ãed
+ 
+to
+ 
+‹¡
+ 
+this
+, 
+®l
+ 
+your
+ 
+d©a
+ 
+wl
+ 
+gÚe
+, 
+fuck
+ 
+™
+
+
+267  
+NÚe
+
+
+268 
+Œy
+:
+
+269 
+r
+ = 
+p
+.
+	$d–‘e
+(
+cÚd
+=
+NÚe
+, 
+®low_nÚe_cÚd
+=
+True
+)
+
+270 
+´št
+ "$>", 
+r
+
+
+271 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+272 
+´št
+ "$> %s, caz:'%s'" % (
+e
+.
+__şass__
+,ƒ)
+
+275 @
+£p
+
+
+276 @
+do_Œª§ùiÚ
+
+
+277 
+def
+ 
+	$‹¡_Œª§ùiÚ
+(
+’abË
+=
+True
+):
+
+278 
+def
+ 
+	$_šÃr_Úe
+():
+
+279 
+d©as
+ = [
+
+280 {'Çme':'haha', '£x':
+NÚe
+},
+
+283 
+r
+ = 
+p
+.
+	$š£¹
+Ğ
+d©as
+ )
+
+284 
+´št
+ "$>", 
+r
+
+
+285 #»® 
+¡¬ts
+ 
+h”e
+
+
+286 
+	$_šÃr_Úe
+()
+
+287 
+	`_šÃr_Úe
+()
+
+290 @
+£p
+
+
+291 
+def
+ 
+	$‹¡_funùiÚ_couÁ
+(
+’abË
+=
+True
+):
+
+292 
+p
+ = 
+	$P”sÚ
+()
+
+293 #w™h 
+as
+
+
+294 
+»s
+ = 
+p
+.
+	`£Ëù
+(
+	`COUNT
+Õ.
+id
+).
+	`AS
+('tÙ®'), 
+	`MAX
+Õ.id).AS('max')).
+	$Úe
+()
+
+295 
+´št
+ '$>', 
+»s
+.»s.
+	$dumpAsDiù
+()
+
+296 
+»s
+ = 
+p
+.
+	`£Ëù
+(
+	`COUNT
+Õ.
+id
+), 
+	`MAX
+Õ.id)).
+	$Úe
+()
+
+297 
+´št
+ '$>', 
+»s
+.»s.
+	$dumpAsDiù
+()
+
+298 
+»s
+ = 
+p
+.
+	`£Ëù
+(
+NÚe
+).
+	$Úe
+()
+
+299 
+´št
+ '$>', 
+»s
+.»s.
+	`dumpAsDiù
+()
+
+301 @
+£p
+
+
+302 
+def
+ 
+	$‹¡_funùiÚ_couÁ_di¡šù
+(
+’abË
+=
+True
+):
+
+303 
+p
+ = 
+	$P”sÚ
+()
+
+304 #w™h 
+as
+
+
+305 
+´št
+ '$>', 
+p
+.
+	`£Ëù
+(
+	`COUNT
+(
+	`DISTINCT
+Õ.
+id
+,p.
+Çme
+.
+	`AS
+('Çm'))).AS('tÙ®')).
+	`Úe
+().
+»s
+.
+tÙ®
+
+
+309 
+__Çme__
+ == '__main__':
+
+327 #‹¡_Úly_Úe(0, 
+Úly_Úe
+=
+F®£
+)
+
+328 #‹¡_Úly_Úe(0, 
+Úly_Úe
+=
+True
+)
+
+345 #‹¡_d–‘e_w™h_cÚd_is_nÚe_®lowed(è#fuck, 
+d©a
+ 
+¬e
+ 
+gÚe
+
+
+348 
+	`‹¡_funùiÚ_couÁ_di¡šù
+()
+
+	@app/app_config_manager.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #Fr˜
+May
+ 8 16:29:32 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+impÜt
+ 
+sys
+
+
+7 
+impÜt
+ 
+imp
+
+
+9 
+äom
+ 
+­p_uts
+ 
+impÜt
+ 
+D“pMagic
+
+
+11 
+şass
+ 
+	$CÚfigu»Mªag”
+(
+objeù
+):
+
+12 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+cÚfig_fe_·th
+):
+
+13 
+£lf
+.
+cÚfig_fe_·th
+ = config_file_path
+
+14 
+£lf
+.
+CNF
+ = s–f.
+	$g‘CÚfigu»D©a
+(
+£lf
+.
+cÚfig_fe_·th
+)
+
+16 
+def
+ 
+	$g‘CÚfigu»D©a
+(
+£lf
+, 
+cÚfig_fe_·th
+=
+NÚe
+):
+
+17 
+£lf
+.
+cÚfig_fe_·th
+ = config_file_path config_file_path self.config_file_path
+
+18 
+´št
+ "cÚfigu» fe: '%s'" % 
+£lf
+.
+cÚfig_fe_·th
+
+
+19 
+Œy
+:
+
+20 
+mdl_key
+ = 
+£lf
+.
+cÚfig_fe_·th
+.
+	`»¶aû
+('/', '.'è#£lf.cÚfig_fe_·th 
+unchªged
+
+
+21 
+úf_mdl
+ = 
+imp
+.
+	$lßd_sourû
+(
+mdl_key
+, 
+£lf
+.
+cÚfig_fe_·th
+)
+
+22  
+	$D“pMagic
+Ğ** 
+úf_mdl
+.
+CNF
+ )
+
+23 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+24 
+´št
+ "failedo†oad:'%s' or‚o configure data,…lease check, why:'%s'" % \
+
+25 (
+£lf
+.
+cÚfig_fe_·th
+, 
+e
+)
+
+26 
+sys
+.
+	`ex™
+(-1)
+
+	@app/app_model/__init__.py
+
+	@app/app_model/app_db_constants.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #
+#Autog’”©ed 
+by
+ 
+Mod–
+ 
+G’”©Ü
+ (0.2)
+
+5 #DO 
+NOT
+ 
+EDIT
+ 
+UNLESS
+ 
+YOU
+ 
+ARE
+ 
+SURE
+ 
+THAT
+ YOU 
+KNOW
+ 
+WHAT
+ YOU ARE 
+DOING
+
+
+7 
+äom
+ 
+­p_db_mod–
+ 
+impÜt
+ *
+
+10 
+şass
+ 
+	$AµDBCÚ¡ªts
+(
+objeù
+):
+
+12 
+PERSON_SEX_FEMALE
+ = 
+P”sÚ
+.
+SEX_FEMALE
+
+
+13 
+PERSON_SEX_MALE
+ = 
+P”sÚ
+.
+SEX_MALE
+
+
+14 
+PERSON_SEX_UNKNOWN
+ = 
+P”sÚ
+.
+SEX_UNKNOWN
+
+
+15 
+PERSON_ALL_SEX_CANDIDATES
+ = 
+P”sÚ
+.ALL_SEX_CANDIDATES
+
+	@app/app_model/app_db_model.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #
+#Autog’”©ed 
+by
+ 
+Mod–
+ 
+G’”©Ü
+ (0.2)
+
+5 #DO 
+NOT
+ 
+EDIT
+ 
+UNLESS
+ 
+YOU
+ 
+ARE
+ 
+SURE
+ 
+THAT
+ YOU 
+KNOW
+ 
+WHAT
+ YOU ARE 
+DOING
+
+
+7 
+äom
+ 
+	gÿlypso
+.
+co_sql
+ 
+impÜt
+ 
+	gF›ld
+, 
+	gMod–Içû
+, 
+	gTabË
+, 
+F›ldTy³Enum
+
+
+8 
+äom
+ 
+	gÿlypso
+.
+co_executÜ
+ 
+impÜt
+ 
+g_co_executÜ
+
+
+10 
+şass
+ 
+	$Ord”sMod–
+(
+Mod–Içû
+):
+
+11 
+TABLE_NAME
+ = 'orders'
+
+13 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+id
+=
+NÚe
+, 
+£rŸl
+=NÚe, 
+³rsÚ_id
+=NÚe, 
+ü—‹_time
+=None):
+
+14 
+	`su³r
+(
+Ord”sMod–
+, 
+£lf
+).
+	$__š™__
+()
+
+15 
+£lf
+.
+id
+ = 
+	`F›ld
+(
+Çme
+='id', 
+ty³
+=, 
+v®ue
+=id, =
+NÚe
+, 
+»¡riùiÚ
+=None)
+
+16 
+£lf
+.
+£rŸl
+ = 
+	`F›ld
+(
+Çme
+='£rŸl', 
+ty³
+=
+¡r
+, 
+v®ue
+=£rŸl, ='', 
+»¡riùiÚ
+=
+NÚe
+)
+
+17 
+£lf
+.
+³rsÚ_id
+ = 
+	`F›ld
+(
+Çme
+='³rsÚ_id', 
+ty³
+=, 
+v®ue
+õ”sÚ_id, =0, 
+»¡riùiÚ
+=
+NÚe
+)
+
+18 
+£lf
+.
+ü—‹_time
+ = 
+	`F›ld
+(
+Çme
+='ü—‹_time', 
+ty³
+=
+¡r
+, 
+v®ue
+=ü—‹_time, ='0000-00-00 00:00:00', 
+»¡riùiÚ
+=
+NÚe
+)
+
+20 
+şass
+ 
+	$Ord”s
+(
+TabË
+):
+
+21 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+22 
+	`su³r
+(
+Ord”s
+, 
+£lf
+).
+	$__š™__
+(
+Ord”sMod–
+, 
+executÜ
+=
+g_co_executÜ
+)
+
+24 
+şass
+ 
+	$P”sÚMod–
+(
+Mod–Içû
+):
+
+25 
+TABLE_NAME
+ = 'person'
+
+27 
+SEX_FEMALE
+ = 'FEMALE'
+
+28 
+SEX_MALE
+ = 'MALE'
+
+29 
+SEX_UNKNOWN
+ = 'UNKNOWN'
+
+30 
+ALL_SEX_CANDIDATES
+ = (
+
+31 
+SEX_FEMALE
+
+
+32 ,
+SEX_MALE
+
+
+33 ,
+SEX_UNKNOWN
+ )
+
+34 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+id
+=
+NÚe
+, 
+Çme
+=NÚe, 
+£x
+=
+SEX_UNKNOWN
+, 
+age
+=None):
+
+35 
+	`su³r
+(
+P”sÚMod–
+, 
+£lf
+).
+	$__š™__
+()
+
+36 
+£lf
+.
+id
+ = 
+	`F›ld
+(
+Çme
+='id', 
+ty³
+=, 
+v®ue
+=id, =
+NÚe
+, 
+»¡riùiÚ
+=None)
+
+37 
+£lf
+.
+Çme
+ = 
+	`F›ld
+Òame='Çme', 
+ty³
+=
+¡r
+, 
+v®ue
+òame, ='', 
+»¡riùiÚ
+=
+NÚe
+)
+
+38 
+£lf
+.
+£x
+ = 
+	`F›ld
+(
+Çme
+='£x', 
+ty³
+=
+F›ldTy³Enum
+, 
+v®ue
+=£x, =£lf.
+SEX_UNKNOWN
+, 
+»¡riùiÚ
+=£lf.
+ALL_SEX_CANDIDATES
+)
+
+39 
+£lf
+.
+age
+ = 
+	`F›ld
+(
+Çme
+='age', 
+ty³
+=, 
+v®ue
+÷ge, =0, 
+»¡riùiÚ
+=
+NÚe
+)
+
+41 
+şass
+ 
+	$P”sÚ
+(
+TabË
+):
+
+42 
+SEX_FEMALE
+ = 'FEMALE'
+
+43 
+SEX_MALE
+ = 'MALE'
+
+44 
+SEX_UNKNOWN
+ = 'UNKNOWN'
+
+45 
+ALL_SEX_CANDIDATES
+ = (
+
+46 
+SEX_FEMALE
+
+
+47 ,
+SEX_MALE
+
+
+48 ,
+SEX_UNKNOWN
+ )
+
+49 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+50 
+	`su³r
+(
+P”sÚ
+, 
+£lf
+).
+	`__š™__
+(
+P”sÚMod–
+, 
+executÜ
+=
+g_co_executÜ
+)
+
+	@app/app_utils.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #S© 
+May
+ 9 10:07:32 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+impÜt
+ 
+time
+
+
+9 
+şass
+ 
+	$Magic
+(
+objeù
+):
+
+10 
+def
+ 
+	$__š™__
+(
+£lf
+, **
+kw¬gs
+):
+
+11 
+£lf
+.
+__diù__
+.
+	$upd©e
+(
+kw¬gs
+)
+
+13 
+def
+ 
+	$__¡r__
+(
+£lf
+, ):
+
+14  
+	$¡r
+(
+£lf
+.
+__diù__
+)
+
+17 
+şass
+ 
+	$D“pMagic
+(
+objeù
+):
+
+18 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+19 
+£lf
+.
+__¿w__
+ = 
+kw¬gs
+
+
+20 
+	`£‰r
+(
+£lf
+, '¬gs', 
+¬gs
+)
+
+21 
+def
+ 
+	$__šÃr_do_magic
+(
+obj
+, 
+d
+):
+
+22 
+k
+,
+v
+ 
+š
+ 
+d
+.
+	$™ems
+():
+
+23 
+nÙ
+ 
+	$isš¡ªû
+(
+v
+, 
+diù
+):
+
+24 
+	$£‰r
+(
+obj
+, 
+k
+, 
+v
+)
+
+27 
+	`£‰r
+(
+obj
+, 
+k
+, 
+	$B¬eBÚe
+())
+
+28 
+bbÚe
+ = 
+	$g‘©Œ
+(
+obj
+, 
+k
+)
+
+29 
+	$__šÃr_do_magic
+Ğ
+bbÚe
+, 
+v
+ )
+
+31 
+	$__šÃr_do_magic
+(
+£lf
+, 
+kw¬gs
+)
+
+34 
+şass
+ 
+	$Uts
+(
+objeù
+):
+
+35 
+_STANDARD_TIME_FORMAT_IN_REGEX
+ = '\d{4}-\d{2}-\d{2} +\d{2}:\d{2}:\d{2}'
+
+36 
+_STANDARD_TIME_FORMAT_IN_TIME
+ = '%Y-%m-%d %H:%M:%S'
+
+37 
+def
+ 
+	$__š™__
+(
+£lf
+, ):
+
+38 
+£lf
+.
+why
+ = ''
+
+40 @
+şassm‘hod
+
+
+41 
+def
+ 
+	$Œaû_exc
+(
+şs
+):
+
+42 
+exû±iÚ_šfos
+ = 
+Œaûback
+.
+	`fÜm©_exc
+().
+	`¥l™
+('\n')
+
+43 
+i
+ 
+š
+ 
+exû±iÚ_šfos
+:
+
+44 
+	`´št
+ ( "Œaû:'%s'" % 
+i
+.
+	$l¡r
+() )
+
+46 
+def
+ 
+	$check_v¬
+(
+£lf
+, 
+v¬
+, 
+v¬_ty³
+, 
+v¬_deçuÉ
+=
+NÚe
+, 
+®low_nÚe
+=
+True
+):
+
+47 #»£ˆ
+why
+
+
+48 
+£lf
+.
+why
+ = 'OK'
+
+49 #1.  
+check
+ 
+mu¡
+ 
+comes
+ 
+fœ¡
+,
+
+50 #2. 
+we
+ 
+®low
+  
+v¬ue
+ 
+ÿn
+ 
+be
+ 
+difã»Á
+ 
+äom
+ 
+v¬_ty³
+,
+
+51 #sØ
+check
+ 
+v¬_deçuÉ
+ 
+ªd
+ 
+ty³
+ 
+tog‘h”
+.
+
+52 #3. 
+check
+ 
+w‘h”
+ 
+the
+ 
+v¬
+ 
+®low
+ 
+to
+ 
+be
+ 
+NÚe
+.
+
+53 
+is_ty³_v®id
+ = 
+	$ty³
+(
+v¬
+è
+š
+ 
+v¬_ty³
+ 
+	$ty³
+(
+v¬_ty³
+è
+	$š
+ (
+tu¶e
+,
+li¡
+è
+	$isš¡ªû
+(
+v¬
+, 
+v¬_ty³
+)
+
+54 
+cÚd
+ = (
+v¬
+ =ğ
+v¬_deçuÉ
+ 
+Ü
+ 
+is_ty³_v®id
+è
+	$ªd
+ (
+®low_nÚe
+ 
+Ü
+ 
+v¬
+ 
+is
+ 
+nÙ
+ 
+NÚe
+)
+
+55 
+nÙ
+ 
+cÚd
+:
+
+56 
+£lf
+.
+why
+ = "v¬:'%s', def:'%s',ƒx³ùedy³:'%s', giv’y³:'%s',‡Îow_nÚe:'%s'" % (
+v¬
+, 
+v¬_deçuÉ
+, 
+v¬_ty³
+, 
+	`ty³
+(v¬), 
+®low_nÚe
+)
+
+57  
+cÚd
+
+
+59 
+def
+ 
+	$toSŒšg
+(
+£lf
+, 
+v¬
+):
+
+60 
+deçuÉ_»tuº_¡ršg
+ = ''
+
+61 
+	$isš¡ªû
+(
+v¬
+, 
+¡r
+):
+
+62  
+v¬
+
+
+63 
+	$isš¡ªû
+(
+v¬
+, 
+unicode
+):
+
+64 
+Œy
+:
+
+65  
+v¬
+.
+	`’code
+('utf-8')
+
+66 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+67 
+£lf
+.
+why
+ = "exû±iÚ caught: '%s'" % 
+e
+
+
+68 
+£lf
+.
+	$Œaû_exc
+()
+
+69  
+deçuÉ_»tuº_¡ršg
+
+
+71 
+Œy
+:
+
+72  
+	$¡r
+(
+v¬
+)
+
+73 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+74 
+£lf
+.
+why
+ = "exû±iÚ caught: '%s'" % 
+e
+
+
+75 
+£lf
+.
+	$Œaû_exc
+()
+
+76  
+deçuÉ_»tuº_¡ršg
+
+
+78 
+def
+ 
+	`£cs2d©‘ime
+(
+£lf
+, 
+£cÚds_sšû_•
+, 
+tm_fmt
+="%Y-%m-%d %H:%M:%S"):
+
+83 
+£cÚds_sšû_•
+ += 28800 #bugs
+
+84 
+Œy
+:
+
+85  
+time
+.
+	`¡ráime
+(
+tm_fmt
+,ime.
+	`gmtime
+((
+£cÚds_sšû_•
+)))
+
+86 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+87 
+£lf
+.
+	$Œaû_exc
+()
+
+88  
+	$£cs2d©‘ime
+(0,
+tm_fmt
+)
+
+90 
+def
+ 
+	`d©‘ime2£cs
+(
+£lf
+, 
+d©e_time_¡r
+, 
+tm_fmt
+='%Y-%m-%d %H:%M:%S'):
+
+91 
+Œy
+:
+
+92 
+tm_tu¶e
+ = 
+time
+.
+	$¡½time
+(
+d©e_time_¡r
+, 
+tm_fmt
+)
+
+93 
+£cs
+ = (
+time
+.
+	`¡ráime
+("%s", 
+tm_tu¶e
+))
+
+94 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+95 
+£cs
+ = 0
+
+96 
+£lf
+.
+	$Œaû_exc
+()
+
+97 
+fš®ly
+:
+
+98  
+£cs
+
+
+100 
+def
+ 
+	`now
+(
+£lf
+, 
+»tuº_ty³
+='std'):
+
+101 
+_now
+ = 
+time
+.
+	$time
+()
+
+102 
+»tuº_ty³
+ == 'int':
+
+103  (
+_now
+)
+
+104 
+»tuº_ty³
+ == 'std':
+
+105  
+£lf
+.
+	$£cs2d©‘ime
+(
+_now
+)
+
+107  
+_now
+
+
+109 
+def
+ 
+	$f™sSnd¬dTimeFÜm©
+(
+£lf
+, 
+¿w_time_¡r
+):
+
+110  
+NÚe
+ !ğ
+»
+.
+	$m©ch
+(
+£lf
+.
+_STANDARD_TIME_FORMAT_IN_REGEX
+ , 
+¿w_time_¡r
+)
+
+112 
+def
+ 
+	`md5
+(
+£lf
+, 
+¿w
+, 
+»tuº_ty³
+='string'):
+
+113 
+obj
+ = 
+hashlib
+.
+	`md5
+(
+£lf
+.
+	$toSŒšg
+(
+¿w
+))
+
+114  
+obj
+.
+	$hexdige¡
+(è
+»tuº_ty³
+ =ğ'¡ršg' 
+obj
+
+
+116 
+g_uts
+ = 
+	`Uts
+()
+
+	@app/config/app_db_config.py
+
+1 
+	gCNF
+ = {
+
+	@calypso/__init__.py
+
+	@calypso/co_conn.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #Wed 
+May
+ 6 16:51:01 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+	@calypso/co_constants.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #SuÀ
+May
+ 10 00:48:19 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+şass
+ 
+	$COCÚ¡ªts
+(
+objeù
+):
+
+7 #sqÈ
+aùiÚ
+
+
+8 
+SQL_ACTION_INSERT
+ = 0
+
+9 
+SQL_ACTION_DELETE
+ = 1
+
+10 
+SQL_ACTION_SELECT
+ = 2
+
+11 
+SQL_ACTION_UPDATE
+ = 3
+
+13 
+VALID_SQL_ACTIONS
+ = (
+
+14 
+SQL_ACTION_INSERT
+,
+
+15 
+SQL_ACTION_DELETE
+,
+
+16 
+SQL_ACTION_SELECT
+,
+
+17 
+SQL_ACTION_UPDATE
+
+
+21 #još 
+mode
+
+
+22 
+JOIN_MODE_INNER
+ = 'INNER JOIN'
+
+23 
+JOIN_MODE_CROSS
+ = 'CROSS JOIN'
+
+24 
+JOIN_MODE_STRAIGHT
+ = 'STRAIGHT_JOIN'
+
+25 
+JOIN_MODE_LEFT
+ = 'LEFT JOIN'
+
+26 
+JOIN_MODE_RIGHT
+ = 'RIGHT JOIN'
+
+28 #miüØ
+š£¹
+ 
+”r
+, 
+nÙ©iÚ
+:
+
+29 #v¬ 
+Çme
+ 
+as
+ 
+”r
+ 
+šfÜm©iÚ
+ 
+ªd
+ 
+v®ue
+‡ 
+the
+ 
+İpos™e
+
+
+30 #oà
+the
+ 
+»®
+ 
+mysql
+ 
+”rÜ
+ 
+—sy
+ 
+bug
+-
+Œackšg
+
+
+31 
+RECORD_DUPLICATED
+ = -1062
+
+32 
+INVALID_SQL
+ = -1064
+
+	@calypso/co_error.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #S© 
+May
+ 9 13:00:29 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+7 
+şass
+ 
+	$CoBa£Exû±iÚ
+(
+Exû±iÚ
+):
+
+8 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+9 
+´št
+ '[CO_EXC]ƒxû±iÚ:% why:% %s' % (
+£lf
+.
+__şass__
+, 
+¬gs
+, 
+kw¬gs
+)
+
+10 
+	`su³r
+(
+Exû±iÚ
+, 
+£lf
+).
+	$__š™__
+(*
+¬gs
+, **
+kw¬gs
+)
+
+13 
+şass
+ 
+	$COExcInv®idSql
+(
+CoBa£Exû±iÚ
+):
+
+14 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+15 
+	`su³r
+(
+COExcInv®idSql
+, 
+£lf
+).
+	$__š™__
+(*
+¬gs
+, **
+kw¬gs
+)
+
+18 
+şass
+ 
+	$COExcIÁ”ÇlE¼Ü
+(
+CoBa£Exû±iÚ
+):
+
+19 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+20 
+	`su³r
+(
+COExcIÁ”ÇlE¼Ü
+, 
+£lf
+).
+	$__š™__
+(*
+¬gs
+, **
+kw¬gs
+)
+
+23 
+şass
+ 
+	$COSqlExecu‹E¼Ü
+(
+CoBa£Exû±iÚ
+):
+
+24 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+25 
+	`su³r
+(
+COSqlExecu‹E¼Ü
+, 
+£lf
+).
+	$__š™__
+(*
+¬gs
+, **
+kw¬gs
+)
+
+28 
+şass
+ 
+	$CODu¶iÿ‹dDBRecÜd
+(
+CoBa£Exû±iÚ
+):
+
+31 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+32 
+	`su³r
+(
+CODu¶iÿ‹dDBRecÜd
+, 
+£lf
+).
+	`__š™__
+(*
+¬gs
+, **
+kw¬gs
+)
+
+	@calypso/co_executor.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #Fr˜
+May
+ 8 16:29:21 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+7 
+g‘tšg
+ 
+d©a
+ 
+äom
+ 
+db
+ 
+by
+ 
+	gsql
+
+
+10 
+impÜt
+ 
+MySQLdb
+
+
+11 
+impÜt
+ 
+	gMySQLdb
+.
+cursÜs
+
+
+13 
+äom
+ 
+co_sql
+ 
+impÜt
+ 
+Mod–Içû
+
+
+14 
+äom
+ 
+co_”rÜ
+ 
+impÜt
+ 
+	gCOExcIÁ”ÇlE¼Ü
+, 
+	gCOSqlExecu‹E¼Ü
+, 
+CODu¶iÿ‹dDBRecÜd
+
+
+15 
+äom
+ 
+co_cÚ¡ªts
+ 
+impÜt
+ 
+COCÚ¡ªts
+
+
+16 
+äom
+ 
+co_uts
+ 
+impÜt
+ 
+	gg_uts
+, 
+Magic
+
+
+19 
+	gEXEC_SQL_MAX_RETRY_TIME
+ = 10
+
+20 
+şass
+ 
+	$In£¹ResuÉ
+(
+Magic
+):
+
+21 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+»s
+=
+NÚe
+, 
+why
+=''):
+
+22 
+kw¬gs
+ = {'»s':
+»s
+, 'why':
+why
+}
+
+23 
+su³r
+(
+In£¹ResuÉ
+, 
+£lf
+).
+	$__š™__
+(**
+kw¬gs
+)
+
+24 
+£lf
+.
+_is_du¶iÿ‹d
+ = 
+F®£
+
+
+25 #£ˆ
+©Œibu‹
+ 
+v®ue
+
+
+26 
+£lf
+.
+	$_£t_©Œibu‹_v®ue
+(
+»s
+)
+
+28 
+def
+ 
+	$_£t_©Œibu‹_v®ue
+(
+£lf
+, 
+Ï¡_id
+):
+
+29 
+Ï¡_id
+ == 1062:
+
+30 
+£lf
+.
+_is_du¶iÿ‹d
+ = 
+True
+
+
+32 
+def
+ 
+	$isDu¶iÿ‹d
+(
+£lf
+):
+
+33  
+£lf
+.
+_is_du¶iÿ‹d
+
+
+36 
+şass
+ 
+	$Upd©eResuÉ
+(
+Magic
+):
+
+37 
+def
+ 
+	$__š™__
+(
+£lf
+, **
+kw¬gs
+):
+
+38 
+	`su³r
+(
+Upd©eResuÉ
+, 
+£lf
+).
+	$__š™__
+(**
+kw¬gs
+)
+
+41 
+şass
+ 
+	$D–‘eResuÉ
+(
+Magic
+):
+
+42 
+def
+ 
+	$__š™__
+(
+£lf
+, **
+kw¬gs
+):
+
+43 
+	`su³r
+(
+D–‘eResuÉ
+, 
+£lf
+).
+	$__š™__
+(**
+kw¬gs
+)
+
+46 
+şass
+ 
+	$S–eùResuÉ
+(
+Magic
+):
+
+47 
+def
+ 
+	$__š™__
+(
+£lf
+, **
+kw¬gs
+):
+
+48 
+	`su³r
+(
+S–eùResuÉ
+, 
+£lf
+).
+	$__š™__
+(**
+kw¬gs
+)
+
+51 
+şass
+ 
+	$SqlExûcutÜ
+(
+objeù
+):
+
+52 
+DEFAULT_MYSQL_HOST
+ = 'localhost'
+
+53 
+DEFAULT_MYSQL_PORT
+ = 3306
+
+55 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+mysql_ho¡
+=
+DEFAULT_MYSQL_HOST
+, 
+mysql_pÜt
+=
+DEFAULT_MYSQL_PORT
+, 
+mysql_u£r
+='', 
+mysql_·sswd
+='', 
+mysql_db
+=''):
+
+56 
+£lf
+.
+_mysql
+ = 
+	$Magic
+Ğ
+ho¡
+=
+mysql_ho¡
+,
+
+57 
+pÜt
+=
+mysql_pÜt
+,
+
+58 
+u£r
+=
+mysql_u£r
+,
+
+59 
+·sswd
+=
+mysql_·sswd
+,
+
+60 
+db
+=
+mysql_db
+,
+
+62 
+£lf
+.
+_auto_comm™
+ = 
+True
+
+
+63 
+£lf
+.
+_cÚn
+ = 
+NÚe
+
+
+64 #£lf.
+	`_cÚÃù_to_db
+()
+
+66 
+def
+ 
+	$_cÚÃù_to_db
+(
+£lf
+):
+
+67 
+£lf
+.
+_mysql
+.
+ho¡
+ =ğ
+NÚe
+:
+
+68 
+´št
+ "[CO_WARNING] failedo connecto database:%s@%s:%s" % \
+
+69 (
+£lf
+.
+_mysql
+.
+u£r
+, s–f._mysql.
+ho¡
+, s–f._mysql.
+pÜt
+)
+
+71 
+Œy
+:
+
+72 #TODO 
+Thu
+ 
+Jun
+ 11 17:28:38 2015 [
+lßd
+ 
+äom
+ 
+cÚÃùiÚ
+ 
+poŞ
+ 
+Ùh”
+ 
+ü—‹
+ 
+a
+ cÚÃùiÚ 
+h”e
+]
+
+73 
+£lf
+.
+_cÚn
+ = 
+MySQLdb
+.
+	$cÚÃù
+Ğ
+ho¡
+=
+£lf
+.
+_mysql
+.host,
+
+74 
+pÜt
+=
+£lf
+.
+_mysql
+.port,
+
+75 
+u£r
+=
+£lf
+.
+_mysql
+.user,
+
+76 
+·sswd
+=
+£lf
+.
+_mysql
+.passwd,
+
+77 
+db
+=
+£lf
+.
+_mysql
+.db
+
+79 
+exû±
+ 
+MySQLdb
+.
+O³¿tiÚ®E¼Ü
+ 
+as
+ 
+e
+:
+
+80 
+¿i£
+ 
+	$COExcIÁ”ÇlE¼Ü
+(
+e
+)
+
+81 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+82 
+¿i£
+ 
+	$COExcIÁ”ÇlE¼Ü
+(
+e
+)
+
+84 
+def
+ 
+	$_execu‹_sql
+(
+£lf
+, 
+sql
+, 
+max_Œy
+=
+EXEC_SQL_MAX_RETRY_TIME
+):
+
+85 
+nÙ
+ 
+£lf
+.
+_cÚn
+:
+
+86 
+¿i£
+ 
+	`COExcIÁ”ÇlE¼Ü
+("not connecto db yet,…lease„eInithe g_co_executor…lease in your‡pplication initialization…rocess")
+
+87 
+´št
+ "»ŒyšgØexecu‹ sql:[%s] @time:%s" % (
+sql
+, 
+max_Œy
+)
+
+88 
+max_Œy
+ == 0:
+
+89 
+¿i£
+ 
+	`COExcIÁ”ÇlE¼Ü
+("¡ÈçedØexecu‹ sqÈaá”„‘ry:% times" % (
+EXEC_SQL_MAX_RETRY_TIME
+))
+
+91 
+Œy
+:
+
+92  
+£lf
+.
+	$_bb_execu‹_sql
+(
+sql
+)
+
+93 
+exû±
+ 
+MySQLdb
+.
+E¼Ü
+ 
+as
+ 
+e
+:
+
+94 
+	`isš¡ªû
+(
+e
+.
+¬gs
+[0], (, )è
+ªd
+ƒ.args[0] == 2006:
+
+95 
+£lf
+.
+	$_cÚÃù_to_db
+()
+
+96 
+£lf
+.
+	`_bb_execu‹_sql
+(
+sql
+, 
+max_Œy
+-1)
+
+98 
+¿i£
+ 
+	`COSqlExecu‹E¼Ü
+(*(
+	`li¡
+(
+e
+.
+¬gs
+è+ [
+sql
+]))
+
+99 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+100 
+¿i£
+ 
+	`COExcIÁ”ÇlE¼Ü
+(*(
+	`li¡
+(
+e
+.
+¬gs
+è+ [
+sql
+]))
+
+102 
+def
+ 
+	$_bb_execu‹_sql
+(
+£lf
+, 
+sql
+):
+
+105 
+c
+ = 
+MySQLdb
+.
+cursÜs
+.
+	$DiùCursÜ
+Ğ
+£lf
+.
+_cÚn
+ )
+
+106 
+´št
+ "[CO_INFO]ƒxecutšg SQL:\"%s\" @'%s'" % (
+sql
+, 
+g_uts
+.
+	$now
+())
+
+107 
+c
+.
+	$execu‹
+Ğ
+sql
+ )
+
+108 
+£lf
+.
+_auto_comm™
+:
+
+109 
+£lf
+.
+	$comm™
+()
+
+110 
+´št
+ "[CO_DIAGNOSE]ƒxecu‹d: \"%s\" @'%s', info:'%s'" % (
+c
+.
+_Ï¡_execu‹d
+, 
+g_uts
+.
+	`now
+(), c.
+__diù__
+)
+
+111  
+c
+
+
+113 
+def
+ 
+	$¡¬tT¿n§ùiÚ
+(
+£lf
+):
+
+114 
+£lf
+.
+_auto_comm™
+ = 
+F®£
+
+
+115 
+£lf
+.
+	`_execu‹_sql
+('startransaction;')
+
+117 
+def
+ 
+	$comm™
+(
+£lf
+):
+
+118 
+´št
+ "[CO_DEBUG] do commit here"
+
+119 
+£lf
+.
+_cÚn
+.
+	$comm™
+()
+
+121 
+def
+ 
+	$rŞlback
+(
+£lf
+):
+
+122 
+£lf
+.
+_auto_comm™
+ = 
+True
+
+
+123 
+£lf
+.
+_cÚn
+.
+	$rŞlback
+()
+
+125 #ha 
+no
+ 
+Ãed
+ 
+this
+ 
+funùiÚ
+ 
+cÚÃùiÚ
+ 
+is
+ 
+a
+ 
+poŞ
+
+
+126 
+def
+ 
+	`»In™
+(
+£lf
+, 
+mysql_ho¡
+=
+DEFAULT_MYSQL_HOST
+, 
+mysql_pÜt
+=
+DEFAULT_MYSQL_PORT
+, 
+mysql_u£r
+='', 
+mysql_·sswd
+='', 
+mysql_db
+=''):
+
+127 
+£lf
+.
+_mysql
+ = 
+	$Magic
+Ğ
+ho¡
+=
+mysql_ho¡
+,
+
+128 
+pÜt
+=
+mysql_pÜt
+,
+
+129 
+u£r
+=
+mysql_u£r
+,
+
+130 
+·sswd
+=
+mysql_·sswd
+,
+
+131 
+db
+=
+mysql_db
+
+
+133 
+´št
+ "[CO_INFO] cÚÃùšg % ..." % 
+£lf
+.
+_mysql
+
+
+134 
+£lf
+.
+_cÚn
+ = 
+MySQLdb
+.
+	$cÚÃù
+Ğ
+ho¡
+=
+£lf
+.
+_mysql
+.host,
+
+135 
+pÜt
+=
+£lf
+.
+_mysql
+.port,
+
+136 
+u£r
+=
+£lf
+.
+_mysql
+.user,
+
+137 
+·sswd
+=
+£lf
+.
+_mysql
+.passwd,
+
+138 
+db
+=
+£lf
+.
+_mysql
+.db )
+
+139 
+´št
+ "[CO_INFO] db connected."
+
+141 
+def
+ 
+	$execu‹
+(
+£lf
+, 
+sql
+, 
+sql_aùiÚ
+, 
+mod–_şass
+=
+NÚe
+, 
+exŒa_mod–_f›lds
+=NÚe, 
+Úly_Úe
+=
+F®£
+):
+
+143 1. 
+g‘
+ 
+db
+ 
+d©as
+ 
+by
+ 
+ruÂšg
+ 
+sql
+
+
+144 2. 
+Ãw
+ 
+mod–
+ 
+ªd
+ 
+assign
+ 
+d©as
+ 
+to
+ 
+mod–s
+
+
+145 @
+mod–_şass
+: 
+the
+ 
+mod–
+ 
+to
+ 
+which
+h
+d©a
+ 
+wl
+ 
+be
+ 
+assigÃd
+
+
+146 @
+exŒa_mod–_f›lds
+: 
+is
+ 
+u£d
+ 
+Úly
+ 
+wh’
+ 
+mod–_şass
+ i 
+subşass
+ 
+of
+ 
+Mod–Içû
+
+
+148 @
+R‘uº
+: (
+»suÉ
+, 
+why
+)
+
+149 @
+Exû±iÚ
+: 
+COExcIÁ”ÇlE¼Ü
+
+
+152 
+nÙ
+ 
+	$isš¡ªû
+(
+sql
+, 
+¡r
+):
+
+153 
+¿i£
+ 
+	`COExcIÁ”ÇlE¼Ü
+("sql‚eedo be string")
+
+154 
+sql_aùiÚ
+ 
+nÙ
+ 
+š
+ 
+COCÚ¡ªts
+.
+VALID_SQL_ACTIONS
+:
+
+155 
+¿i£
+ 
+	`COExcIÁ”ÇlE¼Ü
+("invalid sql_action:'%s', candidates:'%s'" % \
+
+156 (
+sql_aùiÚ
+, 
+COCÚ¡ªts
+.
+VALID_SQL_ACTIONS
+))
+
+157 
+mod–_şass
+ 
+ªd
+ 
+nÙ
+ 
+	$issubşass
+(
+mod–_şass
+, 
+Mod–Içû
+):
+
+158 
+¿i£
+ 
+	`COExcIÁ”ÇlE¼Ü
+("model_class‚eedo be‡ Model")
+
+160 #»fš
+»suÉ
+, 
+avoid
+ 
+exû±iÚ
+ 
+b‘‹r
+ 
+code
+ 
+´og¿mšg
+ 
+ex³r›nûs
+
+
+161 
+Œy
+:
+
+162 
+»suÉ
+, 
+why
+ = 
+£lf
+.
+	`_execu‹_sql
+(
+sql
+), 'OK'
+
+163 
+´št
+ "[CO_DEBUG] Execu‹d„esuÉ oàSQL:\"%s\" is:'%s'" % (
+sql
+, 
+»suÉ
+)
+
+164 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+165 #hªdË 
+db
+ 
+du¶iÿ‹d
+ 
+¥ecifiÿÎy
+:
+
+166 
+	`Ën
+(
+e
+.
+¬gs
+) >= 2:
+
+167 
+	`isš¡ªû
+(
+e
+.
+¬gs
+[0], (, )):
+
+168 
+e
+.
+¬gs
+[0] == 1062:
+
+169 
+¿i£
+ 
+	$CODu¶iÿ‹dDBRecÜd
+(
+e
+)
+
+170 #®way 
+¿i£
+ 
+a
+ 
+exû±iÚ
+
+
+171 
+¿i£
+ 
+e
+
+
+173 
+sql_aùiÚ
+ =ğ
+COCÚ¡ªts
+.
+SQL_ACTION_INSERT
+:
+
+174 
+	$isš¡ªû
+(
+»suÉ
+, 
+MySQLdb
+.
+cursÜs
+.
+DiùCursÜ
+):
+
+175 
+»suÉ
+ =„esuÉ.
+Ï¡rowid
+
+
+176  
+	$In£¹ResuÉ
+(
+»s
+=
+»suÉ
+, 
+why
+=why)
+
+178 
+sql_aùiÚ
+ =ğ
+COCÚ¡ªts
+.
+SQL_ACTION_UPDATE
+:
+
+179 
+»suÉ
+ = 
+True
+ 
+	$isš¡ªû
+(
+»suÉ
+, 
+MySQLdb
+.
+cursÜs
+.
+DiùCursÜ
+è
+F®£
+
+
+180  
+	$Upd©eResuÉ
+(
+»s
+=
+»suÉ
+, 
+why
+=why)
+
+182 
+sql_aùiÚ
+ =ğ
+COCÚ¡ªts
+.
+SQL_ACTION_DELETE
+:
+
+183 
+»suÉ
+ = 
+True
+ 
+	$isš¡ªû
+(
+»suÉ
+, 
+MySQLdb
+.
+cursÜs
+.
+DiùCursÜ
+è
+F®£
+
+
+184  
+	$D–‘eResuÉ
+(
+»s
+=
+»suÉ
+, 
+why
+=why)
+
+186 
+sql_aùiÚ
+ =ğ
+COCÚ¡ªts
+.
+SQL_ACTION_SELECT
+:
+
+188 
+NOTICE
+:
+
+189  'NÚe' 
+no
+ 
+»cÜds
+ 
+found
+, 
+a
+ 
+li¡
+, 
+»g¬dËss
+ 
+of
+ '@only_one'.
+
+191 
+	$isš¡ªû
+(
+»suÉ
+, 
+MySQLdb
+.
+cursÜs
+.
+DiùCursÜ
+):
+
+192 #g‘ 
+¿w
+ 
+»suÉs
+ 
+fœ¡
+
+
+193 
+Úly_Úe
+:
+
+194 
+v
+ = 
+»suÉ
+.
+	$ãtchÚe
+()
+
+195 
+¿w_»suÉs
+ = [
+v
+] v []
+
+197 
+¿w_»suÉs
+ = 
+»suÉ
+.
+	$ãtch®l
+() #list
+
+199 #»fš
+™
+
+
+200 
+mod–_şass
+:
+
+201 
+»fšed_»suÉs
+ = []
+
+202 
+i
+ 
+š
+ 
+¿w_»suÉs
+:
+
+203 
+m
+ = 
+	$mod–_şass
+()
+
+204 
+exŒa_mod–_f›lds
+:
+
+205 
+m
+.
+	$»gi¡”ExŒaF›lds
+(
+exŒa_mod–_f›lds
+)
+
+206 
+m
+.
+	$£tDBD©a
+Ğ
+i
+ )
+
+207 
+»fšed_»suÉs
+.
+	$­³nd
+(
+m
+)
+
+209 
+»fšed_»suÉs
+ = 
+¿w_»suÉs
+
+
+211 #OK, dØ 
+¡uff
+
+
+212 
+»fšed_»suÉs
+ == []:
+
+213 
+»suÉ
+ = 
+NÚe
+
+
+214 
+–if
+ 
+Úly_Úe
+:
+
+215 
+»suÉ
+ = 
+»fšed_»suÉs
+[0]
+
+217 
+»suÉ
+ = 
+»fšed_»suÉs
+
+
+218  
+	$S–eùResuÉ
+(
+»s
+=
+»suÉ
+, 
+why
+=why)
+
+219 
+´št
+ "[CO_ERROR] UNSUPPORTED sqÈaùiÚ: '%s', should‚ev” h­³Ãd" % 
+sql_aùiÚ
+
+
+222 
+g_co_executÜ
+ = 
+	$SqlExûcutÜ
+()
+
+225 
+şass
+ 
+	$T¿n§ùiÚ
+(
+objeù
+):
+
+226 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+executÜ
+=
+g_co_executÜ
+ ):
+
+227 
+£lf
+.
+_executÜ
+ = 
+executÜ
+
+
+229 
+def
+ 
+	$__’‹r__
+(
+£lf
+):
+
+230 
+£lf
+.
+_executÜ
+.
+	$¡¬tT¿n§ùiÚ
+()
+
+231 
+´št
+ "[CO_INFO] startingransaction..."
+
+233 
+def
+ 
+	$__ex™__
+(
+£lf
+, 
+exc_ty³
+, 
+exc_v®ue
+, 
+exc_tb
+):
+
+234 
+nÙ
+ 
+exc_tb
+:
+
+235 
+£lf
+.
+_executÜ
+.
+	$comm™
+()
+
+236 
+´št
+ "[CO_INFO] commit‡ndransaction success"
+
+237  
+True
+
+
+238 #çed, dØ
+rŞlback
+
+
+239 
+´št
+ "[CO_ERROR]¿n§ùiÚ faed,„Şlback, caz: '%s', '%s'" % (
+exc_ty³
+, 
+exc_v®ue
+)
+
+240 
+£lf
+.
+_executÜ
+.
+	$rŞlback
+()
+
+241  
+F®£
+
+
+244 
+def
+ 
+	$do_Œª§ùiÚ
+(
+func
+):
+
+245 
+def
+ 
+	$_f_w¿µ”
+(*
+¬gs
+, **
+kw¬gs
+):
+
+246 
+r
+ = 
+NÚe
+
+
+247 
+w™h
+ 
+	$T¿n§ùiÚ
+():
+
+248 
+r
+ = 
+	$func
+(*
+¬gs
+, **
+kw¬gs
+)
+
+249  
+r
+
+
+250  
+_f_w¿µ”
+
+
+	@calypso/co_model_generator.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #Wed 
+May
+ 6 16:48:21 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+7 
+	gšput
+: 
+a
+ 
+schema
+ 
+of
+‡ 
+db
+
+
+8 
+ouut
+: 
+APP_bËs
+/
+co_bË
+.
+py
+, 
+	gAPP_mod–s
+/
+	gco_db_cÚ¡ªts
+.py
+
+10 
+the
+ 
+APP
+ 
+is
+h
+­p
+ 
+u£r
+ 
+of
+ 
+cu¼’t
+ 
+	glib
+.
+
+14 
+sim¶e
+ 
+but
+ 
+	gwÜks
+ !
+
+17 #TODO 
+Wed
+ 
+May
+ 13 15:11:26 2015 [
+£t
+ 
+cÚ¡s
+ 
+š
+ 
+bË
+ 
+şass
+]
+
+18 #®È
+v®id
+ 
+’ums
+
+
+21 
+impÜt
+ 
+os
+
+
+23 
+def
+ 
+	$IND
+(
+Ëv–
+=0):
+
+24  ' '*
+Ëv–
+
+
+26 
+def
+ 
+	$CAP
+(
+a¡r
+):
+
+27 
+™ems
+ = 
+a¡r
+.
+	`¥l™
+('_')
+
+28 
+™ems
+ = [
+i
+.
+	$ÿp™®ize
+(è
+i
+ 
+š
+ 
+™ems
+]
+
+29  ''.
+	$još
+(
+™ems
+)
+
+31 
+def
+ 
+	$UPC
+(
+a¡r
+):
+
+32  
+a¡r
+.
+	$uµ”
+()
+
+34 
+def
+ 
+	$LOWC
+(
+a¡r
+):
+
+35  
+a¡r
+.
+	$low”
+()
+
+38 
+şass
+ 
+	$Magic
+(
+objeù
+):
+
+39 
+def
+ 
+	$__š™__
+(
+£lf
+, **
+kw¬gs
+):
+
+40 
+£lf
+.
+__diù__
+.
+	$upd©e
+(
+kw¬gs
+)
+
+42 
+def
+ 
+	$__¡r__
+(
+£lf
+, ):
+
+43  
+	$¡r
+(
+£lf
+.
+__diù__
+)
+
+46 
+şass
+ 
+	$Mod–G’”©Ü
+(
+objeù
+):
+
+47 
+VERSION
+ = 0.2
+
+48 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+ho¡
+=
+NÚe
+, 
+pÜt
+=NÚe, 
+u£r
+=NÚe, 
+·sswd
+=NÚe, 
+db
+=None):
+
+49 
+£lf
+.
+mod–_şas£s
+ = []
+
+50 
+£lf
+.
+mod–_şas£s_deş
+ = {
+	}
+} #key: 
+mod–_şass_Çme
+, 
+	gv®ue
+:
+şass
+ 
+deş¬©iÚ
+
+
+51 
+£lf
+.
+bË_şas£s_deş
+ = {} #key: 
+bË_şass_Çme
+, 
+	gv®ue
+:
+şass
+ 
+deş¬©iÚ
+
+
+52 
+£lf
+.
+_cmysql
+ = 
+Magic
+(
+ho¡
+=ho¡ 
+Ü
+ '',
+
+53 
+pÜt
+õÜˆ
+Ü
+ '',
+
+54 
+u£r
+=u£¸
+Ü
+ '',
+
+55 
+·sswd
+õasswd 
+Ü
+ '',
+
+56 
+db
+=db 
+Ü
+ '')
+
+58 #g‘ 
+bËs
+ 
+of
+ 
+db
+
+
+59 
+def
+ 
+	$g‘DBD©a
+(
+£lf
+, 
+sql
+):
+
+60 
+cmd_compÚ‘s
+ = [
+
+62 , '-h%s' % 
+£lf
+.
+_cmysql
+.
+ho¡
+ self._cmysql.host ''
+
+63 , '-P%s' % 
+£lf
+.
+_cmysql
+.
+pÜt
+ self._cmysql.port ''
+
+64 , '-u%s' % 
+£lf
+.
+_cmysql
+.
+u£r
+ self._cmysql.user ''
+
+65 , '-p%s' % 
+£lf
+.
+_cmysql
+.
+·sswd
+ self._cmysql.passwd ''
+
+66 , 
+£lf
+.
+_cmysql
+.
+db
+ self._cmysql.db ''
+
+67 , "-'%s'" % 
+sql
+
+
+69 
+cmd_compÚ‘s
+ = [ 
+i
+ ˜
+š
+ cmd_componets i ]
+
+70 
+cmd
+ = ' '.
+	$još
+Ğ
+cmd_compÚ‘s
+ )
+
+71 #´šˆ"# %s" % 
+cmd
+
+
+72  
+os
+.
+	`pİ’
+Ğ
+cmd
+ ).
+	$»ad
+()
+
+74 
+def
+ 
+	$g‘DBTabËs
+(
+£lf
+, 
+db_Çme
+ ):
+
+75 
+¿w_bËs
+ = 
+£lf
+.
+	`g‘DBD©a
+("u£ '%s'; showabËs;" % 
+db_Çme
+ )
+
+76 
+bËs
+ = 
+¿w_bËs
+.
+	`¥l™
+('\n')[1:-1]
+
+77  [ 
+£lf
+.
+	$g‘DBTabË
+(
+Šame
+, 
+db_Çme
+èŠam
+š
+ 
+bËs
+ ]
+
+79 
+def
+ 
+	$g‘TabËDefš™iÚ
+(
+£lf
+, 
+db_Çme
+, 
+bË_Çme
+):
+
+80 
+¿w_bË
+ = 
+£lf
+.
+	`g‘DBD©a
+("u£ '%s'; show c»©bË %s;" % (
+db_Çme
+, 
+bË_Çme
+))
+
+81 
+bË_™ems
+ = 
+¿w_bË
+.
+	`¥l™
+('\n')[-2].split('\\n')
+
+82  [
+i
+.
+	`¡r
+().
+	`»¶aû
+('`', "'"è˜
+š
+ 
+bË_™ems
+]
+
+84 
+def
+ 
+	$g‘TabËUniqKeys
+(
+£lf
+, 
+db_Çme
+, 
+bË_Çme
+):
+
+86  
+m­
+, 
+key
+: 
+uniq_key
+, 
+v®ue
+: 
+uk_compÚ’ts
+
+
+88 
+bË_defi_™ems
+ = 
+£lf
+.
+	$g‘TabËDefš™iÚ
+(
+db_Çme
+, 
+bË_Çme
+)
+
+89 
+uniq_key_m­
+ = {
+	}
+}
+
+90 
+i
+ 
+š
+ 
+bË_defi_™ems
+:
+
+91 
+i
+[:6].
+low”
+() != 'unique':
+
+93 
+uk
+ = 
+i
+.
+¥l™
+(' ')
+
+94 
+Çme
+ = 
+ev®
+(
+uk
+[-2])
+
+95 
+compÚ’ts
+ = 
+ev®
+(
+uk
+[-1])
+
+96 #»fš
+compÚ’ts
+ 
+Ãûs§ry
+ 
+to
+ 
+make
+ 
+su»
+ 
+™
+'s‡uple or†ist
+
+97 
+	$ty³
+(
+compÚ’ts
+è
+nÙ
+ 
+	$š
+ (
+li¡
+, 
+tu¶e
+):
+
+98 
+compÚ’ts
+ = [components]
+
+99 
+uniq_key_m­
+[
+Çme
+] = 
+	`Magic
+Ğ** { 'bË':
+bË_Çme
+, 'Çme':‚ame, 'compÚ’ts': 
+compÚ’ts
+ 
+	}
+} )
+
+100  
+uniq_key_m­
+
+
+102 
+def
+ 
+	$g‘DBTabËNames
+(
+£lf
+, 
+db_Çme
+ ):
+
+103 
+¿w_bËs
+ = 
+£lf
+.
+	`g‘DBD©a
+("u£ '%s'; showabËs;" % 
+db_Çme
+ )
+
+104  
+¿w_bËs
+.
+	`¥l™
+('\n')[1:-1]
+
+106 
+def
+ 
+	$g‘DBTabË
+(
+£lf
+, 
+bË_Çme
+, 
+db_Çme
+=
+NÚe
+ ):
+
+107 
+db_´efix
+ = 
+db_Çme
++'.' db_name ''
+
+108 
+Šame
+ = 
+db_´efix
+ + 
+bË_Çme
+
+
+109 
+¿w_bË
+ = 
+£lf
+.
+	`g‘DBD©a
+("desø'%s'" % 
+Šame
+)
+
+110 
+bË_cŞumns
+ = 
+¿w_bË
+.
+	`¥l™
+('\n')[1:-1]
+
+111 
+cŞumns
+ = []
+
+112 
+i
+ 
+š
+ 
+bË_cŞumns
+:
+
+113 
+âame
+, 
+áy³
+, 
+âuÎ
+, 
+fkey
+, 
+fdeçuÉ
+, 
+ãxŒa
+ = 
+i
+.
+	`¥l™
+('\t')
+
+114 
+db_cŞumn
+ = 
+	$Magic
+Ğ
+âame
+=âame, 
+áy³
+=áy³, 
+âuÎ
+=fnull,
+
+115 
+fkey
+=fkey, 
+fdeçuÉ
+=fdefault,
+
+116 
+ãxŒa
+=fextra )
+
+117 
+cŞumns
+.
+	$­³nd
+Ğ
+db_cŞumn
+ )
+
+120 
+db_bË
+ = 
+	`Magic
+Ğ
+db_Çme
+=db_name,
+
+121 
+bË_Çme
+=table_name,
+
+122 
+cŞumns
+=columns,
+
+123 
+uk_m­
+ = 
+£lf
+.
+	$g‘TabËUniqKeys
+(
+db_Çme
+, 
+bË_Çme
+) )
+
+124  
+db_bË
+
+
+126 
+def
+ 
+	$_áy³2f›ld_ty³
+(
+£lf
+, 
+áy³
+):
+
+127 
+áy³
+.
+	`¡¬tsw™h
+('int'):  'int'
+
+128 
+áy³
+.
+	`¡¬tsw™h
+('tinyint'):  'int'
+
+129 
+áy³
+.
+	`¡¬tsw™h
+('decimal'):  'float'
+
+130 
+áy³
+.
+	`¡¬tsw™h
+('varchar'):  'str'
+
+131 
+áy³
+.
+	`¡¬tsw™h
+('datetime'):  'str' #TODO
+
+132 
+áy³
+.
+	`¡¬tsw™h
+('timestamp'):  'str' #TODO
+
+133 
+áy³
+.
+	`¡¬tsw™h
+('enum'):  'FieldTypeEnum'
+
+134  '¡r' #deçuÉ 
+to
+ 
+be
+ 'str'
+
+136 
+def
+ 
+	$_ã
+(
+£lf
+, 
+âame
+, 
+’um_v®
+):
+
+137  "%s_%s" % (
+	`UPC
+(
+âame
+), 
+	$UPC
+(
+’um_v®
+))
+
+139 
+def
+ 
+	$_compo£_şass_mod–
+(
+£lf
+, 
+db_bË
+):
+
+141 
+Mod–
+: [
+·¹
+ 1]
+
+142 * 
+şass
+ 
+deş¬©iÚ
+
+
+143 * 
+bË_Çme
+, 
+db_Çme
+
+
+144 * 
+cÚ¡ªts
+, 
+®l_v®id
+
+
+146 * 
+__š™__
+
+
+147 * 
+f›lds
+
+
+149 
+şass_Çme
+ = "%sMod–" % 
+	$CAP
+(
+db_bË
+.
+bË_Çme
+)
+
+150 
+şass_¡m
+ = 'şas %s(Mod–Içû):' % 
+şass_Çme
+
+
+151 
+db_Çme_¡m
+ = "# DB_NAME = '%s'" % 
+db_bË
+.
+db_Çme
+
+
+152 
+bË_Çme_¡m
+ = "TABLE_NAME = '%s'" % 
+db_bË
+.
+bË_Çme
+
+
+154 
+š™_¡m
+ = ''
+
+155 
+š™_¡m_´efix
+ = 'def __init__(self, '
+
+156 
+š™_¡m_kw¬gs
+ = []
+
+157 
+š™_¡m_po¡fix
+= '):'
+
+159 
+su³r_¡m
+ = 'su³r(%s, s–f).__š™__()' % 
+şass_Çme
+
+
+160 
+®l_v®id_’um_cÚ¡ªts
+ = []
+
+161 
+’um_cÚ¡ªts_¡m
+ = []
+
+162 
+’um_cÚ¡ªts_wt_¡m
+ = [] #w™h 
+bË
+ 
+Çme
+
+
+163 
+f›lds_¡m
+ = []
+
+166 
+ş
+ 
+š
+ 
+db_bË
+.
+cŞumns
+:
+
+167 
+ş
+.
+áy³
+.
+	`¡¬tsw™h
+('enum'):
+
+168 
+’ums
+ = 
+	$ev®
+(
+ş
+.
+áy³
+[4:])
+
+169 
+£p
+ = "\n%s"% 
+	$IND
+(2)
+
+170 
+®l_ÿnds_Çme
+ = "ALL_%s_CANDIDATES" % 
+	$UPC
+(
+ş
+.
+âame
+)
+
+171 
+®l_v®id_’um_cÚ¡ªts
+.
+	`­³nd
+( "%s = (%s%s )" % \
+
+172 (
+®l_ÿnds_Çme
+, 
+£p
+, (£p+',').
+	`još
+([
+£lf
+.
+	$_ã
+(
+ş
+.
+âame
+, 
+i
+è˜
+š
+ 
+’ums
+]))
+
+174 
+’um_cÚ¡ªts_wt_¡m
+ += [ "%s_%s = %s.%s" % \
+
+175 (
+	`UPC
+(
+db_bË
+.
+bË_Çme
+), 
+£lf
+.
+	`_ã
+(
+ş
+.
+âame
+,
+i
+), 
+şass_Çme
+, self._fe(cl.fname, i)) \
+
+176 
+i
+ 
+š
+ 
+’ums
+ ]
+
+177 
+’um_cÚ¡ªts_¡m
+ +ğ["% ğ'%s'" % (
+£lf
+.
+	`_ã
+(
+ş
+.
+âame
+, 
+i
+), iè˜
+š
+ 
+’ums
+]
+
+179 #f›ld 
+deş¬©iÚ
+
+
+180 #TODO 
+Wed
+ 
+May
+ 13 13:50:53 2015 [
+áy³
+, 
+fdeçuÉ
+, 
+fkey
+, 
+âuÎ
+, 
+ãxŒa
+]
+
+181 
+»fšed_f_ty³
+ = 
+£lf
+.
+	$_áy³2f›ld_ty³
+Ğ
+ş
+.
+áy³
+ )
+
+182 
+»¡riùiÚ
+ = 
+NÚe
+
+
+183 
+kw_def_v
+ = 
+NÚe
+
+
+184 
+»fšed_f_deçuÉ
+ = 
+NÚe
+
+
+186 #NOTICE: 'ş.fdeçuÉ i NÚe' 
+Ùh”
+ 
+thª
+ 
+nÙ
+‚ot 'cl.fdefault'
+
+187 
+ş
+.
+fdeçuÉ
+ =ğ'NULL' 
+Ü
+ cl.fdeçuÉ 
+is
+ 
+NÚe
+:
+
+188 
+»fšed_f_deçuÉ
+ = 
+NÚe
+
+
+189 
+–if
+ 
+»fšed_f_ty³
+ == 'FieldTypeEnum':
+
+190 
+kw_def_v
+ = '%s' % 
+£lf
+.
+	$_ã
+(
+ş
+.
+âame
+, cl.
+fdeçuÉ
+)
+
+191 
+»¡riùiÚ
+ = '£lf.%s' % 
+®l_ÿnds_Çme
+
+
+192 
+»fšed_f_deçuÉ
+ = '£lf.%s' % 
+£lf
+.
+	$_ã
+(
+ş
+.
+âame
+, cl.
+fdeçuÉ
+)
+
+193 
+–if
+ 
+»fšed_f_ty³
+ == 'str':
+
+194 
+ş
+.
+fdeçuÉ
+ == 'CURRENT_TIMESTAMP':
+
+195 
+»fšed_f_deçuÉ
+ = "'NOW()'"
+
+197 
+»fšed_f_deçuÉ
+ = "'%s'" % 
+ş
+.
+fdeçuÉ
+
+
+199 
+»fšed_f_deçuÉ
+ = 
+ş
+.
+fdeçuÉ
+
+
+201 
+š™_¡m_kw¬gs
+.
+	`­³nd
+("%s=%s" % (
+ş
+.
+âame
+, 
+kw_def_v
+))
+
+203 
+f_¡m
+ = "self.%s = Field(name='%s',ype=%s, value=%s, default=%s,„estriction=%s)" % \
+
+204 Ğ
+ş
+.
+âame
+,
+
+205 
+ş
+.
+âame
+,
+
+206 
+»fšed_f_ty³
+,
+
+207 
+ş
+.
+âame
+,
+
+208 
+»fšed_f_deçuÉ
+,
+
+209 
+»¡riùiÚ
+)
+
+210 
+f›lds_¡m
+.
+	$­³nd
+(
+f_¡m
+)
+
+212 #»£ˆ
+š™_¡m
+
+
+213 
+š™_¡m
+ = 
+š™_¡m_´efix
+ + ', '.
+	`još
+(
+š™_¡m_kw¬gs
+è+ 
+š™_¡m_po¡fix
+
+
+214 
+compÚ’ts
+ = [ 
+şass_¡m
+ , 
+	`IND
+(1)+
+db_Çme_¡m
+, IND(1)+
+bË_Çme_¡m
+ ]
+
+215 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+i
+ ˜
+š
+ 
+’um_cÚ¡ªts_¡m
+ ]
+
+216 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+i
+ ˜
+š
+ 
+®l_v®id_’um_cÚ¡ªts
+ ] #aá” 
+’um_cÚ¡ªts_¡m
+
+
+217 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+š™_¡m
+ , IND(2)+
+su³r_¡m
+ ]
+
+218 
+compÚ’ts
+ +ğ[ 
+	`IND
+(2)+
+i
+ ˜
+š
+ 
+f›lds_¡m
+ ]
+
+220  
+compÚ’ts
+, 
+’um_cÚ¡ªts_wt_¡m
+, 
+şass_Çme
+
+
+222 
+def
+ 
+	$_compo£_şass_bË
+(
+£lf
+, 
+db_bË
+):
+
+224 
+şass
+ 
+	$P”sÚ
+(
+TabË
+):
+
+225 
+__UK_MAP
+ = { 'uk_Çme': 
+UkCÏss
+ 
+	}
+}
+
+226 
+şass
+ 
+	$UkCÏss
+(
+objeù
+):
+
+227 
+def
+ 
+	$__š™
+(
+£lf
+, 
+x
+, 
+y
+):
+
+228 
+·ss
+ #...
+
+229 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+230 
+	`su³r
+(
+P”sÚ
+, 
+£lf
+).
+	`__š™__
+(
+P”sÚMod–
+, 
+executÜ
+=
+g_co_executÜ
+)
+
+232 
+şass_Çme_mod–
+ = "%sMod–" % 
+	$CAP
+(
+db_bË
+.
+bË_Çme
+)
+
+233 
+tbl_şass_Çme
+ = "%s" % 
+	$CAP
+(
+db_bË
+.
+bË_Çme
+)
+
+234 
+şass_¡m
+ = 'şas %s(TabË):' % 
+tbl_şass_Çme
+
+
+235 #uk 
+·¹
+
+
+237 
+bË_uk_m­
+ = '__UK_MAP = %s' % '{' + ','.
+	`još
+(["'%s':%s" % (
+k
+, 
+	$CAP
+(
+v
+.
+Çme
+)è
+k
+,v 
+š
+ 
+db_bË
+.
+uk_m­
+.
+	`™ems
+()]) + '}'
+
+238 
+def
+ 
+	$__šÃr_compo£_uk_şas£s
+(
+šd_Ëv–
+):
+
+239 
+def
+ 
+	$__mo¡_šÃr_compo£_uk
+(
+uk_mgc
+, 
+šd_Ëv–
+):
+
+240 
+uk_şass_Çme
+ = 'şas %s(objeù):' % 
+	$CAP
+(
+uk_mgc
+.
+Çme
+)
+
+241 
+š™_¡m
+ = 'deà__š™__(£lf, %s):' % ', '.
+	$još
+(
+uk_mgc
+.
+compÚ’ts
+)
+
+242 
+©Œs
+ = ['£lf.% ğ%s' % (
+i
+,iè˜
+š
+ 
+uk_mgc
+.
+compÚ’ts
+]
+
+243 
+cÚd_func_Çme
+ = 'def cond(self):'
+
+244 
+cÚd_func_imp_l1
+ = 't=%s()' % 
+tbl_şass_Çme
+
+
+245 
+cÚd_func_imp_l2
+ = '»tuº ' + ' & '.
+	`još
+Ğ['Ñ.% =ğ£lf.%s)' % (
+i
+, iè˜
+š
+ 
+uk_mgc
+.
+compÚ’ts
+] )
+
+246 
+»t
+ = [ 
+	`IND
+(
+šd_Ëv–
+è+ 
+uk_şass_Çme
+,
+
+247 
+	`IND
+(
+šd_Ëv–
++1è+ 
+š™_¡m
+, ]
+
+248 
+»t
+ +ğ[ 
+	`IND
+(
+šd_Ëv–
++2)+
+i
+ ˜
+š
+ 
+©Œs
+ ]
+
+249 
+»t
+ +ğ[ 
+	`IND
+(
+šd_Ëv–
++1è+ 
+cÚd_func_Çme
+,
+
+250 
+	`IND
+(
+šd_Ëv–
++2è+ 
+cÚd_func_imp_l1
+,
+
+251 
+	`IND
+(
+šd_Ëv–
++2è+ 
+cÚd_func_imp_l2
+, ]
+
+252  
+»t
+
+
+253 #šÃ¸
+maš
+ 
+h”e
+
+
+254 
+»t
+ = []
+
+255 
+i
+ 
+š
+ 
+db_bË
+.
+uk_m­
+.
+	$v®ues
+():
+
+256 
+»t
+ +ğ
+	$__mo¡_šÃr_compo£_uk
+(
+i
+, 
+šd_Ëv–
+)
+
+257  
+»t
+
+
+259 #bË 
+şass
+ 
+š™
+
+
+260 
+š™_¡m
+ = 'def __init__(self):'
+
+261 
+su³r_¡m
+ = 'su³r(%s, s–f).__š™__(%s,ƒxecutÜ=g_co_executÜ)' % (
+tbl_şass_Çme
+, 
+şass_Çme_mod–
+)
+
+262 
+®l_v®id_’um_cÚ¡ªts
+ = []
+
+263 
+’um_cÚ¡ªts_¡m
+ = []
+
+264 
+’um_cÚ¡ªts_wt_¡m
+ = [] #w™h 
+bË
+ 
+Çme
+
+
+266 #Œav”£ 
+cŞumns
+ 
+to
+ 
+hªdË
+ 
+¡uff
+
+
+267 
+ş
+ 
+š
+ 
+db_bË
+.
+cŞumns
+:
+
+268 
+ş
+.
+áy³
+.
+	`¡¬tsw™h
+('enum'):
+
+269 
+’ums
+ = 
+	$ev®
+(
+ş
+.
+áy³
+[4:])
+
+270 
+£p
+ = "\n%s" % 
+	$IND
+(2)
+
+271 
+®l_v®id_’um_cÚ¡ªts
+.
+	`­³nd
+( "ALL_%s_CANDIDATES = (%s%s )" % \
+
+272 Ğ
+	`UPC
+(
+ş
+.
+âame
+), 
+£p
+, (£p+',').
+	`još
+([
+£lf
+.
+	$_ã
+(
+ş
+.
+âame
+, 
+i
+è˜
+š
+ 
+’ums
+]) ) )
+
+273 
+’um_cÚ¡ªts_wt_¡m
+ +ğ[ "% ğ'%s'" % ( 
+	`UPC
+(
+db_bË
+.
+bË_Çme
+)+'_'+
+£lf
+.
+	`_ã
+(
+ş
+.
+âame
+,
+i
+), i ) ˜
+š
+ 
+’ums
+ ]
+
+274 #puˆ
+®l_v®id_’um_cÚ¡ªts
+ 
+što
+ 
+’um_cÚ¡ªts_wt_¡m
+
+
+275 
+’um_cÚ¡ªts_keys
+ = [ 
+	`UPC
+(
+db_bË
+.
+bË_Çme
+)+'_'+
+£lf
+.
+	$_ã
+(
+ş
+.
+âame
+,
+i
+è˜
+š
+ 
+’ums
+ ]
+
+276 
+’um_cÚ¡ªts_wt_¡m
+.
+	`­³nd
+( "%s_ALL_%s_CANDIDATES = [ %s ]" % \
+
+277 Ğ
+	`UPC
+(
+db_bË
+.
+bË_Çme
+), UPC(
+ş
+.
+âame
+), ', '.
+	$još
+(
+’um_cÚ¡ªts_keys
+) ) )
+
+279 
+’um_cÚ¡ªts_¡m
+ +ğ["% ğ'%s'" % (
+£lf
+.
+	`_ã
+(
+ş
+.
+âame
+, 
+i
+), iè˜
+š
+ 
+’ums
+]
+
+281 #compo£ 
+	`g‘ByUniqKey
+(...è
+Ãûs§ry
+
+
+282 
+gbuk_func_Çme
+ = 'def getByUniqKey(self, uk, *leak_fields, **kwargs):'
+
+283 
+gbuk_func_imp_l1
+ = 'return self.select(*leak_fields, **kwargs).where(uk.cond()).one()'
+
+286 
+compÚ’ts
+ = [ 
+şass_¡m
+ ]
+
+287 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+i
+ ˜
+š
+ 
+’um_cÚ¡ªts_¡m
+ ]
+
+288 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+i
+ ˜
+š
+ 
+®l_v®id_’um_cÚ¡ªts
+ ] #aá” 
+’um_cÚ¡ªts_¡m
+
+
+289 
+compÚ’ts
+ +ğ
+	$__šÃr_compo£_uk_şas£s
+(1)
+
+290 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+bË_uk_m­
+ ]
+
+291 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+š™_¡m
+ , IND(2)+
+su³r_¡m
+ ]
+
+292 
+compÚ’ts
+ +ğ[ 
+	`IND
+(1)+
+gbuk_func_Çme
+, IND(2)+
+gbuk_func_imp_l1
+]
+
+294  
+compÚ’ts
+, 
+’um_cÚ¡ªts_wt_¡m
+, 
+tbl_şass_Çme
+
+
+296 
+def
+ 
+	$dumpTabË
+(
+£lf
+, 
+bË_Çme
+, 
+db_Çme
+=
+NÚe
+, 
+å_mod–_fe
+=NÚe, 
+å_mod–_cÚ¡ªt_fe
+=None):
+
+298 
+Mod–
+: [
+·¹
+ 1]
+
+299 
+TabË
+: [
+·¹
+ 2]
+
+301 
+db_bË
+ = 
+£lf
+.
+	$g‘DBTabË
+(
+bË_Çme
+, 
+db_Çme
+)
+
+302 
+mod–_compÚ’ts
+, 
+mod–_ecwt
+, 
+mod–_şass_Çme
+ = 
+£lf
+.
+	$_compo£_şass_mod–
+(
+db_bË
+)
+
+303 
+£lf
+.
+mod–_şas£s
+.
+	$­³nd
+Ğ
+mod–_şass_Çme
+ )
+
+305 
+bË_compÚ’ts
+, 
+bË_ecwt
+, 
+bË_şass_Çme
+ = 
+£lf
+.
+	$_compo£_şass_bË
+(
+db_bË
+)
+
+306 
+£lf
+.
+mod–_şas£s_deş
+[
+mod–_şass_Çme
+] = '\n'.
+	$još
+(
+mod–_compÚ’ts
+)
+
+307 
+£lf
+.
+bË_şas£s_deş
+[
+bË_şass_Çme
+] = '\n'.
+	$još
+(
+bË_compÚ’ts
+)
+
+309 #wr™
+što
+ 
+mod–
+ 
+fe
+
+
+310 
+´št
+ "g’”©šg mod– fÜ '%s' ..." % 
+bË_şass_Çme
+
+
+311 
+å_mod–_fe
+.
+	`wr™e
+('\n'.
+	$još
+(
+mod–_compÚ’ts
+))
+
+312 
+å_mod–_fe
+.
+	`wr™e
+('\n'*2)
+
+313 
+å_mod–_fe
+.
+	`wr™e
+('\n'.
+	$još
+(
+bË_compÚ’ts
+))
+
+314 
+å_mod–_fe
+.
+	`wr™e
+('\n'*2)
+
+315 
+å_mod–_fe
+.
+	$æush
+()
+
+317 
+´št
+ "g’”©šg cÚ¡ fÜ '%s' ..." % 
+bË_şass_Çme
+
+
+318 #wr™
+cÚ¡ªts
+ 
+što
+ cÚ¡ªt 
+fe
+
+
+319 
+bË_ecwt
+.
+	`š£¹
+(0, '') #trick
+
+320 
+£p
+ = '\n'+
+	$IND
+(1)
+
+321 
+d©a
+ = 
+£p
+.
+	$još
+(
+bË_ecwt
+)
+
+322 
+å_mod–_cÚ¡ªt_fe
+.
+	$wr™e
+(
+d©a
+)
+
+325 
+def
+ 
+	`_g’_mod–_fe_h—d”s
+(
+£lf
+, 
+å_m
+, 
+­p_Çme
+=''):
+
+326 
+h—d”s
+ = [
+
+330 , "# Autog’”©ed by Mod– G’”©Ü (%s)" % 
+£lf
+.
+VERSION
+
+
+338 
+å_m
+.
+	`wr™e
+('\n'.
+	$još
+(
+h—d”s
+))
+
+340 
+def
+ 
+	`_g’_bË_fe_h—d”s
+(
+£lf
+, 
+å_mc
+, 
+mod–_fe_Çme
+='db_mod–', 
+­p_Çme
+=''):
+
+341 
+»fšed_mod–_fe_Çme
+ = (
+	`LOWC
+(
+­p_Çme
+)+'_' ­p_Çm''è+ 
+mod–_fe_Çme
+
+
+342 
+h—d”s
+ = [
+
+346 , "# Autog’”©ed by Mod– G’”©Ü (%s)" % 
+£lf
+.
+VERSION
+
+
+349 #, "äom % impÜˆ*" % 
+»fšed_mod–_fe_Çme
+
+
+352 , "şas %sDBCÚ¡ªts(objeù):" % 
+	`CAP
+(
+­p_Çme
+)
+
+355 
+å_mc
+.
+	`wr™e
+('\n'.
+	$još
+(
+h—d”s
+))
+
+357 
+def
+ 
+	`dumpDBSchema
+(
+£lf
+, 
+db_Çme
+, 
+mod–_des_dœ_·th
+='/tmp/', 
+­p_Çme
+=''):
+
+358 
+»fšed_­p_Çme
+ = 
+	`LOWC
+(
+­p_Çme
+) +'_' app_name ''
+
+359 
+·th_d_m
+ = 
+mod–_des_dœ_·th
+ + '/%smod–' % 
+»fšed_­p_Çme
+
+
+360 
+·th_f_m
+ = 
+·th_d_m
+ + '/' + '%sdb_mod–.py' % 
+»fšed_­p_Çme
+
+
+361 
+·th_f_mc
+ = 
+·th_d_m
+ + '/' + '%sdb_cÚ¡ªts.py' % 
+»fšed_­p_Çme
+
+
+363 
+os
+.
+	`pİ’
+("mkdœ -°'%s'" % 
+·th_d_m
+)
+
+364 
+os
+.
+	`pİ’
+("touch '%s/__š™__.py'" % 
+·th_d_m
+)
+
+366 
+å_m
+ = 
+	`İ’
+(
+·th_f_m
+, 'w')
+
+367 
+å_mc
+ = 
+	`İ’
+(
+·th_f_mc
+, 'w')
+
+370 #wr™
+h—d”
+ 
+što
+ 
+mod–
+ 
+fe
+
+
+371 
+£lf
+.
+	$_g’_mod–_fe_h—d”s
+(
+å_m
+, 
+­p_Çme
+=app_name)
+
+372 
+£lf
+.
+	$_g’_bË_fe_h—d”s
+(
+å_mc
+, 
+­p_Çme
+=app_name)
+
+374 #hªdË 
+bËs
+
+
+375 
+bË_Çmes
+ = 
+£lf
+.
+	$g‘DBTabËNames
+(
+db_Çme
+)
+
+376 
+Šame
+ 
+š
+ 
+bË_Çmes
+:
+
+377 
+£lf
+.
+	$dumpTabË
+Ğ
+Šame
+, 
+db_Çme
+=db_name,
+
+378 
+å_mod–_fe
+=
+å_m
+,
+
+379 
+å_mod–_cÚ¡ªt_fe
+ğ
+å_mc
+)
+
+381 
+´št
+ "g’”©ed fe ¬¡Üed und”…©h: '%s'" % 
+·th_d_m
+.
+	`»¶aû
+('//', '/')
+
+383 
+__Çme__
+ == '__main__':
+
+384 
+g
+=
+	`Mod–G’”©Ü
+(
+ho¡
+='loÿlho¡', 
+u£r
+='root')
+
+386 ## 
+LOCAL
+ 
+HERE
+
+
+387 
+g
+.
+	`dumpDBSchema
+('hÚeycomb', 
+mod–_des_dœ_·th
+='/tmp/mod–', 
+­p_Çme
+='honeycomb')
+
+388 
+g
+.
+	`dumpDBSchema
+('pŞËns', 
+mod–_des_dœ_·th
+='/tmp/mod–', 
+­p_Çme
+='pollens')
+
+389 #g.
+	`dumpDBSchema
+('wÜld', 
+mod–_des_dœ_·th
+='/tmp/mod–', 
+­p_Çme
+='world')
+
+390 #g.
+	`dumpDBSchema
+('w¬ehou£', 
+mod–_des_dœ_·th
+='/tmp/mod–', 
+­p_Çme
+='warehouse')
+
+	@calypso/co_sql.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #Wed 
+May
+ 6 17:45:59 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+	gCONDITION_ITEM_TYPE_CONJ
+ = 'conj'
+
+7 
+CONDITION_ITEM_TYPE_ATOM
+ = 'atom'
+
+9 
+impÜt
+ 
+cİy
+
+
+11 
+äom
+ 
+co_uts
+ 
+impÜt
+ 
+Magic
+
+
+12 
+äom
+ 
+co_”rÜ
+ 
+impÜt
+ 
+COExcInv®idSql
+
+
+13 
+äom
+ 
+co_cÚ¡ªts
+ 
+impÜt
+ 
+COCÚ¡ªts
+
+
+16 
+FIELD_KEY_PREFIX
+ = '__f_'
+
+17 
+FIELD_KEY_PREFIX_LEN
+ = 
+	$Ën
+(
+FIELD_KEY_PREFIX
+)
+
+19 
+def
+ 
+	$_Pack_F›ld_Key
+(
+¿w_f›ld_Çme
+):
+
+20  
+FIELD_KEY_PREFIX
+ + 
+¿w_f›ld_Çme
+
+
+22 
+def
+ 
+	$_UÅack_F›ld_Key
+(
+·cked_f›ld_Çme
+):
+
+23  
+·cked_f›ld_Çme
+[
+FIELD_KEY_PREFIX_LEN
+:]
+
+26 
+şass
+ 
+	$CÚd™iÚI‹mBa£
+(
+objeù
+):
+
+27 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+ty³
+=
+CONDITION_ITEM_TYPE_ATOM
+, 
+f›ld
+=
+NÚe
+, 
+v®ue
+=None):
+
+28 
+£lf
+.
+ty³
+ =ype
+
+29 
+£lf
+.
+f›ld
+ = field
+
+30 
+£lf
+.
+v®ue
+ = value
+
+32 @
+´İ”ty
+
+
+33 
+def
+ 
+	$_şass
+(
+£lf
+):
+
+34  
+	`¡r
+(
+£lf
+.
+__şass__
+)[8:-2]
+
+36 
+def
+ 
+	$sql
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+37 
+¿i£
+ 
+	`NÙIm¶em’‹dE¼Ü
+('%s.sql(ènÙ im¶emem‹d' % 
+£lf
+.
+_şass
+)
+
+39 
+def
+ 
+	$__ªd__
+(
+£lf
+, 
+Ùh”
+):
+
+40  
+	$And
+(
+£lf
+, 
+Ùh”
+)
+
+42 
+def
+ 
+	$isEm±y
+(
+£lf
+):
+
+43  
+F®£
+
+
+45 
+def
+ 
+	$__Ü__
+(
+£lf
+, 
+Ùh”
+):
+
+46  
+	$Or
+(
+£lf
+, 
+Ùh”
+)
+
+49 
+şass
+ 
+	$CÚd™iÚ
+(
+CÚd™iÚI‹mBa£
+):
+
+52 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+53 
+	`su³r
+(
+CÚd™iÚI‹mBa£
+, 
+£lf
+).
+	$__š™__
+()
+
+55 
+def
+ 
+	$sql
+(
+£lf
+,):
+
+56  
+NÚe
+
+
+58 
+def
+ 
+	$isEm±y
+(
+£lf
+):
+
+59  
+True
+
+
+61 
+def
+ 
+	$__ªd__
+(
+£lf
+, 
+cÚd
+):
+
+62  
+cÚd
+
+
+64 
+def
+ 
+	$__Ü__
+(
+£lf
+, 
+cÚd
+):
+
+65  
+cÚd
+
+
+68 
+şass
+ 
+	$O³¿tÜ
+(
+CÚd™iÚI‹mBa£
+):
+
+69 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+İ”©Ü
+=
+NÚe
+, 
+f›ld
+=NÚe, 
+v®ue
+=None):
+
+70 
+	`su³r
+(
+O³¿tÜ
+, 
+£lf
+).
+	$__š™__
+(
+f›ld
+=f›ld, 
+v®ue
+=value)
+
+71 
+£lf
+.
+İ”©Ü
+ = 
+	$¡r
+(
+İ”©Ü
+)
+
+73 
+def
+ 
+	$sql
+(
+£lf
+):
+
+74 #ÿz 
+F›ld
+ 
+the
+ 
+roÙ
+ 
+şass
+, 
+so
+ 
+subşass
+ 
+¡l
+ 
+ok
+
+
+75 
+	$isš¡ªû
+(
+£lf
+.
+v®ue
+, 
+F›ld
+):
+
+76 
+right_v®ue
+ = 
+£lf
+.
+v®ue
+.
+	$sql
+()
+
+77 
+–if
+ 
+	$isš¡ªû
+(
+£lf
+.
+v®ue
+, 
+F›ldTy³Enum
+):
+
+78 
+right_v®ue
+ = "'%s'" % 
+	$¡r
+(
+£lf
+.
+v®ue
+)
+
+79 
+–if
+ 
+	$isš¡ªû
+(
+£lf
+.
+v®ue
+, 
+¡r
+):
+
+80 
+right_v®ue
+ = "'%s'" % 
+	$¡r
+(
+£lf
+.
+v®ue
+)
+
+82 
+right_v®ue
+ = 
+	$¡r
+(
+£lf
+.
+v®ue
+)
+
+83  "(% % %s)" % (
+£lf
+.
+f›ld
+.
+	`sql
+(), s–f.
+İ”©Ü
+, 
+right_v®ue
+)
+
+86 
+şass
+ 
+	$And
+(
+CÚd™iÚI‹mBa£
+):
+
+87 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+cÚd_™em_l
+, 
+cÚd_™em_r
+):
+
+88 
+	`su³r
+(
+And
+, 
+£lf
+).
+	$__š™__
+(
+ty³
+=
+CONDITION_ITEM_TYPE_CONJ
+)
+
+89 
+£lf
+.
+_cÚd_™em_l
+ = 
+cÚd_™em_l
+
+
+90 
+£lf
+.
+_cÚd_™em_r
+ = 
+cÚd_™em_r
+
+
+92 
+def
+ 
+	$sql
+(
+£lf
+):
+
+93  "(% AND %s)" % (
+£lf
+.
+_cÚd_™em_l
+.
+	`sql
+(), s–f.
+_cÚd_™em_r
+.
+	$sql
+())
+
+96 
+şass
+ 
+	$Or
+(
+CÚd™iÚI‹mBa£
+):
+
+97 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+cÚd_™em_l
+, 
+cÚd_™em_r
+):
+
+98 
+	`su³r
+(
+Or
+, 
+£lf
+).
+	$__š™__
+(
+ty³
+=
+CONDITION_ITEM_TYPE_CONJ
+)
+
+99 
+£lf
+.
+_cÚd_™em_l
+ = 
+cÚd_™em_l
+
+
+100 
+£lf
+.
+_cÚd_™em_r
+ = 
+cÚd_™em_r
+
+
+102 
+def
+ 
+	$sql
+(
+£lf
+):
+
+103  "(% OR %s)" % (
+£lf
+.
+_cÚd_™em_l
+.
+	`sql
+(), s–f.
+_cÚd_™em_r
+.
+	$sql
+())
+
+106 
+şass
+ 
+	$NÙ
+(
+CÚd™iÚI‹mBa£
+):
+
+107 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+cÚd_™em
+):
+
+108 
+	`su³r
+(
+NÙ
+, 
+£lf
+).
+	$__š™__
+(
+ty³
+=
+CONDITION_ITEM_TYPE_CONJ
+)
+
+109 
+£lf
+.
+_cÚd_™em
+ = 
+cÚd_™em
+
+
+111 
+def
+ 
+	$sql
+(
+£lf
+):
+
+112  "NOT %s" % 
+£lf
+.
+_cÚd_™em
+.
+	$sql
+()
+
+115 
+şass
+ 
+	$In
+(
+CÚd™iÚI‹mBa£
+):
+
+116 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+f›ld
+, 
+v®ues
+):
+
+117 
+	`su³r
+(
+In
+, 
+£lf
+).
+	$__š™__
+(
+ty³
+=
+CONDITION_ITEM_TYPE_CONJ
+, 
+f›ld
+=field)
+
+118 
+£lf
+.
+v®ues
+ = values
+
+120 #check 
+v®id©iÚ
+ 
+of
+ 
+šcommšg
+ 
+¡uff
+
+
+121 
+	`nÙ
+ (
+	`isš¡ªû
+(
+v®ues
+, (
+li¡
+, 
+tu¶e
+)è
+ªd
+ 
+	`Ën
+(values) > 0):
+
+122 
+¿i£
+ 
+	`COExcIÁ”ÇlE¼Ü
+("invalid‡rgs:@values:'%s',ype:'%s'" % \
+
+123 (
+v®ues
+, 
+	$ty³
+(
+v®ues
+)))
+
+125 
+def
+ 
+	$sql
+(
+£lf
+):
+
+128 
+™ems
+ = [
+	$¡r
+(
+i
+è˜
+š
+ 
+£lf
+.
+v®ues
+]
+
+129 
+	`Ën
+(
+™ems
+) > 1:
+
+130  "% IN (%s)" % (
+£lf
+.
+f›ld
+.
+	`sql
+(), ','.
+	$još
+(
+™ems
+))
+
+131 
+	`Ën
+(
+™ems
+) == 1:
+
+132  "% ğ%s" % (
+£lf
+.
+f›ld
+.
+	`sql
+(), 
+™ems
+[0])
+
+135 
+LIKE_NONE
+ = 0
+
+136 
+LIKE_LEFT
+ = 1
+
+137 
+LIKE_RIGHT
+ = 2
+
+138 
+LIKE_BOTH
+ = 3
+
+139 
+şass
+ 
+	$Like
+(
+CÚd™iÚI‹mBa£
+):
+
+140 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+f›ld
+, 
+like_ex´
+, 
+fuzzy
+=
+LIKE_NONE
+):
+
+141 
+	`su³r
+(
+Like
+, 
+£lf
+).
+	$__š™__
+(
+ty³
+=
+CONDITION_ITEM_TYPE_CONJ
+, 
+f›ld
+=field)
+
+142 
+£lf
+.
+like_ex´
+ =†ike_expr
+
+143 
+£lf
+.
+fuzzy
+ = fuzzy
+
+145 
+def
+ 
+	$sql
+(
+£lf
+):
+
+146 
+£lf
+.
+fuzzy
+ =ğ
+LIKE_NONE
+:
+
+147  '% LIKE "%s"' % (
+£lf
+.
+f›ld
+.
+	`sql
+(), s–f.
+like_ex´
+)
+
+148 
+£lf
+.
+fuzzy
+ =ğ
+LIKE_LEFT
+:
+
+149  '% LIKE "%%%s"' % (
+£lf
+.
+f›ld
+.
+	`sql
+(), s–f.
+like_ex´
+)
+
+150 
+£lf
+.
+fuzzy
+ =ğ
+LIKE_RIGHT
+:
+
+151  '% LIKE "%s%%"' % (
+£lf
+.
+f›ld
+.
+	`sql
+(), s–f.
+like_ex´
+)
+
+152 
+£lf
+.
+fuzzy
+ =ğ
+LIKE_BOTH
+:
+
+153  '% LIKE "%%%s%%"' % (
+£lf
+.
+f›ld
+.
+	`sql
+(), s–f.
+like_ex´
+)
+
+154 
+¿i£
+ 
+	`COExcInv®idSql
+('unsuµÜ‹d†ikfuzzyy³:'+
+	$¡r
+(
+£lf
+.
+fuzzy
+))
+
+156 
+şass
+ 
+	$F›ldTy³Enum
+(
+objeù
+):
+
+157 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+¡r_’um_v®ue
+=
+NÚe
+):
+
+158 
+£lf
+.
+v
+ = 
+¡r_’um_v®ue
+ #string
+
+160 
+def
+ 
+	$__¡r__
+(
+£lf
+):
+
+161  
+£lf
+.
+v
+
+
+163 
+def
+ 
+	$__»´__
+(
+£lf
+):
+
+164  "<F›ldTy³Enum:%s>" % 
+£lf
+.
+v
+
+
+166 
+def
+ 
+	$__eq__
+(
+£lf
+, 
+rv
+):
+
+167  
+£lf
+.
+v
+ =ğ
+rv
+.v
+
+170 
+şass
+ 
+	$F›ld
+(
+objeù
+):
+
+171 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+=
+NÚe
+, 
+ty³
+=NÚe, =NÚe, 
+comm’t
+=NÚe, 
+v®ue
+=NÚe, 
+»¡riùiÚ
+=NÚe, 
+defš™iÚ
+=None):
+
+172 
+£lf
+.
+Çme
+ =‚ame
+
+173 
+£lf
+.
+ty³
+ =ype
+
+174 
+£lf
+. = 
+
+175 
+£lf
+.
+comm’t
+ = comment
+
+176 
+£lf
+.
+v®ue
+ = value
+
+177 
+£lf
+.
+bË
+ = 
+NÚe
+
+
+178 
+£lf
+.
+f_as
+ = 
+NÚe
+
+
+179 
+£lf
+.
+»¡riùiÚ
+ =„estriction
+
+180 #abouˆ
+»¡riùiÚ
+
+
+181 #1. , 
+¿nge
+, 
+time
+, 
+ªd
+ 
+so
+ 
+Ú
+.
+
+182 
+defš™iÚ
+: 
+£lf
+.
+	$£tByDefš™iÚ
+Ğ
+defš™iÚ
+ )
+
+184 
+def
+ 
+	$_f_but_š
+(
+£lf
+, 
+İ”©Ü_¡r
+, 
+Ùh”
+, 
+as_İ”©Ü
+=
+True
+):
+
+185 
+ÿnd_ty³s
+ = [
+£lf
+.
+ty³
+, 
+F›ld
+]
+
+186 
+£lf
+.
+ty³
+ =ğ
+F›ldTy³Enum
+:
+
+187 
+ÿnd_ty³s
+.
+	$­³nd
+Ğ
+¡r
+ )
+
+188 
+nÙ
+ 
+	`isš¡ªû
+Ğ
+Ùh”
+, 
+	$tu¶e
+(
+ÿnd_ty³s
+) ):
+
+189 
+´št
+ "[CO_ERROR]„ighˆv®ui nÙy³:'%s' o¸%s" % (
+£lf
+.
+ty³
+, 'Field')
+
+191 
+as_İ”©Ü
+:
+
+192  
+	$O³¿tÜ
+(
+İ”©Ü_¡r
+, 
+£lf
+, 
+Ùh”
+)
+
+194 
+_Çme_sql
+ = ' '.
+	`još
+([
+£lf
+.
+	`sql
+(), 
+İ”©Ü_¡r
+, 
+Ùh”
+.sql()])
+
+195  
+	$F›ld
+(
+Çme
+=
+_Çme_sql
+)
+
+197 
+def
+ 
+	$__¡r__
+(
+£lf
+, ):
+
+198  
+	`¡r
+(
+£lf
+.
+v®ue
+ 
+Ü
+ '')
+
+200 
+def
+ 
+	$__eq__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('=', other)
+
+202 
+def
+ 
+	$__Ã__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('!=', other)
+
+204 
+def
+ 
+	$__ge__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('>=', other)
+
+206 
+def
+ 
+	$__gt__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('>', other)
+
+208 
+def
+ 
+	$__Ë__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('<=', other)
+
+210 
+def
+ 
+	$__É__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('<', other)
+
+212 
+def
+ 
+	$__sub__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('-', oth”, 
+as_İ”©Ü
+=
+F®£
+)
+
+214 
+def
+ 
+	$__add__
+(
+£lf
+, 
+Ùh”
+):  s–f.
+	`_f_but_š
+('+', oth”, 
+as_İ”©Ü
+=
+F®£
+)
+
+216 
+def
+ 
+	$»£t
+(
+£lf
+, 
+Ùh”
+, 
+k“p_Şd_Çme
+=
+True
+):
+
+218 @
+Ùh”
+: oth” 
+f›ld
+
+
+219 
+NOTICE
+: 
+you
+ 
+wªÇ
+ 
+chªge
+ 
+the
+  
+Çme
+, 
+u£
+ 
+f›ld
+.
+AS
+ 
+¶—£
+.
+
+221 
+k“p_Şd_Çme
+:
+
+222 
+£lf
+.
+	$AS
+(
+£lf
+.
+Çme
+)
+
+224 
+£lf
+.
+Çme
+ = 
+Ùh”
+.
+	$sql
+()
+
+225 
+£lf
+.
+ty³
+ = 
+Ùh”
+.type
+
+226 
+£lf
+. = 
+Ùh”
+.
+
+227 
+£lf
+.
+comm’t
+ = 
+Ùh”
+.comment
+
+228 
+£lf
+.
+v®ue
+ = 
+Ùh”
+.value
+
+229 
+£lf
+.
+»¡riùiÚ
+ = 
+Ùh”
+.restriction
+
+230 
+£lf
+.
+defš™iÚ
+ = 
+Ùh”
+.definition
+
+232  
+£lf
+
+
+234 
+def
+ 
+	$toIn£¹StyËSŒ
+(
+£lf
+, 
+¿w_v®ue
+):
+
+237 
+DEFAULT_FMT
+ = "'%s'"
+
+238 
+TYPE_FMT_MAP
+ = {
+
+240 , 
+¡r
+: "'%s'"
+
+241 , 
+F›ldTy³Enum
+: "'%s'"
+
+242 
+	}
+}
+
+243 
+fmt
+ = 
+TYPE_FMT_MAP
+.
+	$g‘
+(
+£lf
+.
+ty³
+, 
+DEFAULT_FMT
+)
+
+244  
+fmt
+ % 
+	$¡r
+(
+¿w_v®ue
+è#mayb
+hªdË
+ 
+unicode
+
+
+246 
+def
+ 
+	$isEnum
+(
+£lf
+):
+
+247  
+£lf
+.
+ty³
+ =ğ
+F›ldTy³Enum
+
+
+249 
+def
+ 
+	$defš™iÚ
+(
+£lf
+):
+
+250  { 'Çme':
+£lf
+.
+Çme
+, 'ty³':£lf.
+ty³
+, \
+
+251 'deçuÉ':
+£lf
+., 'comm’t':£lf.
+comm’t
+}
+
+253 
+def
+ 
+	$£tByDefš™iÚ
+(
+£lf
+, 
+defš™iÚ
+):
+
+254 
+£lf
+.
+Çme
+=
+defš™iÚ
+['name']
+
+255 
+£lf
+.
+ty³
+=
+defš™iÚ
+['type']
+
+256 
+£lf
+.=
+defš™iÚ
+.
+	`g‘
+('default')
+
+257 
+£lf
+.
+comm’t
+=
+defš™iÚ
+.
+	`g‘
+('comment')
+
+258  
+£lf
+
+
+260 
+def
+ 
+	$AS
+(
+£lf
+, 
+®Ÿs
+):
+
+261 
+£lf
+.
+f_as
+ = 
+®Ÿs
+
+
+262  
+£lf
+
+
+264 
+def
+ 
+	$_g’_sql_´efix
+(
+£lf
+):
+
+267 
+tbl_´efix
+ = 
+£lf
+.
+bË
+.
+	`sql
+(
+as_´eã»d
+=
+True
+) + '.' self.table ''
+
+268  
+tbl_´efix
+ + 
+£lf
+.
+Çme
+
+
+270 
+def
+ 
+	$_g’_sql_as
+(
+£lf
+, 
+’abË_as
+=
+F®£
+):
+
+271 
+’abË_as
+ 
+ªd
+ 
+£lf
+.
+f_as
+:
+
+272  " AS %s" % 
+£lf
+.
+f_as
+
+
+275 
+def
+ 
+	$sql
+(
+£lf
+, 
+’abË_as
+=
+F®£
+):
+
+276 
+´efix
+ = 
+£lf
+.
+	$_g’_sql_´efix
+()
+
+277 
+sql_as
+ = 
+£lf
+.
+	$_g’_sql_as
+(
+’abË_as
+=enable_as)
+
+278  
+´efix
+ + 
+sql_as
+
+
+281 
+STAR_FIELD
+ = 
+	`F›ld
+(
+Çme
+='*', 
+ty³
+=
+¡r
+, ='*', 
+comm’t
+='star')
+
+284 
+F›ldTy³FunùiÚ
+ = 
+¡r
+ #deçuÉ 
+ty³
+ 
+funùiÚ
+-ty³ 
+f›ld
+
+
+287 
+şass
+ 
+	$DISTINCT
+(
+F›ld
+):
+
+288 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+f›lds
+):
+
+289 
+	`su³r
+(
+DISTINCT
+, 
+£lf
+).
+	`__š™__
+(
+Çme
+='DISTINCT', 
+ty³
+=
+¡r
+, ='DISTINCT', 
+comm’t
+='')
+
+290 
+£lf
+.
+_f›lds
+ = 
+f›lds
+
+
+292 
+def
+ 
+	$_g’_sql_´efix
+(
+£lf
+):
+
+293 
+£lf
+.
+Çme
+ = s–f.Çm+ ' ' + ','.
+	`još
+([
+i
+.
+	$sql
+(
+’abË_as
+=
+F®£
+è
+i
+ 
+š
+ 
+£lf
+.
+_f›lds
+])
+
+294  
+	`su³r
+(
+DISTINCT
+, 
+£lf
+).
+	$_g’_sql_´efix
+()
+
+297 
+şass
+ 
+	$FunùiÚ
+(
+F›ld
+):
+
+299 
+ov”ride
+ #funùiÚ:
+	$_g’_sql_´efix
+(...è
+to
+ 
+im¶em’t
+ 
+your
+ 
+funùiÚ
+ 
+Ãûs§ry
+,
+
+300 
+th©
+ 
+ÿn
+ 
+nÙ
+ 
+f™
+ 
+your
+ 
+Ãeds
+, 
+Œy
+ 
+to
+ 
+ov”ride
+ #funùiÚ:
+sql
+ 
+dœeùly
+.
+
+302 
+NOTICE
+:
+
+303 
+cu¼’t
+ 
+funùiÚ
+ 
+Úly
+ 
+suµÜt
+ 
+Úe
+-
+¬gum’t
+. 
+mÜe
+ 
+¬gum’ts
+ 
+Ãed
+ 
+to
+
+
+304 
+be
+ 
+suµÜ‹d
+, 
+wr™e
+ 
+your
+ 
+own
+ 
+v”siÚ
+. 
+GOOD
+ 
+LUCK
+ :)
+
+306 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+Çme
+, 
+f›ld
+=
+NÚe
+, 
+ty³
+=
+F›ldTy³FunùiÚ
+):
+
+307 
+£lf
+.
+f›ld
+ = field
+
+308 
+	`su³r
+(
+FunùiÚ
+, 
+£lf
+).
+	$__š™__
+(
+Çme
+òame, 
+ty³
+=type)
+
+309 
+£lf
+.
+	$_g’_f_as_backup
+()
+
+311 
+def
+ 
+	$_g’_f_as_backup
+(
+£lf
+):
+
+312 
+Œy
+:
+
+313 
+£lf
+.
+f_as
+ = 
+	`¡r
+(£lf.
+__şass__
+)[:-2].
+	`¥l™
+('.')[-1]
+
+314 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+315 
+´št
+ "[CO_INFO] faedØg’”©àa backu°fÜ funùiÚ:'%s', dØnÙhšg,†‘‡µ-Ëv– knowÀthi ”rÜ" % 
+£lf
+.
+__şass__
+
+
+317 
+def
+ 
+	$_g’_sql_´efix
+(
+£lf
+):
+
+318 
+f›ld_´efix
+ = 
+£lf
+.
+f›ld
+.
+	$sql
+(è
+£lf
+.
+f›ld
+ ''
+
+319  "%s(%s)" % (
+£lf
+.
+Çme
+, 
+f›ld_´efix
+)
+
+322 #CRITICAL: 
+funùiÚ
+ 
+şass
+ 
+Çme
+, 
+we
+ 
+u£
+ 
+UPPERCASE
+ 
+to
+ 
+make
+ 
+the
+‚ame
+
+323 #would 
+nÙ
+ 
+cÚfiùs
+ 
+w™h
+ 
+db
+ 
+f›lds
+ 
+FOR
+ 
+MOST
+ 
+CASES
+.
+
+324 #COUNT, 
+MAX
+, ...
+
+326 
+şass
+ 
+	$COUNT
+(
+FunùiÚ
+):
+
+327 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+f›ld
+=
+STAR_FIELD
+, 
+ty³
+=):
+
+328 
+	`su³r
+(
+COUNT
+, 
+£lf
+).
+	`__š™__
+(
+Çme
+='COUNT', 
+f›ld
+=f›ld, 
+ty³
+=type)
+
+331 
+şass
+ 
+	$MAX
+(
+FunùiÚ
+):
+
+332 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+f›ld
+):
+
+333 
+	`su³r
+(
+MAX
+, 
+£lf
+).
+	`__š™__
+(
+Çme
+='MAX', 
+f›ld
+=field)
+
+336 
+şass
+ 
+	$TO_SECONDS
+(
+FunùiÚ
+):
+
+337 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+f›ld
+):
+
+338 
+	`su³r
+(
+TO_SECONDS
+, 
+£lf
+).
+	`__š™__
+(
+Çme
+='TO_SECONDS', 
+f›ld
+=field)
+
+341 
+şass
+ 
+	$NOW
+(
+FunùiÚ
+):
+
+342 
+def
+ 
+	$__š™__
+(
+£lf
+):
+
+343 
+	`su³r
+(
+NOW
+, 
+£lf
+).
+	`__š™__
+(
+Çme
+='NOW')
+
+346 #... 
+Ùh”
+ 
+funùiÚs
+ 
+h”e
+
+
+349 
+şass
+ 
+	$S–eù
+(
+objeù
+):
+
+350 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+bË
+=
+NÚe
+, 
+Ëak_f›lds
+=NÚe, 
+exŒa_f›ld_defš™iÚs
+={
+	}
+}):
+
+351 
+£lf
+.
+_bË
+ = 
+bË
+
+
+352 
+£lf
+.
+_Ëak_f›lds
+ = 
+NÚe
+
+
+353 
+£lf
+.
+_wh”e
+ = 
+NÚe
+
+
+354 
+£lf
+.
+_Üd”_by
+ = 
+NÚe
+
+
+355 
+£lf
+.
+_Üd”_by_Üd”
+ = 
+NÚe
+
+
+356 
+£lf
+.
+_group_by
+ = 
+NÚe
+
+
+357 
+£lf
+.
+_group_by_Üd”
+ = 
+NÚe
+
+
+358 
+£lf
+.
+_lim™_row_couÁ
+ = 
+NÚe
+
+
+359 
+£lf
+.
+_lim™_off£t
+ = 
+NÚe
+
+
+360 
+£lf
+.
+_exŒa_f›ld_defš™iÚs
+ = 
+exŒa_f›ld_defš™iÚs
+
+
+362 
+Ëak_f›lds
+:
+
+363 
+isš¡ªû
+(
+Ëak_f›lds
+, (
+li¡
+, 
+tu¶e
+)):
+
+364 
+£lf
+.
+_Ëak_f›lds
+ = 
+Ëak_f›lds
+
+
+366 
+£lf
+.
+_Ëak_f›lds
+ = [
+Ëak_f›lds
+]
+
+368 
+def
+ 
+	$wh”e
+(
+£lf
+, 
+cÚd
+=
+NÚe
+):
+
+369 
+cÚd
+:
+
+370 
+£lf
+.
+_wh”e
+ = 
+cÚd
+
+
+371  
+£lf
+
+
+373 
+def
+ 
+	$Üd”By
+(
+£lf
+, 
+f›ld
+, 
+asc
+=
+True
+):
+
+374 
+£lf
+.
+_Üd”_by
+ = 
+f›ld
+
+
+375 
+£lf
+.
+_Üd”_by_Üd”
+ = 'ASC' 
+asc
+ 'DESC'
+
+376  
+£lf
+
+
+378 
+def
+ 
+	$groupBy
+(
+£lf
+, 
+f›ld
+, 
+asc
+=
+True
+):
+
+379 
+£lf
+.
+_group_by
+ = 
+f›ld
+
+
+380 
+£lf
+.
+_group_by_Üd”
+ = 'ASC' 
+asc
+ 'DESC'
+
+381  
+£lf
+
+
+383 
+def
+ 
+	$lim™
+(
+£lf
+, 
+row_couÁ
+, 
+off£t
+=0):
+
+384 
+£lf
+.
+_lim™_row_couÁ
+ = 
+row_couÁ
+
+
+385 
+£lf
+.
+_lim™_off£t
+ = 
+off£t
+
+
+386  
+£lf
+
+
+388 
+def
+ 
+	$sql
+(
+£lf
+):
+
+389 #Mak
+su»
+ 
+the
+ 
+Üd”
+ 
+of
+ 
+sql
+ 
+compÚ’t
+ 
+™ems
+ 
+¬e
+ 
+cÚsi¡’t
+
+
+390 #w™h `
+SELECT
+` 
+sql
+ 
+syÁax
+.
+
+391 
+lk_æds
+ = '*' #default
+
+392 
+£lf
+.
+_Ëak_f›lds
+:
+
+393 
+lk_æds
+ = ','.
+	`još
+([
+i
+.
+	$sql
+(
+’abË_as
+=
+True
+è
+i
+ 
+š
+ 
+£lf
+.
+_Ëak_f›lds
+])
+
+395 
+wh”e_v®ue
+ = (
+£lf
+.
+_wh”e
+.
+	$sql
+(è
+Ü
+ ''è
+£lf
+.
+_wh”e
+ ''
+
+396 
+sql_compÚ’ts
+ = [
+
+398 , 
+lk_æds
+
+
+400 , 
+£lf
+.
+_bË
+.
+	`sql
+()
+
+401 , 'WHERE ' + 
+wh”e_v®ue
+ where_value ''
+
+402 , 'ORDER BY ' + 
+£lf
+.
+_Üd”_by
+.
+	$sql
+(è
+£lf
+.
+_Üd”_by
+ ''
+
+403 , 
+£lf
+.
+_Üd”_by_Üd”
+ self._order_by_order ''
+
+404 , 'GROUP BY ' + 
+£lf
+.
+_group_by
+.
+	$sql
+(è
+£lf
+.
+_group_by
+ ''
+
+405 , 
+£lf
+.
+_group_by_Üd”
+ self._group_by_order ''
+
+406 , 'LIMIT ' + 
+	$¡r
+Ğ
+£lf
+.
+_lim™_row_couÁ
+) self._limit_row_count ''
+
+407 , 'OFFSET ' + 
+	$¡r
+Ğ
+£lf
+.
+_lim™_off£t
+) self._limit_offset ''
+
+409 #exşud
+em±y
+ 
+™ems
+ 
+´‘ty
+ 
+SQL
+.
+
+410 
+sql_compÚ’ts
+ = [
+i
+ ˜
+š
+ sql_components i]
+
+411  (' '.
+	$još
+(
+sql_compÚ’ts
+))
+
+413 
+def
+ 
+	$Úe
+(
+£lf
+):
+
+414  
+£lf
+.
+	$_execu‹
+(
+Úly_Úe
+=
+True
+)
+
+416 
+def
+ 
+	$whŞe
+(
+£lf
+):
+
+417  
+£lf
+.
+	$_execu‹
+(
+Úly_Úe
+=
+F®£
+)
+
+419 
+def
+ 
+	$_execu‹
+(
+£lf
+, 
+Úly_Úe
+=
+F®£
+):
+
+420 
+efds
+ = 
+£lf
+.
+_exŒa_f›ld_defš™iÚs
+ 
+Ü
+ {
+	}
+} #fÜ 
+još
+, 
+maybe
+ 
+	gem±y
+: {}
+
+421 
+£lf
+.
+_Ëak_f›lds
+:
+
+422 
+efds
+.
+upd©e
+Ğ{ 
+_Pack_F›ld_Key
+(
+i
+.
+f_as
+):i.
+defš™iÚ
+(è˜
+š
+ 
+£lf
+.
+_Ëak_f›lds
+ i.f_a } ) #Ëak 
+f›ld
+ 
+as
+
+
+423  
+£lf
+.
+_bË
+.
+_t_executÜ
+.
+execu‹
+ (
+
+424 
+£lf
+.
+sql
+(),
+
+425 
+sql_aùiÚ
+ = 
+COCÚ¡ªts
+.
+SQL_ACTION_SELECT
+,
+
+426 
+mod–_şass
+ = 
+£lf
+.
+_bË
+.
+_t_mod–_şass
+,
+
+427 
+exŒa_mod–_f›lds
+ = 
+efds
+,
+
+428 
+Úly_Úe
+ = only_one )
+
+431 
+şass
+ 
+	$Mod–Içû
+(
+objeù
+):
+
+432 
+DB_NAME
+ = ''
+
+433 
+TABLE_NAME
+ = '' #mu¡ 
+exi¡
+ 
+š
+ 
+g’”©ed
+ 
+code
+.
+
+434 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+db_Çme
+=
+NÚe
+, 
+bË_Çme
+=None):
+
+435 
+db_Çme
+: 
+£lf
+.
+DB_NAME
+ = db_name
+
+436 
+bË_Çme
+: 
+£lf
+.
+TABLE_NAME
+ =able_name
+
+438 
+def
+ 
+	$__»´__
+(
+£lf
+, ):
+
+439  
+	`¡r
+(
+£lf
+.
+__şass__
+).
+	`¥l™
+(' ')[1][1:-2]+'@'+£lf.
+TABLE_NAME
+
+
+441 
+def
+ 
+	$__¡r__
+(
+£lf
+, ):
+
+442  
+£lf
+.
+	$dumpAsSŒ
+()
+
+444 
+def
+ 
+	$_is_f›ld_»gi¡ed
+(
+£lf
+, 
+f›ld_Çme
+):
+
+447 
+f_key
+ = 
+	$_Pack_F›ld_Key
+(
+f›ld_Çme
+)
+
+448 
+f
+ = 
+£lf
+.
+__diù__
+.
+	$g‘
+(
+f_key
+)
+
+449 
+nÙ
+ 
+f
+:
+
+450  
+F®£
+, 
+NÚe
+
+
+451  
+	`isš¡ªû
+(
+f
+, 
+F›ld
+), f
+
+453 
+def
+ 
+	$addExŒaA‰ribu‹s
+(
+£lf
+, 
+d_exŒa_©Œibu‹s
+):
+
+454 
+´št
+ "[CO_DEBUG]‡lready_keys:%s,‚ew commers:%s" % \
+
+455 (
+£lf
+.
+__diù__
+.
+	`keys
+(), 
+d_exŒa_©Œibu‹s
+.
+	$keys
+())
+
+456 
+£lf
+.
+__diù__
+.
+	$upd©e
+(
+d_exŒa_©Œibu‹s
+)
+
+458 
+def
+ 
+	$»gi¡”ExŒaF›lds
+(
+£lf
+, 
+d_exŒa_f›ld_defš™iÚs
+):
+
+459 
+âam
+, 
+fdefi
+ 
+š
+ 
+d_exŒa_f›ld_defš™iÚs
+.
+	$™ems
+():
+
+460 
+´št
+ "[CO_DEBUG]„egi¡”šg f›ld:%15 fÜ '%s'" % (
+âam
+, 
+£lf
+)
+
+461 
+£lf
+.
+__diù__
+[
+âam
+] = 
+	$F›ld
+(
+defš™iÚ
+=
+fdefi
+)
+
+463 
+def
+ 
+	`£tDBD©a
+(
+£lf
+, 
+db_d©a
+={
+	}
+}):
+
+465 @
+db_d©a
+ 
+ty³
+: 
+diù
+
+
+467 
+k
+,
+v
+ 
+š
+ 
+	gdb_d©a
+.
+	$™ems
+():
+
+468 
+is_æd
+, 
+f
+ = 
+£lf
+.
+	$_is_f›ld_»gi¡ed
+(
+k
+)
+
+469 
+nÙ
+ 
+is_æd
+:
+
+470 
+´št
+ "[CO_WARNING] F›ld:'%s'‚Ù„egi¡ed iÀMod–:'%s', ignÜ™" % (
+k
+, 
+£lf
+)
+
+472 
+Œy
+:
+
+473 
+f
+.
+v®ue
+ = f.
+	$ty³
+(
+v
+)
+
+474 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+475 
+¿i£
+ 
+	$COExcInv®idSql
+(
+e
+)
+
+476 #CRITICAL: 
+®ways
+  
+£lf
+
+
+477  
+£lf
+
+
+479 
+def
+ 
+	$__£‰r__
+(
+£lf
+, 
+k
+, 
+v
+):
+
+480 
+	$isš¡ªû
+(
+v
+, 
+F›ld
+):
+
+481 
+k
+ = 
+	$_Pack_F›ld_Key
+(
+k
+)
+
+483 #®way 
+¡Üe
+ 
+™
+ 
+no
+ 
+m©‹r
+ 
+wh‘h”
+ @
+v
+ 
+is
+ 
+ty³
+ 
+of
+ 'F›ld' 
+Ü
+ 
+NÙ
+
+
+484 
+£lf
+.
+__diù__
+[
+k
+] = 
+v
+
+
+486 
+def
+ 
+	$__g‘©Œ__
+(
+£lf
+, 
+k
+):
+
+488 
+wh”e
+ @
+k
+ 
+is
+ 
+·¹
+ 
+to
+ 
+£lf
+.
+__diù__
+.
+
+490 
+f_key
+ = 
+	$_Pack_F›ld_Key
+(
+k
+)
+
+491 
+v
+ = 
+£lf
+.
+__diù__
+.
+	$g‘
+(
+f_key
+, 
+NÚe
+)
+
+492 
+v
+ 
+is
+ 
+NÚe
+:
+
+493 
+¿i£
+ 
+	`A‰ribu‹E¼Ü
+("nØsuch key:'%s'" % 
+k
+)
+
+494 #CRITICAL: 
+hªdË
+ 
+F›ld
+ 
+ªd
+ 
+F›ldTy³Enum
+
+
+495 
+	$isš¡ªû
+(
+v
+, 
+F›ld
+):
+
+496 
+v
+ = v.
+v®ue
+
+
+497  
+v
+.v 
+	$isš¡ªû
+(
+v
+, 
+F›ldTy³Enum
+) v
+
+498  
+v
+
+
+500 
+def
+ 
+	$f›lds
+(
+£lf
+):
+
+503  [
+v
+ 
+k
+,v 
+š
+ 
+£lf
+.
+__diù__
+.
+	$™ems
+(è
+	`isš¡ªû
+(
+v
+, 
+F›ld
+)]
+
+505 
+def
+ 
+	$f›ld
+(
+£lf
+, 
+f›ld_Çme
+):
+
+508 
+f_key
+ = 
+	$_Pack_F›ld_Key
+(
+f›ld_Çme
+)
+
+509 
+v
+ = 
+£lf
+.
+__diù__
+.
+	$g‘
+(
+f_key
+, 
+NÚe
+)
+
+510 
+v
+ 
+is
+ 
+NÚe
+:
+
+511 
+¿i£
+ 
+	`A‰ribu‹E¼Ü
+("nØsuch key:'%s'" % 
+f›ld_Çme
+)
+
+512 #CRITICAL: 
+hªdË
+ 
+F›ld
+ 
+ªd
+ 
+F›ldTy³Enum
+
+
+513  
+v
+ 
+	$isš¡ªû
+(
+v
+, 
+F›ld
+è
+NÚe
+
+
+515 
+def
+ 
+	$dumpAsSŒ
+(
+£lf
+,):
+
+516  
+	`¡r
+({ 
+	`_UÅack_F›ld_Key
+(
+k
+):¡r(
+v
+.
+v®ue
+) \
+
+517 
+k
+,
+v
+ 
+š
+ 
+£lf
+.
+__diù__
+.
+	`™ems
+(è
+	`isš¡ªû
+(v, 
+F›ld
+è
+	}
+})
+
+519 
+def
+ 
+	$dumpAsDiù
+(
+£lf
+,):
+
+520  { 
+	`_UÅack_F›ld_Key
+(
+k
+è: 
+v
+.
+v®ue
+.v 
+	`isš¡ªû
+(v.v®ue, 
+F›ldTy³Enum
+) v.value \
+
+521 
+k
+,
+v
+ 
+š
+ 
+£lf
+.
+__diù__
+.
+	`™ems
+(è
+	`isš¡ªû
+(v, 
+F›ld
+è
+	}
+}
+
+523 
+def
+ 
+	$dumpAsDBD©a
+(
+£lf
+,):
+
+524 #CRITICAL: 
+§ã
+ 
+š£¹iÚ
+, 
+we
+ 
+ex¶iÿ‹ly
+ 
+£t
+ 
+the
+ 
+
+525 #v®u
+a
+ 
+f›ld
+ 
+who£
+ 
+š
+ 
+SQL
+.
+
+526 #And, 
+the
+  
+v®ue
+ 
+is
+ 
+gÙ‹n
+ 
+äom
+ 
+Mod–X
+ 
+which
+
+
+527 #i 
+autog’”©ed
+ 
+by
+ 
+mod–
+ 
+g’“¿tÜ
+ 
+ba£d
+ 
+Ú
+ 
+the
+
+
+528 #d©aba£ 
+defš™iÚ
+, 
+so
+ 
+™
+'s OK
+
+529 #
+#¨
+l™e
+ 
+difã»Á
+ 
+äom
+ 'AsSŒ' 
+is
+ 
+th©
+, 
+a
+ 
+DEFAULT
+ 
+VALUE
+ i 
+backup
+ 
+mÜe
+ 
+üucŸl
+ 
+s™u©iÚ
+.
+
+531  { 
+	`_UÅack_F›ld_Key
+(
+k
+):
+	`¡r
+(
+v
+.
+v®ue
+ v.v®uv.è#v.v®u
+Ü
+ v.
+
+532 
+k
+,
+v
+ 
+š
+ 
+£lf
+.
+__diù__
+.
+	`™ems
+()
+
+533 
+	`isš¡ªû
+(
+v
+, 
+F›ld
+è
+	`ªd
+ (v.
+v®ue
+ 
+Ü
+ v.
+	`isEnum
+()è
+	}
+}
+
+536 
+şass
+ 
+	$_DyÇmicMod–
+(
+Mod–Içû
+):
+
+537 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+dyÇmic_f›lds
+={
+	}
+}, 
+	gdb_Çme
+=
+NÚe
+, 
+	gbË_Çme
+=None):
+
+540 
+k
+,
+defš
+ 
+š
+ 
+	gdyÇmic_f›lds
+.
+	$™ems
+():
+
+541 
+£lf
+.
+__diù__
+[
+k
+] = 
+	$F›ld
+(
+defš™iÚ
+=
+defš
+)
+
+542 
+	`su³r
+(
+_DyÇmicMod–
+, 
+£lf
+).
+	$__š™__
+(
+db_Çme
+=db_Çme, 
+bË_Çme
+=table_name)
+
+545 
+şass
+ 
+	$CompoundMod–
+(
+_DyÇmicMod–
+):
+
+546 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+dyÇmic_f›lds
+={
+	}
+}, 
+	gdb_Çme
+=
+NÚe
+, 
+	gbË_Çme
+=None):
+
+547 
+su³r
+(
+CompoundMod–
+, 
+£lf
+).
+__š™__
+Ğ
+dyÇmic_f›lds
+=dyÇmic_f›ld 
+Ü
+ {},
+
+548 
+db_Çme
+=db_name,
+
+549 
+bË_Çme
+=table_name )
+
+552 
+şass
+ 
+	$JošMod–
+(
+_DyÇmicMod–
+):
+
+553 
+def
+ 
+	`__š™__
+(
+£lf
+, 
+dyÇmic_f›lds
+={
+	}
+}, 
+	gdb_Çme
+=
+NÚe
+, 
+	gbË_Çme
+=None):
+
+554 
+su³r
+(
+JošMod–
+, 
+£lf
+).
+__š™__
+Ğ
+dyÇmic_f›lds
+=dyÇmic_f›ld 
+Ü
+ {},
+
+555 
+db_Çme
+=db_name,
+
+556 
+bË_Çme
+=table_name )
+
+559 
+şass
+ 
+	$Još
+(
+objeù
+):
+
+560 
+·ss
+
+
+563 
+şass
+ 
+	$TabËIçû
+(
+objeù
+):
+
+565 
+A
+ 
+š‹rçû
+ 
+defš™iÚ
+ 
+of
+ 
+bË
+
+
+567 
+NOTICE
+: 
+MAKE
+ 
+SURE
+ 
+ANY
+ 
+INSTANCES
+ 
+OF
+ 
+THIS
+ 
+CLASS
+ 
+WILL
+ 
+NOT
+ 
+BE
+ 
+INJECTED
+ 
+BY
+ ANY 
+OPERATIONS
+.
+
+569 
+Q
+. 
+why
+ dØ
+nÙ
+ 
+šh”™
+ 
+äom
+ 
+Mod–Içû
+?
+
+570 
+A
+. 1. 
+To
+ 
+k“p
+ 
+š‹rçû
+ 
+ş—n
+, 
+ªd
+ 
+š
+ 
+»®
+, 
+they
+ 
+have
+ 
+no
+ 
+šh”™
+-
+»ÏtiÚsh
+.
+
+571 2. 
+£³¿‹
+ 
+d©a
+ 
+ªd
+ 
+İ”©iÚ
+ 
+to
+ 
+make
+ 
+logic
+ 
+mÜe
+ 
+ş—r
+
+
+572 3. 
+mÜe
+ 
+æexŸbË
+ 
+to
+ 
+ex‹nd
+.
+
+574 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+mod–_şass
+, 
+executÜ
+=
+NÚe
+, 
+db_Çme
+=NÚe, 
+bË_Çme
+=None):
+
+577 
+£lf
+.
+_t_mod–_şass
+ = 
+mod–_şass
+ #mod– 
+şass
+ 
+defš™iÚ
+
+
+578 
+£lf
+.
+_t_executÜ
+ = 
+executÜ
+
+
+579 
+£lf
+.
+_t_db_Çme
+ = 
+db_Çme
+ db_Çm£lf.
+_t_mod–_şass
+.
+DB_NAME
+
+
+580 
+£lf
+.
+_t_Çme
+ = 
+bË_Çme
+ bË_Çm£lf.
+_t_mod–_şass
+.
+TABLE_NAME
+
+
+581 
+£lf
+.
+_t_as
+ = 
+NÚe
+
+
+582 
+£lf
+.
+ALL
+ = 
+STAR_FIELD
+
+
+584 
+£lf
+.
+	$_»gi¡”_mod–_f›lds
+()
+
+586 
+def
+ 
+	$__g‘©Œ__
+(
+£lf
+, 
+k
+):
+
+589 
+f_key
+ = 
+	$_Pack_F›ld_Key
+(
+k
+)
+
+590 
+v
+ = 
+£lf
+.
+__diù__
+.
+	$g‘
+(
+f_key
+, 
+NÚe
+)
+
+591 
+v
+ 
+is
+ 
+NÚe
+:
+
+592 
+¿i£
+ 
+	`A‰ribu‹E¼Ü
+("nØsuch key:'%s'" % 
+k
+)
+
+593  
+v
+ #CRITICAL:  
+F›ld
+ 
+CÚd™iÚ
+
+
+595 
+def
+ 
+	$_g‘_f›lds
+(
+£lf
+, *
+mod–_şas£s
+):
+
+598 
+mod–_f›ld_m­
+ = {
+	}
+}
+
+599 
+mc
+ 
+š
+ 
+mod–_şas£s
+:
+
+600 
+š¡_mc
+, 
+	g_m­
+ = 
+mc
+(), {}
+
+601 
+	gk
+,
+v
+ 
+š
+ 
+	gš¡_mc
+.
+	g__diù__
+.
+	$™ems
+():
+
+602 
+	$isš¡ªû
+(
+v
+, 
+F›ld
+):
+
+603 
+v
+.
+bË
+ = 
+£lf
+ #»£ˆbË 
+as
+ self table.as
+
+604 
+_m­
+[
+k
+] = 
+v
+
+
+605 
+mod–_f›ld_m­
+.
+	$upd©e
+Ğ
+_m­
+ ) #CRITICAL: 
+maybe
+ 
+ov”wr™e
+
+
+606  
+mod–_f›ld_m­
+
+
+608 
+def
+ 
+	`_»gi¡”_f›lds
+(
+£lf
+, 
+diù_f›lds
+={
+	}
+}):
+
+609 
+£lf
+.
+__diù__
+.
+	$upd©e
+Ğ
+diù_f›lds
+ )
+
+611 
+def
+ 
+	$_»gi¡”_mod–_f›lds
+(
+£lf
+):
+
+614 
+£lf
+.
+	`_»gi¡”_f›lds
+Ğ£lf.
+	`_g‘_f›lds
+(£lf.
+_t_mod–_şass
+) )
+
+616 @
+´İ”ty
+
+
+617 
+def
+ 
+	$_şass
+(
+£lf
+):
+
+618  
+	`¡r
+(
+£lf
+.
+__şass__
+)[8:-2]
+
+620 
+def
+ 
+	$AS
+(
+£lf
+, 
+®Ÿs
+):
+
+621 #U£ 
+cİy
+ 
+Ùh”
+ 
+thª
+ 
+d“pcİy
+ 
+³rfÜmªû
+ 
+ªd
+ 
+memÜy
+ 
+§všg
+.
+
+622 
+®Ÿs_obj
+ = 
+cİy
+.
+	$d“pcİy
+(
+£lf
+)
+
+623 
+®Ÿs_obj
+.
+_t_as
+ = 
+®Ÿs
+
+
+624 #CRITICAL: 
+An
+ 1 
+bliÚ
+ 
+dŞÏr
+ 
+BUG
+, 
+fuck
+ 
+™
+.
+
+625 
+®Ÿs_obj
+.
+_t_executÜ
+ = 
+£lf
+._t_executor
+
+626  
+®Ÿs_obj
+
+
+628 
+def
+ 
+	$£tDbName
+(
+£lf
+, 
+db_Çme
+):
+
+629 
+£lf
+.
+_t_db_Çme
+ = 
+db_Çme
+
+
+631 
+def
+ 
+	$£tTabËName
+(
+£lf
+, 
+bË_Çme
+):
+
+632 
+£lf
+.
+_t_Çme
+ = 
+bË_Çme
+
+
+634 
+def
+ 
+	$š£¹
+(
+£lf
+, 
+d©as
+, *
+¬gs
+, **
+kw¬gs
+):
+
+635 
+¿i£
+ 
+	`NÙIm¶em’‹dE¼Ü
+('%s.š£¹(ènÙ im¶emem‹d' % 
+£lf
+.
+_şass
+)
+
+637 
+def
+ 
+	$upd©e
+(
+£lf
+, 
+diù_d©a
+, 
+cÚd
+=
+NÚe
+, *
+¬gs
+, **
+kw¬gs
+):
+
+638 
+¿i£
+ 
+	`NÙIm¶em’‹dE¼Ü
+('%s.upd©e(ènÙ im¶emem‹d' % 
+£lf
+.
+_şass
+)
+
+640 
+def
+ 
+	$d–‘e
+(
+£lf
+, 
+cÚd
+, *
+¬gs
+, **
+kw¬gs
+):
+
+641 
+¿i£
+ 
+	`NÙIm¶em’‹dE¼Ü
+('%s.d–‘e(ènÙ im¶emem‹d' % 
+£lf
+.
+_şass
+)
+
+643 
+def
+ 
+	$£Ëù
+(
+£lf
+, *
+Ëak_f›lds
+, **
+kw¬gs
+):
+
+644 #fœ¡ 
+of
+ 
+®l
+ 
+exşude
+‡Î 
+NÚe
+ 
+š
+ 
+Ëak_f›lds
+
+
+645 
+Ëak_f›lds
+ = [
+	$g‘©Œ
+(
+£lf
+, 
+i
+è
+	$isš¡ªû
+(
+i
+,
+¡r
+è˜˜
+š
+ 
+Ëak_f›lds
+ i]
+
+647 
+	$isš¡ªû
+(
+£lf
+, 
+Još
+):
+
+648 
+efds
+ = 
+£lf
+.
+_jn_dyÇmic_f›lds
+
+
+650 
+efds
+ = {
+	}
+}
+
+651  
+	$S–eù
+(
+bË
+=
+£lf
+, 
+Ëak_f›lds
+ö—k_f›lds, 
+exŒa_f›ld_defš™iÚs
+=
+efds
+)
+
+653 
+def
+ 
+	$još
+(
+£lf
+, 
+bË_r
+, 
+mode
+=
+COCÚ¡ªts
+.
+JOIN_MODE_INNER
+):
+
+654  
+	$Još
+(
+£lf
+, 
+bË_r
+, 
+mode
+=mode)
+
+656 
+def
+ 
+	$sql
+(
+£lf
+, 
+as_´eã»d
+=
+F®£
+):
+
+658 @
+as_´eã»d
+: 
+m—ns
+ 
+Úly
+ 
+give
+ 
+out
+ 
+bË
+ 
+®Ÿs
+ 
+·¹
+, 
+of
+-
+ÿu£
+ oÆy 
+wh’
+ 
+™
+ 
+exi¡s
+
+
+660 
+as_´eã»d
+:
+
+661 
+£lf
+.
+_t_as
+:
+
+662  
+£lf
+.
+_t_as
+
+
+663 #u£ 
+nÜm®
+
+
+664 
+db_´efix
+ = 
+£lf
+.
+_t_db_Çme
+ +'.' self._t_db_name ''
+
+665 
+sql_basic
+ = 
+db_´efix
+ + 
+£lf
+.
+_t_Çme
+
+
+666 
+£lf
+.
+_t_as
+:
+
+667  
+sql_basic
+ + " AS %s" % 
+£lf
+.
+_t_as
+
+
+669  
+sql_basic
+
+
+672 
+şass
+ 
+	$TabË
+(
+TabËIçû
+):
+
+673 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+mod–_şass
+, 
+executÜ
+=
+NÚe
+):
+
+674 
+	`su³r
+(
+TabË
+, 
+£lf
+).
+	$__š™__
+(
+mod–_şass
+=mod–_şass, 
+executÜ
+=executor)
+
+677 
+def
+ 
+	$_is_f›ld_»gi¡ed
+(
+£lf
+, 
+f›ld_Çme
+):
+
+680 
+f
+ = 
+£lf
+.
+__diù__
+.
+	$g‘
+(
+f›ld_Çme
+)
+
+681 
+nÙ
+ 
+f
+:
+
+682  
+F®£
+, 
+NÚe
+
+
+683  
+	`isš¡ªû
+(
+f
+, 
+F›ld
+), f
+
+685 
+def
+ 
+	$g‘F›ld
+(
+£lf
+, 
+f›ld_Çme
+):
+
+686  
+£lf
+.
+__diù__
+.
+	`g‘
+(
+f›ld_Çme
+, 
+	`F›ld
+(
+Çme
+='__null__'))
+
+688 
+def
+ 
+	$š£¹
+(
+£lf
+, 
+d©as
+, 
+’abË_ignÜe_mode
+=
+F®£
+):
+
+690 @
+d©as
+: 
+ÿn
+ 
+be
+ 
+fŞlowšg
+ 
+ty³
+:
+
+691 1. 
+CÜe¥Údšg
+ 
+Mod–
+
+
+692 2. 
+sšgË
+ 
+diù_d©a
+ 
+as
+:
+
+693 . 
+fÜm©1
+: { 
+bË
+.
+f›ld
+:
+v
+,abË.f›ld:v,abË.f›ld:v 
+	}
+}
+
+694 . 
+fÜm©2
+: {'f›ld_Çme':
+v
+, 'f›ld_Çme':v, 'f›ld_Çme':v } #fš® 
+ty³
+
+
+695 3. 
+li¡
+ 
+of
+ 
+diù_d©as
+
+
+697 #»fš
+d©as
+ 
+fœ¡
+
+
+698 
+nÙ
+ 
+isš¡ªû
+(
+d©as
+, (
+li¡
+, 
+tu¶e
+)):
+
+699 
+d©as
+ = [datas]
+
+700 
+»fšed_d©as
+ = []
+
+701 
+i
+ 
+š
+ 
+d©as
+:
+
+702 
+	$isš¡ªû
+(
+i
+, 
+Mod–Içû
+):
+
+703 
+db_¡yË_d©a
+ = 
+i
+.
+	$dumpAsDBD©a
+()
+
+705 
+db_¡yË_d©a
+ = {
+
+706 (
+k
+.
+	`sql
+(è
+	`isš¡ªû
+(k, 
+F›ld
+èk):
+v
+ k,v 
+š
+ 
+i
+.
+	`™ems
+()
+
+707 
+	}
+}
+
+708 
+»fšed_d©as
+.
+	$­³nd
+Ğ
+db_¡yË_d©a
+ )
+
+710 #compo£ 
+rg‘
+ 
+cŞumns
+
+
+711 
+rg‘_cŞumns
+ = 
+	$£t
+()
+
+712 
+i
+ 
+š
+ 
+»fšed_d©as
+:
+
+713 
+rg‘_cŞumns
+.
+	`upd©e
+(
+i
+.
+	$keys
+())
+
+714 
+rg‘_cŞumns
+ = 
+	$li¡
+(
+rg‘_cŞumns
+)
+
+716 #compo£ 
+rg‘
+ 
+cŞumns
+' data
+
+717 
+cŞumn_d©as
+ = []
+
+718 
+d
+ 
+š
+ 
+»fšed_d©as
+:
+
+720 #cÚv”ˆ
+¿w
+ 
+v®ue
+ 
+to
+ 
+the
+ 
+f›ld
+'s insert style string
+
+721 
+»fšed_d
+ = []
+
+722 
+c
+ 
+š
+ 
+rg‘_cŞumns
+:
+
+723 
+æd
+ = 
+£lf
+.
+	$g‘F›ld
+(
+c
+)
+
+724 #1. 
+no
+ 
+key
+ 
+Çmed
+ '@c' 
+š
+ 
+d
+
+
+725 
+cŞ_v
+ = 
+d
+.
+	`g‘
+(
+c
+, 'NULL' 
+æd
+. 
+is
+ 
+NÚe
+ fld. )
+
+726 #2. 
+has
+ 
+key
+ 
+Çmed
+ '@c' 
+š
+ 
+d
+, 
+but
+ 
+v®ue
+ 
+is
+ 'None'
+
+727 #w
+£t
+ 
+the
+ 
+v®ue
+ 
+dœeùly
+ 
+Ùh”
+ 
+thª
+ 
+§ve
+h
+backup
+ 
+as
+ 
+a
+ 
+v¬
+
+
+728 #fÜ 
+³rfÜmªû
+
+
+729 
+cŞ_v
+ 
+is
+ 
+NÚe
+:
+
+730 
+cŞ_v
+ = 'NULL' 
+æd
+. 
+is
+ 
+NÚe
+ fld.
+
+732 
+»fšed_d
+.
+	`­³nd
+Ğ
+æd
+.
+	$toIn£¹StyËSŒ
+(
+cŞ_v
+) )
+
+734 
+v
+ = '(' + ','.
+	`još
+ ( 
+»fšed_d
+ ) + ')'
+
+735 
+cŞumn_d©as
+.
+	$­³nd
+Ğ
+v
+ )
+
+737 #compo£ 
+SQL
+
+
+738 
+sql_compÚ’ts
+ = [ "INSERT%s" % (" IGNORE" 
+’abË_ignÜe_mode
+ ""),
+
+739 "INTO %s" % 
+£lf
+.
+	`sql
+()
+
+740 , "(%s)" % ','.
+	`još
+(
+rg‘_cŞumns
+)
+
+742 , ','.
+	`još
+(
+cŞumn_d©as
+)
+
+744 
+sql
+ = ' '.
+	$još
+(
+sql_compÚ’ts
+)
+
+745  
+£lf
+.
+_t_executÜ
+.
+	$execu‹
+(
+sql
+, 
+sql_aùiÚ
+=
+COCÚ¡ªts
+.
+SQL_ACTION_INSERT
+)
+
+747 
+def
+ 
+	$upd©e
+(
+£lf
+, 
+diù_d©a
+, 
+cÚd
+=
+NÚe
+, 
+low_´iÜ™y
+=
+F®£
+, 
+ignÜe
+=False):
+
+748 
+upd©e_£t_™ems
+ = []
+
+749 
+k
+,
+v
+ 
+š
+ 
+diù_d©a
+.
+	$™ems
+():
+
+750 
+	$isš¡ªû
+(
+k
+, 
+F›ld
+):
+
+751 
+k
+ = k.
+Çme
+
+
+752 
+nÙ
+ 
+£lf
+.
+	`_is_f›ld_»gi¡ed
+(
+k
+)[0]:
+
+753 
+´št
+ "[CO_WARNING]‚Øsuch f›ld:'%s' iÀbË:'%s'" % (
+k
+, 
+£lf
+.
+_t_Çme
+)
+
+755 
+us_™em
+ = "%s='%s'" % (
+k
+, 
+v
+è#®way 
+¡ršg
+
+
+756 
+upd©e_£t_™ems
+.
+	$­³nd
+(
+us_™em
+)
+
+758 
+sql_compÚ’ts
+ = [ 'UPDATE'
+
+759 , 'LOW_PRIORITY' 
+low_´iÜ™y
+ ''
+
+760 , 'IGNORE' 
+ignÜe
+ ''
+
+761 , 
+£lf
+.
+_t_Çme
+
+
+763 , ','.
+	`još
+Ğ
+upd©e_£t_™ems
+ )
+
+764 , 'WHERE %s' % 
+cÚd
+.
+	$sql
+(è
+cÚd
+ ''
+
+766 #exşud
+em±y
+ 
+™ems
+ 
+´‘ty
+ 
+SQL
+.
+
+767 
+sql_compÚ’ts
+ = [
+i
+ ˜
+š
+ sql_components i]
+
+768 
+sql
+ = ' '.
+	$još
+(
+sql_compÚ’ts
+)
+
+769  
+£lf
+.
+_t_executÜ
+.
+	$execu‹
+(
+sql
+, 
+sql_aùiÚ
+=
+COCÚ¡ªts
+.
+SQL_ACTION_UPDATE
+)
+
+771 
+def
+ 
+	$d–‘e
+(
+£lf
+, 
+cÚd
+=
+NÚe
+, 
+low_´iÜ™y
+=
+F®£
+, 
+ignÜe
+=F®£, 
+®low_nÚe_cÚd
+=False):
+
+772 #CRITICAL: 
+§ãty
+, 
+we
+ dØ
+nÙ
+ 
+®low
+ 
+cÚd
+ 
+to
+ 
+be
+ 
+NÚe
+
+
+773 #uÆes 
+®low_nÚe_cÚd
+ 
+is
+ 
+TRUE
+ 
+which
+  i 
+FALSE
+
+
+774 
+nÙ
+ 
+cÚd
+ 
+ªd
+‚Ù 
+®low_nÚe_cÚd
+:
+
+775 
+¿i£
+ 
+	`COExcInv®idSql
+("cÚd:'%s' i nÙ‡Îowed" % 
+cÚd
+)
+
+776 
+sql_compÚ’ts
+ = [ 'DELETE'
+
+777 , 'LOW_PRIORITY' 
+low_´iÜ™y
+ ''
+
+778 , 'IGNORE' 
+ignÜe
+ ''
+
+780 , 
+£lf
+.
+_t_Çme
+
+
+781 , 'WHERE %s' % 
+cÚd
+.
+	$sql
+(è
+cÚd
+ ''
+
+783 #exşud
+em±y
+ 
+™ems
+ 
+´‘ty
+ 
+SQL
+.
+
+784 
+sql_compÚ’ts
+ = [
+i
+ ˜
+š
+ sql_components i]
+
+785 
+sql
+ = ' '.
+	$još
+(
+sql_compÚ’ts
+)
+
+786  
+£lf
+.
+_t_executÜ
+.
+	$execu‹
+(
+sql
+, 
+sql_aùiÚ
+=
+COCÚ¡ªts
+.
+SQL_ACTION_DELETE
+)
+
+789 
+şass
+ 
+	$Još
+(
+TabËIçû
+):
+
+791 
+´ÙocŞ
+ #1: 
+	`Još
+(
+bË_Ëá
+, 
+bË_right
+, 
+mode
+=
+X
+).
+	$Ú
+Ğ
+cÚd
+ )
+
+792 
+´ÙocŞ
+ #2: 
+	`Još
+(
+bË_Ëá
+, 
+bË_right
+, 
+mode
+=
+X
+).
+	$usšg
+Ğ
+cŞumn_li¡
+ )
+
+794 #g‘ 
+fŞlowšg
+ 
+¡uff
+ 
+´İ”ly
+ 
+£t
+:
+
+795 
+_t_mod–_şass
+
+
+797 #how 
+to
+ 
+»fše
+ 
+bË
+ 
+Çme
+
+
+798 
+	$sql
+(è#ov”wr™
+this
+ 
+funùiÚ
+ 
+to
+ 
+»fše
+ 
+bË
+ 
+Çme
+
+
+801 
+INNER
+ = 
+COCÚ¡ªts
+.
+JOIN_MODE_INNER
+
+
+802 
+CROSS
+ = 
+COCÚ¡ªts
+.
+JOIN_MODE_CROSS
+
+
+803 
+STRAIGHT
+ = 
+COCÚ¡ªts
+.
+JOIN_MODE_STRAIGHT
+
+
+804 
+LEFT
+ = 
+COCÚ¡ªts
+.
+JOIN_MODE_LEFT
+
+
+805 
+RIGHT
+ = 
+COCÚ¡ªts
+.
+JOIN_MODE_RIGHT
+
+
+806 #NATURAL = 
+NÚe
+ #ignÜ
+this
+ 
+
+808 #još 
+cÚd™iÚ
+
+
+809 
+_JC
+ = {
+
+810 
+INNER
+: 
+	`Magic
+Ğ
+»quœed
+=
+True
+, 
+®low_Ú
+=True, 
+®low_usšg
+=True )
+
+811 , 
+CROSS
+: 
+	`Magic
+Ğ
+»quœed
+=
+True
+, 
+®low_Ú
+=True, 
+®low_usšg
+=True )
+
+812 , 
+STRAIGHT
+: 
+	`Magic
+Ğ
+»quœed
+=
+F®£
+, 
+®low_Ú
+=
+True
+, 
+®low_usšg
+=False )
+
+813 , 
+LEFT
+: 
+	`Magic
+Ğ
+»quœed
+=
+True
+, 
+®low_Ú
+=True, 
+®low_usšg
+=True )
+
+814 , 
+RIGHT
+: 
+	`Magic
+Ğ
+»quœed
+=
+True
+, 
+®low_Ú
+=True, 
+®low_usšg
+=True )
+
+815 
+	}
+}
+
+817 
+def
+ 
+	$__š™__
+(
+£lf
+, 
+bË_Ëá
+, 
+bË_right
+, 
+mode
+=
+INNER
+, 
+Ú
+=
+NÚe
+, 
+usšg
+=None):
+
+818 
+£lf
+.
+_jn_dyÇmic_f›lds
+ = {
+	}
+}
+
+819 
+£lf
+.
+_jn_tbl_l
+ = 
+bË_Ëá
+
+
+820 
+£lf
+.
+_jn_tbl_r
+ = 
+bË_right
+
+
+821 
+£lf
+.
+_jn_mode
+ = 
+mode
+
+
+822 
+£lf
+.
+_jn_Ú
+ = 
+Ú
+
+
+823 
+£lf
+.
+_jn_usšg
+ = 
+NÚe
+ 
+nÙ
+ 
+usšg
+ usšg 
+isš¡ªû
+(usšg, (
+li¡
+, 
+tu¶e
+)) [using]
+
+825 
+	g£lf
+.
+	$_check_vaid©iÚ
+()
+
+827 #dØ
+some
+ 
+š™
+
+
+828 
+j_executÜ
+ = 
+bË_Ëá
+.
+_t_executÜ
+
+
+829 
+£lf
+.
+	$_£t_dyÇmic_f›lds
+Ğ
+£lf
+.
+_jn_tbl_l
+.
+_t_mod–_şass
+,
+
+830 
+£lf
+.
+_jn_tbl_r
+.
+_t_mod–_şass
+ )
+
+831 
+	`su³r
+(
+Još
+, 
+£lf
+).
+	$__š™__
+(
+mod–_şass
+=
+JošMod–
+, 
+executÜ
+=
+j_executÜ
+)
+
+833 
+def
+ 
+	$_check_vaid©iÚ
+(
+£lf
+):
+
+834 
+	`nÙ
+ (
+	$isš¡ªû
+(
+£lf
+.
+_jn_tbl_l
+, 
+TabËIçû
+è
+ªd
+ s–f._jn_tbl_l.
+__şass__
+ != TableIface):
+
+835 
+¿i£
+ 
+	`COExcInv®idSql
+Ğ"šv®id @bË_Ëá:'%s',‚“d bš¡ªû oàsubşas oàTabËIçû" % (
+£lf
+.
+_jn_tbl_l
+) )
+
+837 
+	`nÙ
+ (
+	$isš¡ªû
+(
+£lf
+.
+_jn_tbl_r
+, 
+TabËIçû
+è
+ªd
+ s–f._jn_tbl_r.
+__şass__
+ != TableIface):
+
+838 
+¿i£
+ 
+	`COExcInv®idSql
+Ğ"šv®id @bË_right:'%s',‚“d bš¡ªû oàsubşas oàTabËIçû" % (
+£lf
+.
+_jn_tbl_r
+) )
+
+840 
+£lf
+.
+_jn_mode
+ 
+nÙ
+ 
+š
+ s–f.
+_JC
+.
+	$keys
+():
+
+841 
+¿i£
+ 
+	`COExcInv®idSql
+Ğ"šv®id @mode:'%s',‚“d bÚoà%s" % (
+£lf
+.
+_jn_mode
+, s–f.
+_JC
+.
+	$keys
+()) )
+
+843 
+£lf
+.
+_jn_Ú
+ 
+ªd
+ 
+nÙ
+ 
+	$isš¡ªû
+(
+£lf
+.
+_jn_Ú
+, 
+CÚd™iÚI‹mBa£
+):
+
+844 
+¿i£
+ 
+	`COExcInv®idSql
+Ğ"šv®id @Ú:'%s',‚“dØš¡ªû oàsubşas oàCÚd™iÚI‹mBa£" % (
+£lf
+.
+_jn_Ú
+) )
+
+846 
+£lf
+.
+_jn_usšg
+ 
+ªd
+ 
+F®£
+ 
+š
+ [
+	$isš¡ªû
+(
+i
+, 
+F›ld
+è˜
+š
+ 
+£lf
+.
+_jn_usšg
+]:
+
+847 
+¿i£
+ 
+	`COExcInv®idSql
+Ğ"šv®id @usšg:'%s',‡Î usšg should bF›ld" % (
+£lf
+.
+_jn_Ú
+) )
+
+849 
+def
+ 
+	$_£t_dyÇmic_f›lds
+(
+£lf
+, 
+mc_l
+, 
+mc_r
+):
+
+851 
+g‘
+ 
+™
+ 
+sh¬e
+ 
+©Œibu‹
+ 
+´İ”ty
+ 
+£t
+:
+
+852 2. 
+TABLE_NAME
+
+
+854 
+diù_f›lds
+ = 
+£lf
+.
+	$_g‘_f›lds
+(
+mc_l
+, 
+mc_r
+)
+
+855 
+£lf
+.
+_jn_dyÇmic_f›lds
+ = { 
+	`_Pack_F›ld_Key
+(
+v
+.
+Çme
+):v.
+	`defš™iÚ
+(è
+k
+, v 
+š
+ 
+diù_f›lds
+.
+	`™ems
+(è
+	}
+}
+
+856 
+JošMod–
+.
+TABLE_NAME
+ = "<JošTabË(%s,%s,%s)>" % ( 
+£lf
+.
+_jn_tbl_l
+.
+sql
+(),
+
+857 
+	g£lf
+.
+	g_jn_mode
+,
+
+858 
+	g£lf
+.
+	g_jn_tbl_r
+.
+	$sql
+() )
+
+860 
+def
+ 
+	$Ú
+(
+£lf
+, 
+cÚd™iÚ
+):
+
+861 
+cÚd™iÚ
+ 
+ªd
+ 
+nÙ
+ 
+	$isš¡ªû
+(
+cÚd™iÚ
+, 
+CÚd™iÚI‹mBa£
+):
+
+862 
+¿i£
+ 
+	`COExcInv®idSql
+Ğ"šv®id @Ú:'%s',‚“dØš¡ªû oàsubşas oàCÚd™iÚI‹mBa£" % (
+cÚd™iÚ
+) )
+
+863 
+£lf
+.
+_jn_Ú
+ = 
+cÚd™iÚ
+
+
+864  
+£lf
+
+
+866 
+def
+ 
+	$usšg
+(
+£lf
+, *
+cŞumns
+):
+
+867 
+cŞumns
+ 
+ªd
+ 
+F®£
+ 
+š
+ [
+	$isš¡ªû
+(
+i
+, 
+F›ld
+è˜
+š
+ 
+cŞumns
+]:
+
+868 
+¿i£
+ 
+	`COExcInv®idSql
+Ğ"šv®id @usšg:'%s',‡Î usšg should bF›ld" % (
+cŞumns
+) )
+
+869 
+£lf
+.
+_jn_usšg
+ = 
+cŞumns
+
+
+870  
+£lf
+
+
+872 
+def
+ 
+	$sql
+(
+£lf
+):
+
+873 
+još_·¹
+ = "% % %s" % (
+£lf
+.
+_jn_tbl_l
+.
+	`sql
+(), s–f.
+_jn_mode
+, s–f.
+_jn_tbl_r
+.
+	$sql
+())
+
+874 
+jc
+ = 
+£lf
+.
+_JC
+[£lf.
+_jn_mode
+]
+
+875 
+nÙ
+ 
+jc
+.
+»quœed
+:
+
+876  
+još_·¹
+
+
+878 #–£, 
+»quœed
+
+
+879 #1. 
+Œy
+ 
+Ú
+
+
+880 
+po¡fix
+ = ''
+
+881 
+jc
+.
+®low_Ú
+:
+
+882 
+£lf
+.
+_jn_Ú
+:
+
+883 
+po¡fix
+ = ' ON ' + 
+£lf
+.
+_jn_Ú
+.
+	$sql
+()
+
+885 #2. 
+Œy
+ 
+usšg
+ 
+Ãûs§ry
+
+
+886 
+nÙ
+ 
+po¡fix
+:
+
+887 
+jc
+.
+®low_usšg
+:
+
+888 
+£lf
+.
+_jn_usšg
+ 
+is
+ 
+NÚe
+:
+
+889 
+¿i£
+ 
+	`COExcInv®idSql
+("using columns‚eeded for mode:'%s' of join:%s" % \
+
+890 (
+£lf
+.
+_jn_mode
+, s–f.
+_t_Çme
+))
+
+892 
+po¡fix
+ = ' USING (' + ', '.
+	`još
+([
+i
+.
+	$sql
+(è
+i
+ 
+š
+ 
+£lf
+.
+_jn_usšg
+]) + ')'
+
+894 
+¿i£
+ 
+	`COExcInv®idSql
+("this should‚ever happen, both 'ON'‡nd 'USING' "
+
+897 (
+£lf
+.
+_jn_mode
+, s–f.
+_t_Çme
+, 
+jc
+))
+
+898  '(' + 
+još_·¹
+ + 
+po¡fix
+ + ')'
+
+	@calypso/co_utils.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #S© 
+May
+ 9 10:07:32 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+impÜt
+ 
+time
+
+
+9 
+şass
+ 
+	$Magic
+(
+objeù
+):
+
+10 
+def
+ 
+	$__š™__
+(
+£lf
+, **
+kw¬gs
+):
+
+11 
+£lf
+.
+__diù__
+.
+	$upd©e
+(
+kw¬gs
+)
+
+13 
+def
+ 
+	$__¡r__
+(
+£lf
+, ):
+
+14  
+	$¡r
+(
+£lf
+.
+__diù__
+)
+
+17 
+şass
+ 
+	$D“pMagic
+(
+objeù
+):
+
+18 
+def
+ 
+	$__š™__
+(
+£lf
+, *
+¬gs
+, **
+kw¬gs
+):
+
+19 
+£lf
+.
+__¿w__
+ = 
+kw¬gs
+
+
+20 
+	`£‰r
+(
+£lf
+, '¬gs', 
+¬gs
+)
+
+21 
+def
+ 
+	$__šÃr_do_magic
+(
+obj
+, 
+d
+):
+
+22 
+k
+,
+v
+ 
+š
+ 
+d
+.
+	$™ems
+():
+
+23 
+nÙ
+ 
+	$isš¡ªû
+(
+v
+, 
+diù
+):
+
+24 
+	$£‰r
+(
+obj
+, 
+k
+, 
+v
+)
+
+27 
+	`£‰r
+(
+obj
+, 
+k
+, 
+	$B¬eBÚe
+())
+
+28 
+bbÚe
+ = 
+	$g‘©Œ
+(
+obj
+, 
+k
+)
+
+29 
+	$__šÃr_do_magic
+Ğ
+bbÚe
+, 
+v
+ )
+
+31 
+	$__šÃr_do_magic
+(
+£lf
+, 
+kw¬gs
+)
+
+34 
+şass
+ 
+	$Uts
+(
+objeù
+):
+
+35 
+_STANDARD_TIME_FORMAT_IN_REGEX
+ = '\d{4}-\d{2}-\d{2} +\d{2}:\d{2}:\d{2}'
+
+36 
+_STANDARD_TIME_FORMAT_IN_TIME
+ = '%Y-%m-%d %H:%M:%S'
+
+37 
+def
+ 
+	$__š™__
+(
+£lf
+, ):
+
+38 
+£lf
+.
+why
+ = ''
+
+40 @
+şassm‘hod
+
+
+41 
+def
+ 
+	$Œaû_exc
+(
+şs
+):
+
+42 
+exû±iÚ_šfos
+ = 
+Œaûback
+.
+	`fÜm©_exc
+().
+	`¥l™
+('\n')
+
+43 
+i
+ 
+š
+ 
+exû±iÚ_šfos
+:
+
+44 
+	`´št
+ ( "Œaû:'%s'" % 
+i
+.
+	$l¡r
+() )
+
+46 
+def
+ 
+	$check_v¬
+(
+£lf
+, 
+v¬
+, 
+v¬_ty³
+, 
+v¬_deçuÉ
+=
+NÚe
+, 
+®low_nÚe
+=
+True
+):
+
+47 #»£ˆ
+why
+
+
+48 
+£lf
+.
+why
+ = 'OK'
+
+49 #1.  
+check
+ 
+mu¡
+ 
+comes
+ 
+fœ¡
+,
+
+50 #2. 
+we
+ 
+®low
+  
+v¬ue
+ 
+ÿn
+ 
+be
+ 
+difã»Á
+ 
+äom
+ 
+v¬_ty³
+,
+
+51 #sØ
+check
+ 
+v¬_deçuÉ
+ 
+ªd
+ 
+ty³
+ 
+tog‘h”
+.
+
+52 #3. 
+check
+ 
+w‘h”
+ 
+the
+ 
+v¬
+ 
+®low
+ 
+to
+ 
+be
+ 
+NÚe
+.
+
+53 
+is_ty³_v®id
+ = 
+	$ty³
+(
+v¬
+è
+š
+ 
+v¬_ty³
+ 
+	$ty³
+(
+v¬_ty³
+è
+	$š
+ (
+tu¶e
+,
+li¡
+è
+	$isš¡ªû
+(
+v¬
+, 
+v¬_ty³
+)
+
+54 
+cÚd
+ = (
+v¬
+ =ğ
+v¬_deçuÉ
+ 
+Ü
+ 
+is_ty³_v®id
+è
+	$ªd
+ (
+®low_nÚe
+ 
+Ü
+ 
+v¬
+ 
+is
+ 
+nÙ
+ 
+NÚe
+)
+
+55 
+nÙ
+ 
+cÚd
+:
+
+56 
+£lf
+.
+why
+ = "v¬:'%s', def:'%s',ƒx³ùedy³:'%s', giv’y³:'%s',‡Îow_nÚe:'%s'" % (
+v¬
+, 
+v¬_deçuÉ
+, 
+v¬_ty³
+, 
+	`ty³
+(v¬), 
+®low_nÚe
+)
+
+57  
+cÚd
+
+
+59 
+def
+ 
+	$toSŒšg
+(
+£lf
+, 
+v¬
+):
+
+60 
+deçuÉ_»tuº_¡ršg
+ = ''
+
+61 
+	$isš¡ªû
+(
+v¬
+, 
+¡r
+):
+
+62  
+v¬
+
+
+63 
+	$isš¡ªû
+(
+v¬
+, 
+unicode
+):
+
+64 
+Œy
+:
+
+65  
+v¬
+.
+	`’code
+('utf-8')
+
+66 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+67 
+£lf
+.
+why
+ = "exû±iÚ caught: '%s'" % 
+e
+
+
+68 
+£lf
+.
+	$Œaû_exc
+()
+
+69  
+deçuÉ_»tuº_¡ršg
+
+
+71 
+Œy
+:
+
+72  
+	$¡r
+(
+v¬
+)
+
+73 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+74 
+£lf
+.
+why
+ = "exû±iÚ caught: '%s'" % 
+e
+
+
+75 
+£lf
+.
+	$Œaû_exc
+()
+
+76  
+deçuÉ_»tuº_¡ršg
+
+
+78 
+def
+ 
+	`£cs2d©‘ime
+(
+£lf
+, 
+£cÚds_sšû_•
+, 
+tm_fmt
+="%Y-%m-%d %H:%M:%S"):
+
+83 
+£cÚds_sšû_•
+ += 28800 #bugs
+
+84 
+Œy
+:
+
+85  
+time
+.
+	`¡ráime
+(
+tm_fmt
+,ime.
+	`gmtime
+((
+£cÚds_sšû_•
+)))
+
+86 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+87 
+£lf
+.
+	$Œaû_exc
+()
+
+88  
+	$£cs2d©‘ime
+(0,
+tm_fmt
+)
+
+90 
+def
+ 
+	`d©‘ime2£cs
+(
+£lf
+, 
+d©e_time_¡r
+, 
+tm_fmt
+='%Y-%m-%d %H:%M:%S'):
+
+91 
+Œy
+:
+
+92 
+tm_tu¶e
+ = 
+time
+.
+	$¡½time
+(
+d©e_time_¡r
+, 
+tm_fmt
+)
+
+93 
+£cs
+ = (
+time
+.
+	`¡ráime
+("%s", 
+tm_tu¶e
+))
+
+94 
+exû±
+ 
+Exû±iÚ
+ 
+as
+ 
+e
+:
+
+95 
+£cs
+ = 0
+
+96 
+£lf
+.
+	$Œaû_exc
+()
+
+97 
+fš®ly
+:
+
+98  
+£cs
+
+
+100 
+def
+ 
+	`now
+(
+£lf
+, 
+»tuº_ty³
+='std'):
+
+101 
+_now
+ = 
+time
+.
+	$time
+()
+
+102 
+»tuº_ty³
+ == 'int':
+
+103  (
+_now
+)
+
+104 
+»tuº_ty³
+ == 'std':
+
+105  
+£lf
+.
+	$£cs2d©‘ime
+(
+_now
+)
+
+107  
+_now
+
+
+109 
+def
+ 
+	$f™sSnd¬dTimeFÜm©
+(
+£lf
+, 
+¿w_time_¡r
+):
+
+110  
+NÚe
+ !ğ
+»
+.
+	$m©ch
+(
+£lf
+.
+_STANDARD_TIME_FORMAT_IN_REGEX
+ , 
+¿w_time_¡r
+)
+
+112 
+def
+ 
+	`md5
+(
+£lf
+, 
+¿w
+, 
+»tuº_ty³
+='string'):
+
+113 
+obj
+ = 
+hashlib
+.
+	`md5
+(
+£lf
+.
+	$toSŒšg
+(
+¿w
+))
+
+114  
+obj
+.
+	$hexdige¡
+(è
+»tuº_ty³
+ =ğ'¡ršg' 
+obj
+
+
+116 #TODO 
+Wed
+ 
+S•
+ 2 15:13:35 2015 [
+Uts
+.
+şassm‘hod
+ 
+¡yË
+ 
+to
+ 
+avoid
+ 
+muÉi
+-
+th»ads
+ 
+´obËm
+ 
+of
+ 
+ÿlypso
+]
+
+117 
+g_uts
+ = 
+	`Uts
+()
+
+	@calypso/co_version.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #SuÀ
+May
+ 10 01:32:26 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+	gv”siÚ
+ = 0.4
+
+	@calypso/test/__init__.py
+
+	@calypso/test/mysqldb_probe.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #SuÀ
+May
+ 10 00:20:04 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+6 
+impÜt
+ 
+MySQLdb
+
+
+9 
+def
+ 
+	$£p
+(
+msg
+):
+
+10 
+´št
+ '_'*100
+
+11 
+´št
+ "# %s" % 
+msg
+
+
+13 
+cÚn
+ = 
+MySQLdb
+.
+	`cÚÃù
+(
+u£r
+='roÙ', 
+·sswd
+='', 
+db
+='go')
+
+15 
+c
+ = 
+MySQLdb
+.
+cursÜs
+.
+	$DiùCursÜ
+(
+cÚn
+è#diù 
+cursÜ
+
+
+17 
+	`£p
+("execute sql")
+
+18 
+sql
+ = "select * from…erson†imit 1"
+
+19 
+´št
+ 
+sql
+
+
+20 
+c
+.
+	$execu‹
+(
+sql
+)
+
+22 
+	`£p
+("results")
+
+23 
+´št
+ 
+c
+.
+	`ãtch®l
+()
+
+	@setup.py
+
+1 #! /
+u¤
+/
+bš
+/
+’v
+ 
+pythÚ
+
+
+2 #-*- 
+codšg
+: 
+utf
+-8 -*-
+
+3 #SuÀ
+May
+ 10 01:31:47 2015
+
+4 #hˆ<515563130@
+qq
+.
+com
+, 
+weixš
+:
+jacoŞ“
+>
+
+5 
+impÜt
+ 
+os
+
+
+7 
+	gŒy
+:
+
+8 
+äom
+ 
+£tu±oŞs
+ 
+impÜt
+ 
+£tup
+
+
+9 
+exû±
+ 
+ImpÜtE¼Ü
+:
+
+10 
+·ss
+
+
+12 
+äom
+ 
+ÿlypso
+ 
+impÜt
+ 
+co_v”siÚ
+
+
+14 
+£tup
+ (
+
+15 
+Çme
+ = 'calypso',
+
+16 
+v”siÚ
+ = 
+co_v”siÚ
+.version,
+
+17 
+keywÜds
+ = ('The God Of The Sea'),
+
+18 
+desütiÚ
+ = 'A Simple Mysql Db Access Layer',
+
+19 
+authÜ
+ = 'jacoolee (515563130@qq.com)',
+
+20 
+·ckages
+ = [ 'calypso' ],
+
+23 
+	gu£Ëss_fes
+ = "build dist calypso.egg-info"
+
+24 
+´št
+ "»movšg‚Ú-£n£ fes: % [%s]" % ( 
+u£Ëss_fes
+, 'OK' 0 =ğ
+os
+.
+sy¡em
+( 'rm -rf %s' % useless_files ) 'FAILED' )
+
+25 
+´št
+ "calypso successfully installed, well done"
+
+	@
+1
+.
+1
+/usr/include
+19
+432
+app/app.py
+app/app_config_manager.py
+app/app_model/__init__.py
+app/app_model/app_db_constants.py
+app/app_model/app_db_model.py
+app/app_utils.py
+app/config/app_db_config.py
+calypso/__init__.py
+calypso/co_conn.py
+calypso/co_constants.py
+calypso/co_error.py
+calypso/co_executor.py
+calypso/co_model_generator.py
+calypso/co_sql.py
+calypso/co_utils.py
+calypso/co_version.py
+calypso/test/__init__.py
+calypso/test/mysqldb_probe.py
+setup.py
