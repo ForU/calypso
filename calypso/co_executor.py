@@ -48,9 +48,9 @@ class SelectResult(Magic):
     def __init__(self, **kwargs):
         super(SelectResult, self).__init__(**kwargs)
 
-class CreateResult(Magic):
+class CommonResult(Magic):
     def __init__(self, **kwargs):
-        super(CreateResult, self).__init__(**kwargs)
+        super(CommonResult, self).__init__(**kwargs)
 
 
 class SqlExcecutor(object):
@@ -143,7 +143,7 @@ class SqlExcecutor(object):
                                       db=self._mysql.db )
         l.info("db connected.")
 
-    def execute(self, sql, sql_action, model_class=None, extra_model_fields=None, only_one=False):
+    def execute(self, sql, sql_action=COConstants.SQL_ACTION_COMMON, model_class=None, extra_model_fields=None, only_one=False):
         """
         1. get db datas by running sql
         2. new model and assign datas to models
@@ -174,8 +174,8 @@ class SqlExcecutor(object):
             # always raise a exception
             raise e
 
-        if sql_action == COConstants.SQL_ACTION_CREATE:
-            return CreateResult(res=result, why=why)
+        if sql_action == COConstants.SQL_ACTION_COMMON:
+            return CommonResult(res=result, why=why)
 
         if sql_action == COConstants.SQL_ACTION_INSERT:
             if isinstance(result, MySQLdb.cursors.DictCursor):
