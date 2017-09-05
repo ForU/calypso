@@ -9,12 +9,14 @@ class COConstants(object):
     SQL_ACTION_DELETE = 1
     SQL_ACTION_SELECT = 2
     SQL_ACTION_UPDATE = 3
+    SQL_ACTION_CREATE = 4
 
     VALID_SQL_ACTIONS = (
         SQL_ACTION_INSERT,
         SQL_ACTION_DELETE,
         SQL_ACTION_SELECT,
-        SQL_ACTION_UPDATE
+        SQL_ACTION_UPDATE,
+        SQL_ACTION_CREATE
     )
 
 

@@ -48,6 +48,10 @@ class SelectResult(Magic):
     def __init__(self, **kwargs):
         super(SelectResult, self).__init__(**kwargs)
 
+class CreateResult(Magic):
+    def __init__(self, **kwargs):
+        super(CreateResult, self).__init__(**kwargs)
+
 
 class SqlExcecutor(object):
     DEFAULT_MYSQL_HOST = 'localhost'
@@ -169,6 +173,9 @@ class SqlExcecutor(object):
                         raise CODuplicatedDBRecord(e)
             # always raise a exception
             raise e
+
+        if sql_action == COConstants.SQL_ACTION_CREATE:
+            return CreateResult(res=result, why=why)
 
         if sql_action == COConstants.SQL_ACTION_INSERT:
             if isinstance(result, MySQLdb.cursors.DictCursor):

@@ -19,6 +19,7 @@ simple but works !
 
 
 import os
+import sys
 
 def IND(level=0):
     return '    '*level
@@ -410,4 +411,16 @@ if __name__ == '__main__':
     # g.dumpDBSchema('warehouse', model_des_dir_path='/tmp/model', app_name='warehouse')
     #g.dumpDBSchema('lavelyhouse', model_des_dir_path='/Users/jacoolee/lavely.house/server/server/api/services/db', app_name='lavelyhouse')
 
-    g.dumpDBSchema('vivir', model_des_dir_path='/Users/jacoolee/vivir/vivir.app.server/server/api/services/db', app_name='vivir')
+    #g.dumpDBSchema('vivir', model_des_dir_path='/Users/jacoolee/vivir/vivir.app.server/server/api/services/db', app_name='vivir')
+    #g.dumpDBSchema('xcx', model_des_dir_path='/Users/jacoolee/xiaochengxu/xmgcx/xmgcx.server/server/api/services/db', app_name='xcx')
+
+    try:
+        db_name = sys.argv[1]
+        app_name = sys.argv[2]
+        out_path = sys.argv[3]
+    except Exception as e:
+        print "Usage: co_model_generator.py db_name app_name out_path"
+        sys.exit(1)
+
+    print " ".join(["co_model_generator.py",db_name,app_name, out_path])
+    g.dumpDBSchema(db_name, model_des_dir_path=out_path, app_name=app_name)
