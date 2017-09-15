@@ -136,6 +136,7 @@ class ModelGenerator(object):
 
     def _ftype2field_type(self, ftype):
         if ftype.startswith('int'): return 'int'
+        if ftype.startswith('bigint'): return 'int'
         if ftype.startswith('tinyint'): return 'int'
         if ftype.startswith('decimal'): return 'float'
         if ftype.startswith('varchar'): return 'str'
@@ -237,7 +238,8 @@ class ModelGenerator(object):
           class UkClass(object):
               def __init(self, x, y):
                   pass # ...
-          def __init__(self):
+          def __init__(self, tableName='tablename'):
+            PersonModel.TABLE_NAME = tableName
             super(Person, self).__init__(PersonModel, executor=g_co_executor)
         """
         class_name_model = "%sModel" % CAP(db_table.table_name)
@@ -268,7 +270,8 @@ class ModelGenerator(object):
             return ret
 
         # table class init
-        init_stm = 'def __init__(self):'
+        init_stm = 'def __init__(self, tableName="%s"):' % (db_table.table_name)
+        tablename_stm = '%s.TABLE_NAME = tableName' % (class_name_model)
         super_stm = 'super(%s, self).__init__(%s, executor=g_co_executor)' % (tbl_class_name, class_name_model)
         all_valid_enum_constants = []
         enum_constants_stm = []
@@ -306,7 +309,7 @@ class ModelGenerator(object):
         components += [ IND(1)+i for i in all_valid_enum_constants ] # after enum_constants_stm
         components += __inner_compose_uk_classes(1)
         components += [ IND(1)+table_uk_map ]
-        components += [ IND(1)+init_stm , IND(2)+super_stm ]
+        components += [ IND(1)+init_stm , IND(2)+tablename_stm, IND(2)+super_stm ]
         components += [ IND(1)+gbuk_func_name, IND(2)+gbuk_func_imp_l1]
 
         for f in isEnumValueValidFunctions:
@@ -375,7 +378,7 @@ class ModelGenerator(object):
         ]
         fp_mc.write('\n'.join(headers))
 
-    def dumpDBSchema(self, db_name, model_des_dir_path='/tmp/', app_name=''):
+    def dumpDBSchema(self, db_name, model_des_dir_path='/tmp/', app_name='', table_names_2_dump=None):
         refined_app_name = LOWC(app_name) +'_' if app_name else ''
         path_d_m = model_des_dir_path + '/%smodel' % refined_app_name
         path_f_m = path_d_m + '/' + '%sdb_model.py' % refined_app_name
@@ -393,7 +396,7 @@ class ModelGenerator(object):
         self._gen_table_file_headers(fp_mc, app_name=app_name)
 
         # handle tables
-        table_names = self.getDBTableNames(db_name)
+        table_names = table_names_2_dump if table_names_2_dump != None else self.getDBTableNames(db_name)
         for tname in table_names:
             self.dumpTable( tname, db_name=db_name,
                             fp_model_file=fp_m,
@@ -404,23 +407,18 @@ class ModelGenerator(object):
 if __name__ == '__main__':
     g=ModelGenerator(host='localhost', user='root')
 
-    # # LOCAL HERE
-    #g.dumpDBSchema('honeycomb', model_des_dir_path='/tmp/model', app_name='honeycomb')
-    #g.dumpDBSchema('pollens', model_des_dir_path='/tmp/model', app_name='pollens')
-    # g.dumpDBSchema('world', model_des_dir_path='/tmp/model', app_name='world')
-    # g.dumpDBSchema('warehouse', model_des_dir_path='/tmp/model', app_name='warehouse')
-    #g.dumpDBSchema('lavelyhouse', model_des_dir_path='/Users/jacoolee/lavely.house/server/server/api/services/db', app_name='lavelyhouse')
-
-    #g.dumpDBSchema('vivir', model_des_dir_path='/Users/jacoolee/vivir/vivir.app.server/server/api/services/db', app_name='vivir')
-    #g.dumpDBSchema('xcx', model_des_dir_path='/Users/jacoolee/xiaochengxu/xmgcx/xmgcx.server/server/api/services/db', app_name='xcx')
-
     try:
         db_name = sys.argv[1]
         app_name = sys.argv[2]
         out_path = sys.argv[3]
     except Exception as e:
-        print "Usage: co_model_generator.py db_name app_name out_path"
+        print "Usage: co_model_generator.py db_name app_name out_path [table1,table2,table3]"
         sys.exit(1)
 
-    print " ".join(["co_model_generator.py",db_name,app_name, out_path])
-    g.dumpDBSchema(db_name, model_des_dir_path=out_path, app_name=app_name)
+
+    table_names = None
+    if len(sys.argv) >= 5:
+        table_names = sys.argv[4].split(',')
+
+    print " ".join(["co_model_generator.py",db_name,app_name, out_path, str(table_names) if table_names !=None else ''])
+    g.dumpDBSchema(db_name, model_des_dir_path=out_path, app_name=app_name, table_names_2_dump=table_names)
