@@ -112,19 +112,22 @@ class SqlExcecutor(object):
         c.execute( sql )
         if self._auto_commit:
             self.commit()
-            #l.dia("executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__))
+            # l.dia("executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__))
         return c
 
-    def startTransaction(self):
+    def onStartTransaction(self):
         self._auto_commit = False
         self._execute_sql('start transaction;')
 
+    def onEndTransaction(self):
+        self._auto_commit = True
+
     def commit(self):
-        #l.debug("do commit here")
+        l.debug("do real commit, data saved to db")
         self._conn.commit()
 
     def rollback(self):
-        self._auto_commit = True
+        self._auto_commit = True # force auto_commit
         self._conn.rollback()
 
     # has no need this function if connection is a pool
@@ -234,10 +237,11 @@ class Transaction(object):
         self._executor = executor
 
     def __enter__(self):
-        self._executor.startTransaction()
+        self._executor.onStartTransaction()
         l.info("starting transaction...")
 
     def __exit__(self, exc_type, exc_value, exc_tb):
+        self._executor.onEndTransaction()
         if not exc_tb:
             self._executor.commit()
             l.info("commit and transaction success")
