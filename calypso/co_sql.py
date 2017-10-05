@@ -147,20 +147,21 @@ LIKE_LEFT = 1
 LIKE_RIGHT = 2
 LIKE_BOTH = 3
 class Like(ConditionItemBase):
-    def __init__(self, field, like_expr, fuzzy=LIKE_NONE):
+    def __init__(self, field, like_expr, fuzzy=LIKE_NONE, caseSensitive=False):
         super(Like, self).__init__(type=CONDITION_ITEM_TYPE_CONJ, field=field)
         self.like_expr = like_expr
         self.fuzzy = fuzzy
+        self.caseSensitive = caseSensitive
 
     def sql(self):
         if self.fuzzy == LIKE_NONE:
-            return '%s LIKE "%s"' % (self.field.sql(), self.like_expr)
+            return '%s LIKE %s "%s"' % (self.field.sql(), 'BINARY' if self.caseSensitive else '', self.like_expr)
         if self.fuzzy == LIKE_LEFT:
-            return '%s LIKE "%%%s"' % (self.field.sql(), self.like_expr)
+            return '%s LIKE %s "%%%s"' % (self.field.sql(), 'BINARY' if self.caseSensitive else '', self.like_expr)
         if self.fuzzy == LIKE_RIGHT:
-            return '%s LIKE "%s%%"' % (self.field.sql(), self.like_expr)
+            return '%s LIKE %s "%s%%"' % (self.field.sql(), 'BINARY' if self.caseSensitive else '', self.like_expr)
         if self.fuzzy == LIKE_BOTH:
-            return '%s LIKE "%%%s%%"' % (self.field.sql(), self.like_expr)
+            return '%s LIKE %s "%%%s%%"' % (self.field.sql(), 'BINARY' if self.caseSensitive else '', self.like_expr)
         raise COExcInvalidSql('unsupported like fuzzy type:'+str(self.fuzzy))
 
 class FieldTypeEnum(object):
