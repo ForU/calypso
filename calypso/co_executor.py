@@ -57,13 +57,16 @@ class SqlExcecutor(object):
     DEFAULT_MYSQL_HOST = 'localhost'
     DEFAULT_MYSQL_PORT = 3306
 
-    def __init__(self, mysql_host=DEFAULT_MYSQL_HOST, mysql_port=DEFAULT_MYSQL_PORT, mysql_user='', mysql_passwd='', mysql_db=''):
+    def __init__(self, mysql_host=DEFAULT_MYSQL_HOST, mysql_port=DEFAULT_MYSQL_PORT, mysql_user='', mysql_passwd='', mysql_db='', allow_commit=True):
         self._mysql = Magic( host=mysql_host,
                              port=mysql_port,
                              user=mysql_user,
                              passwd=mysql_passwd,
                              db=mysql_db,
-                         )
+        )
+        self._allow_commit = allow_commit
+
+        # inner self used attribute
         self._auto_commit = True
         self._conn = None
         # self._connect_to_db()
@@ -123,8 +126,11 @@ class SqlExcecutor(object):
         self._auto_commit = True
 
     def commit(self):
-        l.debug("do real commit, data saved to db")
-        self._conn.commit()
+        if self._allow_commit:
+            l.debug("do real commit, data saved to db")
+            self._conn.commit()
+        else:
+            l.debug("in Safe-Mode:commit not allowed")
 
     def rollback(self):
         self._auto_commit = True # force auto_commit
