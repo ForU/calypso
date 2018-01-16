@@ -57,15 +57,13 @@ class SqlExcecutor(object):
     DEFAULT_MYSQL_HOST = 'localhost'
     DEFAULT_MYSQL_PORT = 3306
 
-    def __init__(self, mysql_host=DEFAULT_MYSQL_HOST, mysql_port=DEFAULT_MYSQL_PORT, mysql_user='', mysql_passwd='', mysql_db='', allow_commit=True):
+    def __init__(self, mysql_host=DEFAULT_MYSQL_HOST, mysql_port=DEFAULT_MYSQL_PORT, mysql_user='', mysql_passwd='', mysql_db=''):
         self._mysql = Magic( host=mysql_host,
                              port=mysql_port,
                              user=mysql_user,
                              passwd=mysql_passwd,
                              db=mysql_db,
         )
-        self._allow_commit = allow_commit
-
         # inner self used attribute
         self._auto_commit = True
         self._conn = None
@@ -89,7 +87,7 @@ class SqlExcecutor(object):
         except Exception as e:
             raise COExcInternalError(e)
 
-    def _execute_sql(self, sql, max_try=EXEC_SQL_MAX_RETRY_TIME):
+    def _execute_sql(self, sql, max_try=EXEC_SQL_MAX_RETRY_TIME, allow_commit=True):
         if not self._conn:
             raise COExcInternalError("not connect to db yet, please reInit the g_co_executor please in your application initialization process")
         # l.debug("retrying to execute sql:[%s] @time:%s" % (sql, max_try))
@@ -97,25 +95,26 @@ class SqlExcecutor(object):
             raise COExcInternalError("still failed to execute sql after retry:%s times" % (EXEC_SQL_MAX_RETRY_TIME))
 
         try:
-            return self._bb_execute_sql(sql)
+            return self._bb_execute_sql(sql, allow_commit)
         except MySQLdb.Error as e:
             if isinstance(e.args[0], (int, long)) and e.args[0] == 2006:
                 self._connect_to_db()
-                self._execute_sql(sql, max_try-1)
+                self._execute_sql(sql, max_try=max_try-1)
             else:
                 raise COSqlExecuteError(*(list(e.args) + [sql]))
         except Exception as e:
             raise COExcInternalError(*(list(e.args) + [sql]))
 
-    def _bb_execute_sql(self, sql):
+    def _bb_execute_sql(self, sql, allow_commit):
         """return None or action-specified value, no exception caught.
         """
         c = MySQLdb.cursors.DictCursor( self._conn )
-        l.info("executing SQL:\"%s\" @'%s'" % (sql, g_utils.now()))
+        l.info("executing SQL:\"%s\" @'%s', allow_commit = %s" % (sql, g_utils.now(), allow_commit))
         c.execute( sql )
-        if self._auto_commit:
-            self.commit()
-            # l.dia("executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__))
+        if allow_commit:
+            if self._auto_commit:
+                self.commit()
+                # l.dia("executed: \"%s\" @'%s', info:'%s'" % (c._last_executed, g_utils.now(), c.__dict__))
         return c
 
     def onStartTransaction(self):
@@ -126,11 +125,8 @@ class SqlExcecutor(object):
         self._auto_commit = True
 
     def commit(self):
-        if self._allow_commit:
-            l.debug("do real commit, data saved to db")
-            self._conn.commit()
-        else:
-            l.debug("in Safe-Mode:commit not allowed")
+        l.debug("do real commit, data saved to db")
+        self._conn.commit()
 
     def rollback(self):
         self._auto_commit = True # force auto_commit
@@ -143,7 +139,7 @@ class SqlExcecutor(object):
                              user=mysql_user,
                              passwd=mysql_passwd,
                              db=mysql_db
-                         )
+        )
         l.info("connecting %s ..." % self._mysql)
         self._conn = MySQLdb.connect( host=self._mysql.host,
                                       port=self._mysql.port,
@@ -152,7 +148,7 @@ class SqlExcecutor(object):
                                       db=self._mysql.db )
         l.info("db connected.")
 
-    def execute(self, sql, sql_action=COConstants.SQL_ACTION_COMMON, model_class=None, extra_model_fields=None, only_one=False):
+    def execute(self, sql, sql_action=COConstants.SQL_ACTION_COMMON, model_class=None, extra_model_fields=None, only_one=False, allow_commit=True):
         """
         1. get db datas by running sql
         2. new model and assign datas to models
@@ -172,7 +168,7 @@ class SqlExcecutor(object):
 
         # refine result, avoid exception for better code programing experiences
         try:
-            result, why = self._execute_sql(sql), 'OK'
+            result, why = self._execute_sql(sql, allow_commit=allow_commit), 'OK'
             #l.debug("Executed result of SQL:\"%s\" is:'%s'" % (sql, result))
         except Exception as e:
             # handle db duplicated case specifically:
@@ -180,7 +176,7 @@ class SqlExcecutor(object):
                 if isinstance(e.args[0], (int, long)):
                     if e.args[0] == 1062:
                         raise CODuplicatedDBRecord(e)
-            # always raise a exception
+                    # always raise a exception
             raise e
 
         if sql_action == COConstants.SQL_ACTION_COMMON:
