@@ -316,6 +316,13 @@ STAR_FIELD = Field(name='*', type=str, default='*', comment='star')
 
 FieldTypeFunction = str         # default type for function-type field
 
+class BARE(Field):
+    def __init__(self, value):
+        super(BARE, self).__init__( value=value )
+
+    def sql(self):
+        return self.value
+
 class RAW(Field):
     def __init__(self, value):
         super(RAW, self).__init__( value=value )
