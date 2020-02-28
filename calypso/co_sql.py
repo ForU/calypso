@@ -206,6 +206,7 @@ class Field(object):
 
         if not isinstance( other, tuple(cand_types) ):
             l.warn("operator_str:'%s', right value:'%s' is not type:'%s' or %s, candidate types:%s, as_operator:'%s'" % (operator_str, other, self.type, 'Field', cand_types, as_operator))
+            raise COExcInvalidSql(e)
             return
 
         if as_operator:
