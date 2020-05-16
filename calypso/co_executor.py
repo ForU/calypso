@@ -125,7 +125,7 @@ class SqlExcecutor(object):
         self._auto_commit = True
 
     def commit(self):
-        l.debug("do real commit, data saved to db")
+        # l.debug("do real commit, data saved to db")
         self._conn.commit()
 
     def rollback(self):
@@ -228,7 +228,9 @@ class SqlExcecutor(object):
                 else:
                     result = refined_results
             return SelectResult(res=result, why=why)
-        l.error("UNSUPPORTED sql action: '%s', should never happened" % sql_action)
+
+        why = "UNSUPPORTED sql action: '%s', should never happened" % sql_action
+        raise COSqlExecuteError(why)
 
 # global
 g_co_executor = SqlExcecutor()
