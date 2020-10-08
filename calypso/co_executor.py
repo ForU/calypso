@@ -98,8 +98,9 @@ class SqlExcecutor(object):
             return self._bb_execute_sql(sql, allow_commit)
         except MySQLdb.Error as e:
             if isinstance(e.args[0], (int, long)) and e.args[0] == 2006:
+                l.warn('MySQLdb.Error 2006 encountered, try to re-connect to db')
                 self._connect_to_db()
-                self._execute_sql(sql, max_try=max_try-1)
+                return self._execute_sql(sql, max_try=max_try-1)
             else:
                 raise COSqlExecuteError(*(list(e.args) + [sql]))
         except Exception as e:
